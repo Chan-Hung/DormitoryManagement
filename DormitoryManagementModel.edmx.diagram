@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="70845a68c6b2412091d1e13fa8b5b8ca" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="DormitoryManagementModel.DienNuocSuDung" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.HopDongThuePhong" Width="1.5" PointX="13.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.LoaiNhanVien" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.LoaiPhong" Width="1.5" PointX="3.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.LoaiTaiKhoan" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.NhanVien" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.Phong" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.SinhVien" Width="1.5" PointX="11.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.TaiKhoan" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.Toa" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.Truong" Width="1.5" PointX="9" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.HoaDonTienDienNuoc" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.SearchSVToa" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.SoNVTheoLoaiNV" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.SoPhongTrongTheoToa" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.SV_SPKT" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.SVHetHopDong2022" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.TienPhongMoiSV" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DormitoryManagementModel.TongSVTheoToa" Width="1.5" PointX="11.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__DienNuocS__MaPho__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__HopDongThu__MaSV__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__NhanVien__MaLoai__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__Phong__MaLoaiPho__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__TaiKhoan__MaLoai__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__NhanVien__MaToa__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__TaiKhoan__MaNV__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__Phong__MaToa__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__SinhVien__MaPhon__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="DormitoryManagementModel.FK__SinhVien__MaTruo__4F7CD00D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

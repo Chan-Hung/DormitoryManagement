@@ -1,0 +1,1603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DormitoryManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DienNuocSuDung">
+          <Key>
+            <PropertyRef Name="MaHoaDon" />
+          </Key>
+          <Property Name="MaHoaDon" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaPhong" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NgayLap" Type="date" Nullable="false" />
+          <Property Name="SoDienTieuThu" Type="int" Nullable="false" />
+          <Property Name="SoNuocTieuthu" Type="int" Nullable="false" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HopDongThuePhong">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaSV" Type="varchar" MaxLength="10" />
+          <Property Name="NgayKHD" Type="date" Nullable="false" />
+          <Property Name="NgayKTHD" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiNhanVien">
+          <Key>
+            <PropertyRef Name="MaLoaiNV" />
+          </Key>
+          <Property Name="MaLoaiNV" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CongViec" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiPhong">
+          <Key>
+            <PropertyRef Name="MaLoaiPhong" />
+          </Key>
+          <Property Name="MaLoaiPhong" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TenloaiPhong" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gia" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoaiTaiKhoan">
+          <Key>
+            <PropertyRef Name="MaLoaiTaiKhoan" />
+          </Key>
+          <Property Name="MaLoaiTaiKhoan" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TenLoaiTaiKhoan" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChucNang" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaLoaiNV" Type="char" MaxLength="2" />
+          <Property Name="MaToa" Type="char" MaxLength="2" />
+          <Property Name="TenNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="Luong" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Phong">
+          <Key>
+            <PropertyRef Name="MaPhong" />
+          </Key>
+          <Property Name="MaPhong" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="MaToa" Type="char" MaxLength="2" />
+          <Property Name="MaLoaiPhong" Type="char" MaxLength="3" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="MaTruong" Type="varchar" MaxLength="5" />
+          <Property Name="MaPhong" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="MaTaiKhoan" />
+          </Key>
+          <Property Name="MaTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNV" Type="char" MaxLength="5" />
+          <Property Name="TenDangNhap" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="MaLoaiTaiKhoan" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Toa">
+          <Key>
+            <PropertyRef Name="MaToa" />
+          </Key>
+          <Property Name="MaToa" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="SoTang" Type="smallint" Nullable="false" />
+          <Property Name="SucChua" Type="int" Nullable="false" />
+          <Property Name="SoPhongToiDa" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Truong">
+          <Key>
+            <PropertyRef Name="MaTruong" />
+          </Key>
+          <Property Name="MaTruong" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="TenTruong" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.HoaDonTienDienNuoc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HoaDonTienDienNuoc">
+          <Key>
+            <PropertyRef Name="MaHoaDon" />
+            <PropertyRef Name="MaPhong" />
+            <PropertyRef Name="NgayLap" />
+            <PropertyRef Name="SoDienTieuThu" />
+            <PropertyRef Name="SoNuocTieuthu" />
+          </Key>
+          <Property Name="MaHoaDon" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="MaPhong" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NgayLap" Type="date" Nullable="false" />
+          <Property Name="SoDienTieuThu" Type="int" Nullable="false" />
+          <Property Name="SoNuocTieuthu" Type="int" Nullable="false" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tổng hóa đơn" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.SearchSVToa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SearchSVToa">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="TenSV" />
+            <PropertyRef Name="GioiTinh" />
+          </Key>
+          <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="MaTruong" Type="varchar" MaxLength="5" />
+          <Property Name="MaPhong" Type="char" MaxLength="3" />
+          <Property Name="MaToa" Type="char" MaxLength="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.SoNVTheoLoaiNV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SoNVTheoLoaiNV">
+          <Key>
+            <PropertyRef Name="CongViec" />
+          </Key>
+          <Property Name="CongViec" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoLuongNV" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QuanLyKTX.dbo.SoNVTheoToa' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="SoNVTheoToa">
+          <Property Name="MaToa" Type="char" MaxLength="2" />
+          <Property Name="soLuongNV" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.SoPhongTrongTheoToa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SoPhongTrongTheoToa">
+          <Key>
+            <PropertyRef Name="MaToa" />
+          </Key>
+          <Property Name="MaToa" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="SoPhongTrong" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.SV_SPKT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SV_SPKT">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="TenSV" />
+          </Key>
+          <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaTruong" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.SVHetHopDong2022' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SVHetHopDong2022">
+          <Key>
+            <PropertyRef Name="TenSV" />
+            <PropertyRef Name="NgayKTHD" />
+          </Key>
+          <Property Name="MaSV" Type="varchar" MaxLength="10" />
+          <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgayKTHD" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.TienPhongMoiSV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TienPhongMoiSV">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="TenSV" />
+          </Key>
+          <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaPhong" Type="char" MaxLength="3" />
+          <Property Name="Mã loại phòng" Type="char" MaxLength="3" />
+          <Property Name="Giá phòng" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'QuanLyKTX.dbo.TongSVTheoPhong' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="TongSVTheoPhong">
+          <Property Name="MaPhong" Type="char" MaxLength="3" />
+          <Property Name="TongSV" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TongSVTheoToa">
+          <Key>
+            <PropertyRef Name="MaToa" />
+          </Key>
+          <Property Name="MaToa" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="SoLuongSV" Type="int" />
+        </EntityType>
+        <Association Name="FK__DienNuocS__MaPho__48CFD27E">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="DienNuocSuDung" Type="Self.DienNuocSuDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="DienNuocSuDung">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HopDongThu__MaSV__49C3F6B7">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HopDongThuePhong" Type="Self.HopDongThuePhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="MaSV" />
+            </Principal>
+            <Dependent Role="HopDongThuePhong">
+              <PropertyRef Name="MaSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaLoai__4AB81AF0">
+          <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiNhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaToa__4BAC3F29">
+          <End Role="Toa" Type="Self.Toa" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toa">
+              <PropertyRef Name="MaToa" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaToa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phong__MaLoaiPho__4CA06362">
+          <End Role="LoaiPhong" Type="Self.LoaiPhong" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiPhong">
+              <PropertyRef Name="MaLoaiPhong" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="MaLoaiPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phong__MaToa__4D94879B">
+          <End Role="Toa" Type="Self.Toa" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toa">
+              <PropertyRef Name="MaToa" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="MaToa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinhVien__MaPhon__4E88ABD4">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinhVien__MaTruo__4F7CD00D">
+          <End Role="Truong" Type="Self.Truong" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truong">
+              <PropertyRef Name="MaTruong" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="MaTruong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__MaLoai__5070F446">
+          <End Role="LoaiTaiKhoan" Type="Self.LoaiTaiKhoan" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__MaNV__5165187F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_SearchMaNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+                <Property Name="MaLoaiNV" Type="char" MaxLength="2" />
+                <Property Name="MaToa" Type="char" MaxLength="2" />
+                <Property Name="TenNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="SDT" Type="char" MaxLength="10" />
+                <Property Name="Luong" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_SearchMaSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaSinhVien" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+                <Property Name="SDT" Type="char" MaxLength="10" />
+                <Property Name="MaTruong" Type="varchar" MaxLength="5" />
+                <Property Name="MaPhong" Type="char" MaxLength="3" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_SearchSVToa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+                <Property Name="SDT" Type="char" MaxLength="10" />
+                <Property Name="MaTruong" Type="varchar" MaxLength="5" />
+                <Property Name="MaPhong" Type="char" MaxLength="3" />
+                <Property Name="MaToa" Type="char" MaxLength="2" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_SearchTenNV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenNV" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaNV" Type="char" MaxLength="5" Nullable="false" />
+                <Property Name="MaLoaiNV" Type="char" MaxLength="2" />
+                <Property Name="MaToa" Type="char" MaxLength="2" />
+                <Property Name="TenNV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="SDT" Type="char" MaxLength="10" />
+                <Property Name="Luong" Type="int" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_SearchTenSV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenSinhVien" Type="nvarchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaSV" Type="varchar" MaxLength="10" Nullable="false" />
+                <Property Name="TenSV" Type="nvarchar" MaxLength="50" Nullable="false" />
+                <Property Name="GioiTinh" Type="char" MaxLength="1" Nullable="false" />
+                <Property Name="SDT" Type="char" MaxLength="10" />
+                <Property Name="MaTruong" Type="varchar" MaxLength="5" />
+                <Property Name="MaPhong" Type="char" MaxLength="3" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_ShowPhongChuaThanhToan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaHoaDon" Type="char" MaxLength="5" Nullable="false" />
+                <Property Name="MaPhong" Type="char" MaxLength="3" Nullable="false" />
+                <Property Name="NgayLap" Type="date" Nullable="false" />
+                <Property Name="SoDienTieuThu" Type="int" Nullable="false" />
+                <Property Name="SoNuocTieuthu" Type="int" Nullable="false" />
+                <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+                <Property Name="Tổng hóa đơn" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_ShowPhongTrong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaPhong" Type="char" MaxLength="3" Nullable="false" />
+                <Property Name="MaToa" Type="char" MaxLength="2" />
+                <Property Name="MaLoaiPhong" Type="char" MaxLength="3" />
+                <Property Name="TrangThai" Type="nvarchar" MaxLength="10" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_ThanhToan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="MaHoaDon" Type="char" MaxLength="5" Nullable="false" />
+                <Property Name="MaPhong" Type="char" MaxLength="3" Nullable="false" />
+                <Property Name="NgayLap" Type="date" Nullable="false" />
+                <Property Name="SoDienTieuThu" Type="int" Nullable="false" />
+                <Property Name="SoNuocTieuthu" Type="int" Nullable="false" />
+                <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="QL_AuthoLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteDienNuoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaHoaDon" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteSinhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaSinhVien" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertDienNuoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaHoaDon" Type="char" Mode="In" />
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+          <Parameter Name="NgayLap" Type="date" Mode="In" />
+          <Parameter Name="SoDienTieuThu" Type="int" Mode="In" />
+          <Parameter Name="SoNuocTieuThu" Type="int" Mode="In" />
+          <Parameter Name="TrangThai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="char" Mode="In" />
+          <Parameter Name="MaLoaiNV" Type="char" Mode="In" />
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <Parameter Name="TenNV" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoDienThoai" Type="char" Mode="In" />
+          <Parameter Name="Luong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertPhong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <Parameter Name="MaLoaiPhong" Type="char" Mode="In" />
+          <Parameter Name="TrangThai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertSinhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaSinhVien" Type="varchar" Mode="In" />
+          <Parameter Name="TenSinhVien" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="char" Mode="In" />
+          <Parameter Name="SoDienThoai" Type="char" Mode="In" />
+          <Parameter Name="MaTruong" Type="varchar" Mode="In" />
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="char" Mode="In" />
+          <Parameter Name="TenDangnhap" Type="varchar" Mode="In" />
+          <Parameter Name="MatKhau" Type="varchar" Mode="In" />
+          <Parameter Name="MaLoaiTaiKhoan" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertToa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <Parameter Name="SoTang" Type="smallint" Mode="In" />
+          <Parameter Name="SucChua" Type="int" Mode="In" />
+          <Parameter Name="SoPhongToiDa" Type="smallint" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateDienNuoc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaHoaDon" Type="char" Mode="In" />
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+          <Parameter Name="NgayLap" Type="date" Mode="In" />
+          <Parameter Name="SoDienTieuThu" Type="int" Mode="In" />
+          <Parameter Name="SoNuocTieuThu" Type="int" Mode="In" />
+          <Parameter Name="TrangThai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateHopDong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaHD" Type="char" Mode="In" />
+          <Parameter Name="MaSV" Type="varchar" Mode="In" />
+          <Parameter Name="NgayKHD" Type="date" Mode="In" />
+          <Parameter Name="NgayKTHD" Type="date" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdatematKhau" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TenDangNhap" Type="varchar" Mode="In" />
+          <Parameter Name="MatKhau" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateNhanVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="char" Mode="In" />
+          <Parameter Name="MaLoaiNV" Type="char" Mode="In" />
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <Parameter Name="TenNV" Type="nvarchar" Mode="In" />
+          <Parameter Name="SoDienThoai" Type="char" Mode="In" />
+          <Parameter Name="Luong" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdatePhong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <Parameter Name="MaLoaiPhong" Type="char" Mode="In" />
+          <Parameter Name="TrangThai" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateSinhVien" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaSinhVien" Type="varchar" Mode="In" />
+          <Parameter Name="TenSinhVien" Type="nvarchar" Mode="In" />
+          <Parameter Name="GioiTinh" Type="char" Mode="In" />
+          <Parameter Name="SoDienThoai" Type="char" Mode="In" />
+          <Parameter Name="MaTruong" Type="varchar" Mode="In" />
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateTaiKhoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaNV" Type="char" Mode="In" />
+          <Parameter Name="TenDangnhap" Type="varchar" Mode="In" />
+          <Parameter Name="MaLoaiTaiKhoan" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateThanhToan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaPhong" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateToa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MaToa" Type="char" Mode="In" />
+          <Parameter Name="SoTang" Type="smallint" Mode="In" />
+          <Parameter Name="SucChua" Type="int" Mode="In" />
+          <Parameter Name="SoPhongToiDa" Type="smallint" Mode="In" />
+        </Function>
+        <EntityContainer Name="DormitoryManagementModelStoreContainer">
+          <EntitySet Name="DienNuocSuDung" EntityType="Self.DienNuocSuDung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HopDongThuePhong" EntityType="Self.HopDongThuePhong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiNhanVien" EntityType="Self.LoaiNhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiPhong" EntityType="Self.LoaiPhong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiTaiKhoan" EntityType="Self.LoaiTaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Phong" EntityType="Self.Phong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Toa" EntityType="Self.Toa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Truong" EntityType="Self.Truong" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HoaDonTienDienNuoc" EntityType="Self.HoaDonTienDienNuoc" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HoaDonTienDienNuoc].[MaHoaDon] AS [MaHoaDon], 
+    [HoaDonTienDienNuoc].[MaPhong] AS [MaPhong], 
+    [HoaDonTienDienNuoc].[NgayLap] AS [NgayLap], 
+    [HoaDonTienDienNuoc].[SoDienTieuThu] AS [SoDienTieuThu], 
+    [HoaDonTienDienNuoc].[SoNuocTieuthu] AS [SoNuocTieuthu], 
+    [HoaDonTienDienNuoc].[TrangThai] AS [TrangThai], 
+    [HoaDonTienDienNuoc].[Tổng hóa đơn] AS [Tổng hóa đơn]
+    FROM [dbo].[HoaDonTienDienNuoc] AS [HoaDonTienDienNuoc]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SearchSVToa" EntityType="Self.SearchSVToa" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SearchSVToa].[MaSV] AS [MaSV], 
+    [SearchSVToa].[TenSV] AS [TenSV], 
+    [SearchSVToa].[GioiTinh] AS [GioiTinh], 
+    [SearchSVToa].[SDT] AS [SDT], 
+    [SearchSVToa].[MaTruong] AS [MaTruong], 
+    [SearchSVToa].[MaPhong] AS [MaPhong], 
+    [SearchSVToa].[MaToa] AS [MaToa]
+    FROM [dbo].[SearchSVToa] AS [SearchSVToa]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SoNVTheoLoaiNV" EntityType="Self.SoNVTheoLoaiNV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SoNVTheoLoaiNV].[CongViec] AS [CongViec], 
+    [SoNVTheoLoaiNV].[SoLuongNV] AS [SoLuongNV]
+    FROM [dbo].[SoNVTheoLoaiNV] AS [SoNVTheoLoaiNV]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SoPhongTrongTheoToa" EntityType="Self.SoPhongTrongTheoToa" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SoPhongTrongTheoToa].[MaToa] AS [MaToa], 
+    [SoPhongTrongTheoToa].[SoPhongTrong] AS [SoPhongTrong]
+    FROM [dbo].[SoPhongTrongTheoToa] AS [SoPhongTrongTheoToa]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SV_SPKT" EntityType="Self.SV_SPKT" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SV_SPKT].[MaSV] AS [MaSV], 
+    [SV_SPKT].[TenSV] AS [TenSV], 
+    [SV_SPKT].[MaTruong] AS [MaTruong]
+    FROM [dbo].[SV_SPKT] AS [SV_SPKT]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SVHetHopDong2022" EntityType="Self.SVHetHopDong2022" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SVHetHopDong2022].[MaSV] AS [MaSV], 
+    [SVHetHopDong2022].[TenSV] AS [TenSV], 
+    [SVHetHopDong2022].[NgayKTHD] AS [NgayKTHD]
+    FROM [dbo].[SVHetHopDong2022] AS [SVHetHopDong2022]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TienPhongMoiSV" EntityType="Self.TienPhongMoiSV" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TienPhongMoiSV].[MaSV] AS [MaSV], 
+    [TienPhongMoiSV].[TenSV] AS [TenSV], 
+    [TienPhongMoiSV].[MaPhong] AS [MaPhong], 
+    [TienPhongMoiSV].[Mã loại phòng] AS [Mã loại phòng], 
+    [TienPhongMoiSV].[Giá phòng] AS [Giá phòng]
+    FROM [dbo].[TienPhongMoiSV] AS [TienPhongMoiSV]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TongSVTheoToa" EntityType="Self.TongSVTheoToa" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TongSVTheoToa].[MaToa] AS [MaToa], 
+    [TongSVTheoToa].[SoLuongSV] AS [SoLuongSV]
+    FROM [dbo].[TongSVTheoToa] AS [TongSVTheoToa]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__DienNuocS__MaPho__48CFD27E" Association="Self.FK__DienNuocS__MaPho__48CFD27E">
+            <End Role="Phong" EntitySet="Phong" />
+            <End Role="DienNuocSuDung" EntitySet="DienNuocSuDung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HopDongThu__MaSV__49C3F6B7" Association="Self.FK__HopDongThu__MaSV__49C3F6B7">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="HopDongThuePhong" EntitySet="HopDongThuePhong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaLoai__4AB81AF0" Association="Self.FK__NhanVien__MaLoai__4AB81AF0">
+            <End Role="LoaiNhanVien" EntitySet="LoaiNhanVien" />
+            <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaToa__4BAC3F29" Association="Self.FK__NhanVien__MaToa__4BAC3F29">
+            <End Role="Toa" EntitySet="Toa" />
+            <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phong__MaLoaiPho__4CA06362" Association="Self.FK__Phong__MaLoaiPho__4CA06362">
+            <End Role="LoaiPhong" EntitySet="LoaiPhong" />
+            <End Role="Phong" EntitySet="Phong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phong__MaToa__4D94879B" Association="Self.FK__Phong__MaToa__4D94879B">
+            <End Role="Toa" EntitySet="Toa" />
+            <End Role="Phong" EntitySet="Phong" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinhVien__MaPhon__4E88ABD4" Association="Self.FK__SinhVien__MaPhon__4E88ABD4">
+            <End Role="Phong" EntitySet="Phong" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinhVien__MaTruo__4F7CD00D" Association="Self.FK__SinhVien__MaTruo__4F7CD00D">
+            <End Role="Truong" EntitySet="Truong" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__MaLoai__5070F446" Association="Self.FK__TaiKhoan__MaLoai__5070F446">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoan" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__MaNV__5165187F" Association="Self.FK__TaiKhoan__MaNV__5165187F">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DormitoryManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fn_SearchMaNV_Result">
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiNV" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Luong" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="fn_SearchMaSV_Result">
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="fn_SearchSVToa_Result">
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="fn_SearchTenNV_Result">
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiNV" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Luong" Type="Int32" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="fn_SearchTenSV_Result">
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="fn_ShowPhongChuaThanhToan_Result">
+          <Property Name="MaHoaDon" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgayLap" Type="DateTime" Nullable="false" />
+          <Property Name="SoDienTieuThu" Type="Int32" Nullable="false" />
+          <Property Name="SoNuocTieuthu" Type="Int32" Nullable="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tổng_hóa_đơn" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="fn_ShowPhongTrong_Result">
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="MaLoaiPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="fn_ThanhToan_Result">
+          <Property Name="MaHoaDon" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgayLap" Type="DateTime" Nullable="false" />
+          <Property Name="SoDienTieuThu" Type="Int32" Nullable="false" />
+          <Property Name="SoNuocTieuthu" Type="Int32" Nullable="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EntityType Name="DienNuocSuDung">
+          <Key>
+            <PropertyRef Name="MaHoaDon" />
+          </Key>
+          <Property Name="MaHoaDon" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgayLap" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SoDienTieuThu" Type="Int32" Nullable="false" />
+          <Property Name="SoNuocTieuthu" Type="Int32" Nullable="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Phong" Relationship="Self.FK__DienNuocS__MaPho__48CFD27E" FromRole="DienNuocSuDung" ToRole="Phong" />
+        </EntityType>
+        <EntityType Name="HopDongThuePhong">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NgayKHD" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayKTHD" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="SinhVien" Relationship="Self.FK__HopDongThu__MaSV__49C3F6B7" FromRole="HopDongThuePhong" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="LoaiNhanVien">
+          <Key>
+            <PropertyRef Name="MaLoaiNV" />
+          </Key>
+          <Property Name="MaLoaiNV" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CongViec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaLoai__4AB81AF0" FromRole="LoaiNhanVien" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="LoaiPhong">
+          <Key>
+            <PropertyRef Name="MaLoaiPhong" />
+          </Key>
+          <Property Name="MaLoaiPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenloaiPhong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Gia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Phongs" Relationship="Self.FK__Phong__MaLoaiPho__4CA06362" FromRole="LoaiPhong" ToRole="Phong" />
+        </EntityType>
+        <EntityType Name="LoaiTaiKhoan">
+          <Key>
+            <PropertyRef Name="MaLoaiTaiKhoan" />
+          </Key>
+          <Property Name="MaLoaiTaiKhoan" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TenLoaiTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChucNang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__MaLoai__5070F446" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNV" />
+          </Key>
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiNV" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Luong" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LoaiNhanVien" Relationship="Self.FK__NhanVien__MaLoai__4AB81AF0" FromRole="NhanVien" ToRole="LoaiNhanVien" />
+          <NavigationProperty Name="Toa" Relationship="Self.FK__NhanVien__MaToa__4BAC3F29" FromRole="NhanVien" ToRole="Toa" />
+          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK__TaiKhoan__MaNV__5165187F" FromRole="NhanVien" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="Phong">
+          <Key>
+            <PropertyRef Name="MaPhong" />
+          </Key>
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="MaLoaiPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DienNuocSuDungs" Relationship="Self.FK__DienNuocS__MaPho__48CFD27E" FromRole="Phong" ToRole="DienNuocSuDung" />
+          <NavigationProperty Name="LoaiPhong" Relationship="Self.FK__Phong__MaLoaiPho__4CA06362" FromRole="Phong" ToRole="LoaiPhong" />
+          <NavigationProperty Name="Toa" Relationship="Self.FK__Phong__MaToa__4D94879B" FromRole="Phong" ToRole="Toa" />
+          <NavigationProperty Name="SinhViens" Relationship="Self.FK__SinhVien__MaPhon__4E88ABD4" FromRole="Phong" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="SinhVien">
+          <Key>
+            <PropertyRef Name="MaSV" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="HopDongThuePhongs" Relationship="Self.FK__HopDongThu__MaSV__49C3F6B7" FromRole="SinhVien" ToRole="HopDongThuePhong" />
+          <NavigationProperty Name="Phong" Relationship="Self.FK__SinhVien__MaPhon__4E88ABD4" FromRole="SinhVien" ToRole="Phong" />
+          <NavigationProperty Name="Truong" Relationship="Self.FK__SinhVien__MaTruo__4F7CD00D" FromRole="SinhVien" ToRole="Truong" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="MaTaiKhoan" />
+          </Key>
+          <Property Name="MaTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MaLoaiTaiKhoan" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="LoaiTaiKhoan" Relationship="Self.FK__TaiKhoan__MaLoai__5070F446" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__TaiKhoan__MaNV__5165187F" FromRole="TaiKhoan" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="Toa">
+          <Key>
+            <PropertyRef Name="MaToa" />
+          </Key>
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SoTang" Type="Int16" Nullable="false" />
+          <Property Name="SucChua" Type="Int32" Nullable="false" />
+          <Property Name="SoPhongToiDa" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaToa__4BAC3F29" FromRole="Toa" ToRole="NhanVien" />
+          <NavigationProperty Name="Phongs" Relationship="Self.FK__Phong__MaToa__4D94879B" FromRole="Toa" ToRole="Phong" />
+        </EntityType>
+        <EntityType Name="Truong">
+          <Key>
+            <PropertyRef Name="MaTruong" />
+          </Key>
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenTruong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SinhViens" Relationship="Self.FK__SinhVien__MaTruo__4F7CD00D" FromRole="Truong" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="HoaDonTienDienNuoc">
+          <Key>
+            <PropertyRef Name="MaHoaDon" />
+            <PropertyRef Name="MaPhong" />
+            <PropertyRef Name="NgayLap" />
+            <PropertyRef Name="SoDienTieuThu" />
+            <PropertyRef Name="SoNuocTieuthu" />
+          </Key>
+          <Property Name="MaHoaDon" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NgayLap" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SoDienTieuThu" Type="Int32" Nullable="false" />
+          <Property Name="SoNuocTieuthu" Type="Int32" Nullable="false" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tổng_hóa_đơn" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SearchSVToa">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="TenSV" />
+            <PropertyRef Name="GioiTinh" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GioiTinh" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SoNVTheoLoaiNV">
+          <Key>
+            <PropertyRef Name="CongViec" />
+          </Key>
+          <Property Name="CongViec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoLuongNV" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SoPhongTrongTheoToa">
+          <Key>
+            <PropertyRef Name="MaToa" />
+          </Key>
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SoPhongTrong" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SV_SPKT">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="TenSV" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaTruong" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SVHetHopDong2022">
+          <Key>
+            <PropertyRef Name="TenSV" />
+            <PropertyRef Name="NgayKTHD" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayKTHD" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="TienPhongMoiSV">
+          <Key>
+            <PropertyRef Name="MaSV" />
+            <PropertyRef Name="TenSV" />
+          </Key>
+          <Property Name="MaSV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenSV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaPhong" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Mã_loại_phòng" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Giá_phòng" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TongSVTheoToa">
+          <Key>
+            <PropertyRef Name="MaToa" />
+          </Key>
+          <Property Name="MaToa" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SoLuongSV" Type="Int32" />
+        </EntityType>
+        <Association Name="FK__DienNuocS__MaPho__48CFD27E">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="1" />
+          <End Role="DienNuocSuDung" Type="Self.DienNuocSuDung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="DienNuocSuDung">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HopDongThu__MaSV__49C3F6B7">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="HopDongThuePhong" Type="Self.HopDongThuePhong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="MaSV" />
+            </Principal>
+            <Dependent Role="HopDongThuePhong">
+              <PropertyRef Name="MaSV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaLoai__4AB81AF0">
+          <End Role="LoaiNhanVien" Type="Self.LoaiNhanVien" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiNhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaLoaiNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phong__MaLoaiPho__4CA06362">
+          <End Role="LoaiPhong" Type="Self.LoaiPhong" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiPhong">
+              <PropertyRef Name="MaLoaiPhong" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="MaLoaiPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__MaLoai__5070F446">
+          <End Role="LoaiTaiKhoan" Type="Self.LoaiTaiKhoan" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiTaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaLoaiTaiKhoan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaToa__4BAC3F29">
+          <End Role="Toa" Type="Self.Toa" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toa">
+              <PropertyRef Name="MaToa" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaToa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaiKhoan__MaNV__5165187F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNV" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="MaNV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Phong__MaToa__4D94879B">
+          <End Role="Toa" Type="Self.Toa" Multiplicity="0..1" />
+          <End Role="Phong" Type="Self.Phong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Toa">
+              <PropertyRef Name="MaToa" />
+            </Principal>
+            <Dependent Role="Phong">
+              <PropertyRef Name="MaToa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinhVien__MaPhon__4E88ABD4">
+          <End Role="Phong" Type="Self.Phong" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Phong">
+              <PropertyRef Name="MaPhong" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="MaPhong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SinhVien__MaTruo__4F7CD00D">
+          <End Role="Truong" Type="Self.Truong" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Truong">
+              <PropertyRef Name="MaTruong" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="MaTruong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DormitoryManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DienNuocSuDungs" EntityType="Self.DienNuocSuDung" />
+          <EntitySet Name="HopDongThuePhongs" EntityType="Self.HopDongThuePhong" />
+          <EntitySet Name="LoaiNhanViens" EntityType="Self.LoaiNhanVien" />
+          <EntitySet Name="LoaiPhongs" EntityType="Self.LoaiPhong" />
+          <EntitySet Name="LoaiTaiKhoans" EntityType="Self.LoaiTaiKhoan" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="Phongs" EntityType="Self.Phong" />
+          <EntitySet Name="SinhViens" EntityType="Self.SinhVien" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <EntitySet Name="Toas" EntityType="Self.Toa" />
+          <EntitySet Name="Truongs" EntityType="Self.Truong" />
+          <EntitySet Name="HoaDonTienDienNuocs" EntityType="Self.HoaDonTienDienNuoc" />
+          <EntitySet Name="SearchSVToas" EntityType="Self.SearchSVToa" />
+          <EntitySet Name="SoNVTheoLoaiNVs" EntityType="Self.SoNVTheoLoaiNV" />
+          <EntitySet Name="SoPhongTrongTheoToas" EntityType="Self.SoPhongTrongTheoToa" />
+          <EntitySet Name="SV_SPKT" EntityType="Self.SV_SPKT" />
+          <EntitySet Name="SVHetHopDong2022" EntityType="Self.SVHetHopDong2022" />
+          <EntitySet Name="TienPhongMoiSVs" EntityType="Self.TienPhongMoiSV" />
+          <EntitySet Name="TongSVTheoToas" EntityType="Self.TongSVTheoToa" />
+          <AssociationSet Name="FK__DienNuocS__MaPho__48CFD27E" Association="Self.FK__DienNuocS__MaPho__48CFD27E">
+            <End Role="Phong" EntitySet="Phongs" />
+            <End Role="DienNuocSuDung" EntitySet="DienNuocSuDungs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HopDongThu__MaSV__49C3F6B7" Association="Self.FK__HopDongThu__MaSV__49C3F6B7">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="HopDongThuePhong" EntitySet="HopDongThuePhongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaLoai__4AB81AF0" Association="Self.FK__NhanVien__MaLoai__4AB81AF0">
+            <End Role="LoaiNhanVien" EntitySet="LoaiNhanViens" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phong__MaLoaiPho__4CA06362" Association="Self.FK__Phong__MaLoaiPho__4CA06362">
+            <End Role="LoaiPhong" EntitySet="LoaiPhongs" />
+            <End Role="Phong" EntitySet="Phongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__MaLoai__5070F446" Association="Self.FK__TaiKhoan__MaLoai__5070F446">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaToa__4BAC3F29" Association="Self.FK__NhanVien__MaToa__4BAC3F29">
+            <End Role="Toa" EntitySet="Toas" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaiKhoan__MaNV__5165187F" Association="Self.FK__TaiKhoan__MaNV__5165187F">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Phong__MaToa__4D94879B" Association="Self.FK__Phong__MaToa__4D94879B">
+            <End Role="Toa" EntitySet="Toas" />
+            <End Role="Phong" EntitySet="Phongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinhVien__MaPhon__4E88ABD4" Association="Self.FK__SinhVien__MaPhon__4E88ABD4">
+            <End Role="Phong" EntitySet="Phongs" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SinhVien__MaTruo__4F7CD00D" Association="Self.FK__SinhVien__MaTruo__4F7CD00D">
+            <End Role="Truong" EntitySet="Truongs" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <FunctionImport Name="fn_SearchMaNV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchMaNV_Result)">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_SearchMaSV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchMaSV_Result)">
+            <Parameter Name="MaSinhVien" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_SearchSVToa" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchSVToa_Result)">
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_SearchTenNV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchTenNV_Result)">
+            <Parameter Name="TenNV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_SearchTenSV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchTenSV_Result)">
+            <Parameter Name="TenSinhVien" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fn_ShowPhongChuaThanhToan" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_ShowPhongChuaThanhToan_Result)" />
+          <FunctionImport Name="fn_ShowPhongTrong" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_ShowPhongTrong_Result)" />
+          <FunctionImport Name="fn_ThanhToan" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_ThanhToan_Result)">
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="QL_AuthoLogin" ReturnType="Collection(String)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteDienNuoc">
+            <Parameter Name="MaHoaDon" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteNhanVien">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteSinhVien">
+            <Parameter Name="MaSinhVien" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteTaiKhoan">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertDienNuoc">
+            <Parameter Name="MaHoaDon" Mode="In" Type="String" />
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+            <Parameter Name="NgayLap" Mode="In" Type="DateTime" />
+            <Parameter Name="SoDienTieuThu" Mode="In" Type="Int32" />
+            <Parameter Name="SoNuocTieuThu" Mode="In" Type="Int32" />
+            <Parameter Name="TrangThai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertNhanVien">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="MaLoaiNV" Mode="In" Type="String" />
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+            <Parameter Name="TenNV" Mode="In" Type="String" />
+            <Parameter Name="SoDienThoai" Mode="In" Type="String" />
+            <Parameter Name="Luong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertPhong">
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+            <Parameter Name="MaLoaiPhong" Mode="In" Type="String" />
+            <Parameter Name="TrangThai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertSinhVien">
+            <Parameter Name="MaSinhVien" Mode="In" Type="String" />
+            <Parameter Name="TenSinhVien" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="SoDienThoai" Mode="In" Type="String" />
+            <Parameter Name="MaTruong" Mode="In" Type="String" />
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertTaiKhoan">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="TenDangnhap" Mode="In" Type="String" />
+            <Parameter Name="MatKhau" Mode="In" Type="String" />
+            <Parameter Name="MaLoaiTaiKhoan" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertToa">
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+            <Parameter Name="SoTang" Mode="In" Type="Int16" />
+            <Parameter Name="SucChua" Mode="In" Type="Int32" />
+            <Parameter Name="SoPhongToiDa" Mode="In" Type="Int16" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateDienNuoc">
+            <Parameter Name="MaHoaDon" Mode="In" Type="String" />
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+            <Parameter Name="NgayLap" Mode="In" Type="DateTime" />
+            <Parameter Name="SoDienTieuThu" Mode="In" Type="Int32" />
+            <Parameter Name="SoNuocTieuThu" Mode="In" Type="Int32" />
+            <Parameter Name="TrangThai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateHopDong">
+            <Parameter Name="MaHD" Mode="In" Type="String" />
+            <Parameter Name="MaSV" Mode="In" Type="String" />
+            <Parameter Name="NgayKHD" Mode="In" Type="DateTime" />
+            <Parameter Name="NgayKTHD" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdatematKhau">
+            <Parameter Name="TenDangNhap" Mode="In" Type="String" />
+            <Parameter Name="MatKhau" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateNhanVien">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="MaLoaiNV" Mode="In" Type="String" />
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+            <Parameter Name="TenNV" Mode="In" Type="String" />
+            <Parameter Name="SoDienThoai" Mode="In" Type="String" />
+            <Parameter Name="Luong" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdatePhong">
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+            <Parameter Name="MaLoaiPhong" Mode="In" Type="String" />
+            <Parameter Name="TrangThai" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateSinhVien">
+            <Parameter Name="MaSinhVien" Mode="In" Type="String" />
+            <Parameter Name="TenSinhVien" Mode="In" Type="String" />
+            <Parameter Name="GioiTinh" Mode="In" Type="String" />
+            <Parameter Name="SoDienThoai" Mode="In" Type="String" />
+            <Parameter Name="MaTruong" Mode="In" Type="String" />
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateTaiKhoan">
+            <Parameter Name="MaNV" Mode="In" Type="String" />
+            <Parameter Name="TenDangnhap" Mode="In" Type="String" />
+            <Parameter Name="MaLoaiTaiKhoan" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateThanhToan">
+            <Parameter Name="MaPhong" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateToa">
+            <Parameter Name="MaToa" Mode="In" Type="String" />
+            <Parameter Name="SoTang" Mode="In" Type="Int16" />
+            <Parameter Name="SucChua" Mode="In" Type="Int32" />
+            <Parameter Name="SoPhongToiDa" Mode="In" Type="Int16" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DormitoryManagementModelStoreContainer" CdmEntityContainer="DormitoryManagementEntities">
+          <EntitySetMapping Name="DienNuocSuDungs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.DienNuocSuDung">
+              <MappingFragment StoreEntitySet="DienNuocSuDung">
+                <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="SoDienTieuThu" ColumnName="SoDienTieuThu" />
+                <ScalarProperty Name="SoNuocTieuthu" ColumnName="SoNuocTieuthu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HopDongThuePhongs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.HopDongThuePhong">
+              <MappingFragment StoreEntitySet="HopDongThuePhong">
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="NgayKHD" ColumnName="NgayKHD" />
+                <ScalarProperty Name="NgayKTHD" ColumnName="NgayKTHD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiNhanViens">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiNhanVien">
+              <MappingFragment StoreEntitySet="LoaiNhanVien">
+                <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
+                <ScalarProperty Name="CongViec" ColumnName="CongViec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiPhongs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiPhong">
+              <MappingFragment StoreEntitySet="LoaiPhong">
+                <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
+                <ScalarProperty Name="TenloaiPhong" ColumnName="TenloaiPhong" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiTaiKhoans">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiTaiKhoan">
+              <MappingFragment StoreEntitySet="LoaiTaiKhoan">
+                <ScalarProperty Name="MaLoaiTaiKhoan" ColumnName="MaLoaiTaiKhoan" />
+                <ScalarProperty Name="TenLoaiTaiKhoan" ColumnName="TenLoaiTaiKhoan" />
+                <ScalarProperty Name="ChucNang" ColumnName="ChucNang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanViens">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.NhanVien">
+              <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Phongs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.Phong">
+              <MappingFragment StoreEntitySet="Phong">
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SinhViens">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.SinhVien">
+              <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="MaLoaiTaiKhoan" ColumnName="MaLoaiTaiKhoan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Toas">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.Toa">
+              <MappingFragment StoreEntitySet="Toa">
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="SoTang" ColumnName="SoTang" />
+                <ScalarProperty Name="SucChua" ColumnName="SucChua" />
+                <ScalarProperty Name="SoPhongToiDa" ColumnName="SoPhongToiDa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Truongs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.Truong">
+              <MappingFragment StoreEntitySet="Truong">
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+                <ScalarProperty Name="TenTruong" ColumnName="TenTruong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDonTienDienNuocs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.HoaDonTienDienNuoc">
+              <MappingFragment StoreEntitySet="HoaDonTienDienNuoc">
+                <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="SoDienTieuThu" ColumnName="SoDienTieuThu" />
+                <ScalarProperty Name="SoNuocTieuthu" ColumnName="SoNuocTieuthu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Tổng_hóa_đơn" ColumnName="Tổng hóa đơn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SearchSVToas">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.SearchSVToa">
+              <MappingFragment StoreEntitySet="SearchSVToa">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoNVTheoLoaiNVs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.SoNVTheoLoaiNV">
+              <MappingFragment StoreEntitySet="SoNVTheoLoaiNV">
+                <ScalarProperty Name="CongViec" ColumnName="CongViec" />
+                <ScalarProperty Name="SoLuongNV" ColumnName="SoLuongNV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SoPhongTrongTheoToas">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.SoPhongTrongTheoToa">
+              <MappingFragment StoreEntitySet="SoPhongTrongTheoToa">
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="SoPhongTrong" ColumnName="SoPhongTrong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SV_SPKT">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.SV_SPKT">
+              <MappingFragment StoreEntitySet="SV_SPKT">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SVHetHopDong2022">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.SVHetHopDong2022">
+              <MappingFragment StoreEntitySet="SVHetHopDong2022">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="NgayKTHD" ColumnName="NgayKTHD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TienPhongMoiSVs">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.TienPhongMoiSV">
+              <MappingFragment StoreEntitySet="TienPhongMoiSV">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="Mã_loại_phòng" ColumnName="Mã loại phòng" />
+                <ScalarProperty Name="Giá_phòng" ColumnName="Giá phòng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TongSVTheoToas">
+            <EntityTypeMapping TypeName="DormitoryManagementModel.TongSVTheoToa">
+              <MappingFragment StoreEntitySet="TongSVTheoToa">
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="SoLuongSV" ColumnName="SoLuongSV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchMaNV" FunctionImportName="fn_SearchMaNV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchMaNV_Result">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchMaSV" FunctionImportName="fn_SearchMaSV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchMaSV_Result">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchSVToa" FunctionImportName="fn_SearchSVToa">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchSVToa_Result">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchTenNV" FunctionImportName="fn_SearchTenNV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchTenNV_Result">
+                <ScalarProperty Name="MaNV" ColumnName="MaNV" />
+                <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="TenNV" ColumnName="TenNV" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Luong" ColumnName="Luong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchTenSV" FunctionImportName="fn_SearchTenSV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchTenSV_Result">
+                <ScalarProperty Name="MaSV" ColumnName="MaSV" />
+                <ScalarProperty Name="TenSV" ColumnName="TenSV" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_ShowPhongChuaThanhToan" FunctionImportName="fn_ShowPhongChuaThanhToan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_ShowPhongChuaThanhToan_Result">
+                <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="SoDienTieuThu" ColumnName="SoDienTieuThu" />
+                <ScalarProperty Name="SoNuocTieuthu" ColumnName="SoNuocTieuthu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Tổng_hóa_đơn" ColumnName="Tổng hóa đơn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_ShowPhongTrong" FunctionImportName="fn_ShowPhongTrong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_ShowPhongTrong_Result">
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="MaToa" ColumnName="MaToa" />
+                <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_ThanhToan" FunctionImportName="fn_ThanhToan">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_ThanhToan_Result">
+                <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+                <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="SoDienTieuThu" ColumnName="SoDienTieuThu" />
+                <ScalarProperty Name="SoNuocTieuthu" ColumnName="SoNuocTieuthu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="QL_AuthoLogin" FunctionName="DormitoryManagementModel.Store.QL_AuthoLogin" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteDienNuoc" FunctionName="DormitoryManagementModel.Store.sp_DeleteDienNuoc" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteNhanVien" FunctionName="DormitoryManagementModel.Store.sp_DeleteNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteSinhVien" FunctionName="DormitoryManagementModel.Store.sp_DeleteSinhVien" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteTaiKhoan" FunctionName="DormitoryManagementModel.Store.sp_DeleteTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="sp_InsertDienNuoc" FunctionName="DormitoryManagementModel.Store.sp_InsertDienNuoc" />
+          <FunctionImportMapping FunctionImportName="sp_InsertNhanVien" FunctionName="DormitoryManagementModel.Store.sp_InsertNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_InsertPhong" FunctionName="DormitoryManagementModel.Store.sp_InsertPhong" />
+          <FunctionImportMapping FunctionImportName="sp_InsertSinhVien" FunctionName="DormitoryManagementModel.Store.sp_InsertSinhVien" />
+          <FunctionImportMapping FunctionImportName="sp_InsertTaiKhoan" FunctionName="DormitoryManagementModel.Store.sp_InsertTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="sp_InsertToa" FunctionName="DormitoryManagementModel.Store.sp_InsertToa" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateDienNuoc" FunctionName="DormitoryManagementModel.Store.sp_UpdateDienNuoc" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateHopDong" FunctionName="DormitoryManagementModel.Store.sp_UpdateHopDong" />
+          <FunctionImportMapping FunctionImportName="sp_UpdatematKhau" FunctionName="DormitoryManagementModel.Store.sp_UpdatematKhau" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateNhanVien" FunctionName="DormitoryManagementModel.Store.sp_UpdateNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_UpdatePhong" FunctionName="DormitoryManagementModel.Store.sp_UpdatePhong" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateSinhVien" FunctionName="DormitoryManagementModel.Store.sp_UpdateSinhVien" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateTaiKhoan" FunctionName="DormitoryManagementModel.Store.sp_UpdateTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateThanhToan" FunctionName="DormitoryManagementModel.Store.sp_UpdateThanhToan" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateToa" FunctionName="DormitoryManagementModel.Store.sp_UpdateToa" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

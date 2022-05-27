@@ -9,6 +9,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_SinhVien
     {
-        QuanLyKTXEntities dbs = new QuanLyKTXEntities();
+        //QuanLyKTXEntities dbs = new QuanLyKTXEntities();
+        DormitoryManagementEntities dbs = new DormitoryManagementEntities();
     }
 }
