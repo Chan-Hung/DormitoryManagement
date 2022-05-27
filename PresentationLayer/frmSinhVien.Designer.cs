@@ -468,6 +468,7 @@ namespace DormitoryManagement.PresentationLayer
             this.Controls.Add(this.lblMaSV);
             this.Name = "frmSinhVien";
             this.Text = "frmSinhVien";
+            this.Load += new System.EventHandler(this.frmSinhVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhvien)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

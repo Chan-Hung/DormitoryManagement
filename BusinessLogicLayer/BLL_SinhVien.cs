@@ -9,7 +9,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_SinhVien
     {
-        //QuanLyKTXEntities dbs = new QuanLyKTXEntities();
-        DormitoryManagementEntities dbs = new DormitoryManagementEntities();
+        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        public List<SinhVien> SelectSinhVien() { return dbs.SinhViens.ToList(); }
     }
 }

@@ -12,9 +12,16 @@ namespace DormitoryManagement.PresentationLayer
 {
     public partial class frmSinhVien : Form
     {
+        BusinessLogicLayer.BLL_SinhVien bll = new BusinessLogicLayer.BLL_SinhVien();
+
         public frmSinhVien()
         {
             InitializeComponent();
+        }
+
+        private void frmSinhVien_Load(object sender, EventArgs e)
+        {
+            dgvSinhvien.DataSource = bll.SelectSinhVien();
         }
     }
 }

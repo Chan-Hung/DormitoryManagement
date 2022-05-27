@@ -59,69 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogicLayer\BLL_SinhVien.cs" />
-    <Compile Include="DienNuocSuDung.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DormitoryManagementModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DormitoryManagementModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DormitoryManagementModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DormitoryManagementModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DormitoryManagementModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="fn_SearchMaNV_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_SearchMaSV_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_SearchSVToa_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_SearchTenNV_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_SearchTenSV_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_ShowPhongChuaThanhToan_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_ShowPhongTrong_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fn_ThanhToan_Result.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HoaDonTienDienNuoc.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HopDongThuePhong.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LoaiNhanVien.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LoaiPhong.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LoaiTaiKhoan.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NhanVien.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Phong.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="DienNuocSuDung.cs" />
+    <Compile Include="HoaDonTienDienNuoc.cs" />
+    <Compile Include="HopDongThuePhong.cs" />
+    <Compile Include="LoaiNhanVien.cs" />
+    <Compile Include="LoaiPhong.cs" />
+    <Compile Include="LoaiTaiKhoan.cs" />
+    <Compile Include="NhanVien.cs" />
+    <Compile Include="Phong.cs" />
     <Compile Include="PresentationLayer\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,39 +129,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchSVToa.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SinhVien.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SoNVTheoLoaiNV.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SoPhongTrongTheoToa.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SVHetHopDong2022.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SV_SPKT.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TaiKhoan.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TienPhongMoiSV.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Toa.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TongSVTheoToa.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Truong.cs">
-      <DependentUpon>DormitoryManagementModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="QuanLyKTXModel.cs" />
+    <Compile Include="SearchSVToa.cs" />
+    <Compile Include="SinhVien.cs" />
+    <Compile Include="SoNVTheoLoaiNV.cs" />
+    <Compile Include="SoPhongTrongTheoToa.cs" />
+    <Compile Include="SVHetHopDong2022.cs" />
+    <Compile Include="SV_SPKT.cs" />
+    <Compile Include="TaiKhoan.cs" />
+    <Compile Include="TienPhongMoiSV.cs" />
+    <Compile Include="Toa.cs" />
+    <Compile Include="TongSVTheoToa.cs" />
+    <Compile Include="Truong.cs" />
     <EmbeddedResource Include="PresentationLayer\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,13 +180,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="DormitoryManagementModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DormitoryManagementModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DormitoryManagementModel.edmx.diagram">
-      <DependentUpon>DormitoryManagementModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -279,18 +196,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DormitoryManagementModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DormitoryManagementModel.edmx</DependentUpon>
-      <LastGenOutput>DormitoryManagementModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DormitoryManagementModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DormitoryManagementModel.edmx</DependentUpon>
-      <LastGenOutput>DormitoryManagementModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
