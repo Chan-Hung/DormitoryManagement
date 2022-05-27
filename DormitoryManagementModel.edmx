@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DormitoryManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QuanLyKTXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DienNuocSuDung">
           <Key>
             <PropertyRef Name="MaHoaDon" />
@@ -565,7 +565,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
           <Parameter Name="SucChua" Type="int" Mode="In" />
           <Parameter Name="SoPhongToiDa" Type="smallint" Mode="In" />
         </Function>
-        <EntityContainer Name="DormitoryManagementModelStoreContainer">
+        <EntityContainer Name="QuanLyKTXModelStoreContainer">
           <EntitySet Name="DienNuocSuDung" EntityType="Self.DienNuocSuDung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HopDongThuePhong" EntityType="Self.HopDongThuePhong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiNhanVien" EntityType="Self.LoaiNhanVien" Schema="dbo" store:Type="Tables" />
@@ -685,7 +685,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DormitoryManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QuanLyKTXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <ComplexType Name="fn_SearchMaNV_Result">
           <Property Name="MaNV" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MaLoaiNV" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
@@ -1072,7 +1072,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DormitoryManagementEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="QuanLyKTXEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DienNuocSuDungs" EntityType="Self.DienNuocSuDung" />
           <EntitySet Name="HopDongThuePhongs" EntityType="Self.HopDongThuePhong" />
           <EntitySet Name="LoaiNhanViens" EntityType="Self.LoaiNhanVien" />
@@ -1132,24 +1132,24 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             <End Role="Truong" EntitySet="Truongs" />
             <End Role="SinhVien" EntitySet="SinhViens" />
           </AssociationSet>
-          <FunctionImport Name="fn_SearchMaNV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchMaNV_Result)">
+          <FunctionImport Name="fn_SearchMaNV" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_SearchMaNV_Result)">
             <Parameter Name="MaNV" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fn_SearchMaSV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchMaSV_Result)">
+          <FunctionImport Name="fn_SearchMaSV" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_SearchMaSV_Result)">
             <Parameter Name="MaSinhVien" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fn_SearchSVToa" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchSVToa_Result)">
+          <FunctionImport Name="fn_SearchSVToa" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_SearchSVToa_Result)">
             <Parameter Name="MaToa" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fn_SearchTenNV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchTenNV_Result)">
+          <FunctionImport Name="fn_SearchTenNV" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_SearchTenNV_Result)">
             <Parameter Name="TenNV" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fn_SearchTenSV" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_SearchTenSV_Result)">
+          <FunctionImport Name="fn_SearchTenSV" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_SearchTenSV_Result)">
             <Parameter Name="TenSinhVien" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="fn_ShowPhongChuaThanhToan" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_ShowPhongChuaThanhToan_Result)" />
-          <FunctionImport Name="fn_ShowPhongTrong" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_ShowPhongTrong_Result)" />
-          <FunctionImport Name="fn_ThanhToan" IsComposable="true" ReturnType="Collection(DormitoryManagementModel.fn_ThanhToan_Result)">
+          <FunctionImport Name="fn_ShowPhongChuaThanhToan" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_ShowPhongChuaThanhToan_Result)" />
+          <FunctionImport Name="fn_ShowPhongTrong" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_ShowPhongTrong_Result)" />
+          <FunctionImport Name="fn_ThanhToan" IsComposable="true" ReturnType="Collection(QuanLyKTXModel.fn_ThanhToan_Result)">
             <Parameter Name="MaPhong" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="QL_AuthoLogin" ReturnType="Collection(String)">
@@ -1270,9 +1270,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DormitoryManagementModelStoreContainer" CdmEntityContainer="DormitoryManagementEntities">
+        <EntityContainerMapping StorageEntityContainer="QuanLyKTXModelStoreContainer" CdmEntityContainer="QuanLyKTXEntities">
           <EntitySetMapping Name="DienNuocSuDungs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.DienNuocSuDung">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.DienNuocSuDung">
               <MappingFragment StoreEntitySet="DienNuocSuDung">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
@@ -1284,7 +1284,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HopDongThuePhongs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.HopDongThuePhong">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.HopDongThuePhong">
               <MappingFragment StoreEntitySet="HopDongThuePhong">
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
@@ -1294,7 +1294,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiNhanViens">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiNhanVien">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.LoaiNhanVien">
               <MappingFragment StoreEntitySet="LoaiNhanVien">
                 <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
                 <ScalarProperty Name="CongViec" ColumnName="CongViec" />
@@ -1302,7 +1302,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiPhongs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiPhong">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.LoaiPhong">
               <MappingFragment StoreEntitySet="LoaiPhong">
                 <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
                 <ScalarProperty Name="TenloaiPhong" ColumnName="TenloaiPhong" />
@@ -1311,7 +1311,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiTaiKhoans">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.LoaiTaiKhoan">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.LoaiTaiKhoan">
               <MappingFragment StoreEntitySet="LoaiTaiKhoan">
                 <ScalarProperty Name="MaLoaiTaiKhoan" ColumnName="MaLoaiTaiKhoan" />
                 <ScalarProperty Name="TenLoaiTaiKhoan" ColumnName="TenLoaiTaiKhoan" />
@@ -1320,7 +1320,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.NhanVien">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
@@ -1332,7 +1332,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Phongs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.Phong">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.Phong">
               <MappingFragment StoreEntitySet="Phong">
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
@@ -1342,7 +1342,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SinhViens">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.SinhVien">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.SinhVien">
               <MappingFragment StoreEntitySet="SinhVien">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
@@ -1354,7 +1354,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.TaiKhoan">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
                 <ScalarProperty Name="MaTaiKhoan" ColumnName="MaTaiKhoan" />
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
@@ -1365,7 +1365,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Toas">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.Toa">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.Toa">
               <MappingFragment StoreEntitySet="Toa">
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
                 <ScalarProperty Name="SoTang" ColumnName="SoTang" />
@@ -1375,7 +1375,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Truongs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.Truong">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.Truong">
               <MappingFragment StoreEntitySet="Truong">
                 <ScalarProperty Name="MaTruong" ColumnName="MaTruong" />
                 <ScalarProperty Name="TenTruong" ColumnName="TenTruong" />
@@ -1383,7 +1383,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDonTienDienNuocs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.HoaDonTienDienNuoc">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.HoaDonTienDienNuoc">
               <MappingFragment StoreEntitySet="HoaDonTienDienNuoc">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
@@ -1396,7 +1396,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SearchSVToas">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.SearchSVToa">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.SearchSVToa">
               <MappingFragment StoreEntitySet="SearchSVToa">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
@@ -1409,7 +1409,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SoNVTheoLoaiNVs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.SoNVTheoLoaiNV">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.SoNVTheoLoaiNV">
               <MappingFragment StoreEntitySet="SoNVTheoLoaiNV">
                 <ScalarProperty Name="CongViec" ColumnName="CongViec" />
                 <ScalarProperty Name="SoLuongNV" ColumnName="SoLuongNV" />
@@ -1417,7 +1417,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SoPhongTrongTheoToas">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.SoPhongTrongTheoToa">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.SoPhongTrongTheoToa">
               <MappingFragment StoreEntitySet="SoPhongTrongTheoToa">
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
                 <ScalarProperty Name="SoPhongTrong" ColumnName="SoPhongTrong" />
@@ -1425,7 +1425,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SV_SPKT">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.SV_SPKT">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.SV_SPKT">
               <MappingFragment StoreEntitySet="SV_SPKT">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
@@ -1434,7 +1434,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SVHetHopDong2022">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.SVHetHopDong2022">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.SVHetHopDong2022">
               <MappingFragment StoreEntitySet="SVHetHopDong2022">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
@@ -1443,7 +1443,7 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TienPhongMoiSVs">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.TienPhongMoiSV">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.TienPhongMoiSV">
               <MappingFragment StoreEntitySet="TienPhongMoiSV">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
@@ -1454,16 +1454,16 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TongSVTheoToas">
-            <EntityTypeMapping TypeName="DormitoryManagementModel.TongSVTheoToa">
+            <EntityTypeMapping TypeName="QuanLyKTXModel.TongSVTheoToa">
               <MappingFragment StoreEntitySet="TongSVTheoToa">
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
                 <ScalarProperty Name="SoLuongSV" ColumnName="SoLuongSV" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchMaNV" FunctionImportName="fn_SearchMaNV">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_SearchMaNV" FunctionImportName="fn_SearchMaNV">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchMaNV_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_SearchMaNV_Result">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
@@ -1473,9 +1473,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchMaSV" FunctionImportName="fn_SearchMaSV">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_SearchMaSV" FunctionImportName="fn_SearchMaSV">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchMaSV_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_SearchMaSV_Result">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
@@ -1485,9 +1485,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchSVToa" FunctionImportName="fn_SearchSVToa">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_SearchSVToa" FunctionImportName="fn_SearchSVToa">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchSVToa_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_SearchSVToa_Result">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
@@ -1498,9 +1498,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchTenNV" FunctionImportName="fn_SearchTenNV">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_SearchTenNV" FunctionImportName="fn_SearchTenNV">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchTenNV_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_SearchTenNV_Result">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="MaLoaiNV" ColumnName="MaLoaiNV" />
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
@@ -1510,9 +1510,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_SearchTenSV" FunctionImportName="fn_SearchTenSV">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_SearchTenSV" FunctionImportName="fn_SearchTenSV">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_SearchTenSV_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_SearchTenSV_Result">
                 <ScalarProperty Name="MaSV" ColumnName="MaSV" />
                 <ScalarProperty Name="TenSV" ColumnName="TenSV" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
@@ -1522,9 +1522,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_ShowPhongChuaThanhToan" FunctionImportName="fn_ShowPhongChuaThanhToan">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_ShowPhongChuaThanhToan" FunctionImportName="fn_ShowPhongChuaThanhToan">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_ShowPhongChuaThanhToan_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_ShowPhongChuaThanhToan_Result">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
@@ -1535,9 +1535,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_ShowPhongTrong" FunctionImportName="fn_ShowPhongTrong">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_ShowPhongTrong" FunctionImportName="fn_ShowPhongTrong">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_ShowPhongTrong_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_ShowPhongTrong_Result">
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
                 <ScalarProperty Name="MaToa" ColumnName="MaToa" />
                 <ScalarProperty Name="MaLoaiPhong" ColumnName="MaLoaiPhong" />
@@ -1545,9 +1545,9 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionName="DormitoryManagementModel.Store.fn_ThanhToan" FunctionImportName="fn_ThanhToan">
+          <FunctionImportMapping FunctionName="QuanLyKTXModel.Store.fn_ThanhToan" FunctionImportName="fn_ThanhToan">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="DormitoryManagementModel.fn_ThanhToan_Result">
+              <ComplexTypeMapping TypeName="QuanLyKTXModel.fn_ThanhToan_Result">
                 <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
                 <ScalarProperty Name="MaPhong" ColumnName="MaPhong" />
                 <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
@@ -1557,26 +1557,26 @@ warning 6002: The table/view 'QuanLyKTX.dbo.TongSVTheoToa' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="QL_AuthoLogin" FunctionName="DormitoryManagementModel.Store.QL_AuthoLogin" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteDienNuoc" FunctionName="DormitoryManagementModel.Store.sp_DeleteDienNuoc" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteNhanVien" FunctionName="DormitoryManagementModel.Store.sp_DeleteNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteSinhVien" FunctionName="DormitoryManagementModel.Store.sp_DeleteSinhVien" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteTaiKhoan" FunctionName="DormitoryManagementModel.Store.sp_DeleteTaiKhoan" />
-          <FunctionImportMapping FunctionImportName="sp_InsertDienNuoc" FunctionName="DormitoryManagementModel.Store.sp_InsertDienNuoc" />
-          <FunctionImportMapping FunctionImportName="sp_InsertNhanVien" FunctionName="DormitoryManagementModel.Store.sp_InsertNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_InsertPhong" FunctionName="DormitoryManagementModel.Store.sp_InsertPhong" />
-          <FunctionImportMapping FunctionImportName="sp_InsertSinhVien" FunctionName="DormitoryManagementModel.Store.sp_InsertSinhVien" />
-          <FunctionImportMapping FunctionImportName="sp_InsertTaiKhoan" FunctionName="DormitoryManagementModel.Store.sp_InsertTaiKhoan" />
-          <FunctionImportMapping FunctionImportName="sp_InsertToa" FunctionName="DormitoryManagementModel.Store.sp_InsertToa" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateDienNuoc" FunctionName="DormitoryManagementModel.Store.sp_UpdateDienNuoc" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateHopDong" FunctionName="DormitoryManagementModel.Store.sp_UpdateHopDong" />
-          <FunctionImportMapping FunctionImportName="sp_UpdatematKhau" FunctionName="DormitoryManagementModel.Store.sp_UpdatematKhau" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateNhanVien" FunctionName="DormitoryManagementModel.Store.sp_UpdateNhanVien" />
-          <FunctionImportMapping FunctionImportName="sp_UpdatePhong" FunctionName="DormitoryManagementModel.Store.sp_UpdatePhong" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateSinhVien" FunctionName="DormitoryManagementModel.Store.sp_UpdateSinhVien" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateTaiKhoan" FunctionName="DormitoryManagementModel.Store.sp_UpdateTaiKhoan" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateThanhToan" FunctionName="DormitoryManagementModel.Store.sp_UpdateThanhToan" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateToa" FunctionName="DormitoryManagementModel.Store.sp_UpdateToa" />
+          <FunctionImportMapping FunctionImportName="QL_AuthoLogin" FunctionName="QuanLyKTXModel.Store.QL_AuthoLogin" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteDienNuoc" FunctionName="QuanLyKTXModel.Store.sp_DeleteDienNuoc" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteNhanVien" FunctionName="QuanLyKTXModel.Store.sp_DeleteNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteSinhVien" FunctionName="QuanLyKTXModel.Store.sp_DeleteSinhVien" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteTaiKhoan" FunctionName="QuanLyKTXModel.Store.sp_DeleteTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="sp_InsertDienNuoc" FunctionName="QuanLyKTXModel.Store.sp_InsertDienNuoc" />
+          <FunctionImportMapping FunctionImportName="sp_InsertNhanVien" FunctionName="QuanLyKTXModel.Store.sp_InsertNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_InsertPhong" FunctionName="QuanLyKTXModel.Store.sp_InsertPhong" />
+          <FunctionImportMapping FunctionImportName="sp_InsertSinhVien" FunctionName="QuanLyKTXModel.Store.sp_InsertSinhVien" />
+          <FunctionImportMapping FunctionImportName="sp_InsertTaiKhoan" FunctionName="QuanLyKTXModel.Store.sp_InsertTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="sp_InsertToa" FunctionName="QuanLyKTXModel.Store.sp_InsertToa" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateDienNuoc" FunctionName="QuanLyKTXModel.Store.sp_UpdateDienNuoc" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateHopDong" FunctionName="QuanLyKTXModel.Store.sp_UpdateHopDong" />
+          <FunctionImportMapping FunctionImportName="sp_UpdatematKhau" FunctionName="QuanLyKTXModel.Store.sp_UpdatematKhau" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateNhanVien" FunctionName="QuanLyKTXModel.Store.sp_UpdateNhanVien" />
+          <FunctionImportMapping FunctionImportName="sp_UpdatePhong" FunctionName="QuanLyKTXModel.Store.sp_UpdatePhong" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateSinhVien" FunctionName="QuanLyKTXModel.Store.sp_UpdateSinhVien" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateTaiKhoan" FunctionName="QuanLyKTXModel.Store.sp_UpdateTaiKhoan" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateThanhToan" FunctionName="QuanLyKTXModel.Store.sp_UpdateThanhToan" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateToa" FunctionName="QuanLyKTXModel.Store.sp_UpdateToa" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

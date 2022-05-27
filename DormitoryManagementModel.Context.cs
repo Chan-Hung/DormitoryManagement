@@ -15,10 +15,10 @@ namespace DormitoryManagement
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DormitoryManagementEntities : DbContext
+    public partial class QuanLyKTXEntities : DbContext
     {
-        public DormitoryManagementEntities()
-            : base("name=DormitoryManagementEntities")
+        public QuanLyKTXEntities()
+            : base("name=QuanLyKTXEntities")
         {
         }
     
@@ -47,76 +47,76 @@ namespace DormitoryManagement
         public virtual DbSet<TienPhongMoiSV> TienPhongMoiSVs { get; set; }
         public virtual DbSet<TongSVTheoToa> TongSVTheoToas { get; set; }
     
-        [DbFunction("DormitoryManagementEntities", "fn_SearchMaNV")]
+        [DbFunction("QuanLyKTXEntities", "fn_SearchMaNV")]
         public virtual IQueryable<fn_SearchMaNV_Result> fn_SearchMaNV(string maNV)
         {
             var maNVParameter = maNV != null ?
                 new ObjectParameter("MaNV", maNV) :
                 new ObjectParameter("MaNV", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchMaNV_Result>("[DormitoryManagementEntities].[fn_SearchMaNV](@MaNV)", maNVParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchMaNV_Result>("[QuanLyKTXEntities].[fn_SearchMaNV](@MaNV)", maNVParameter);
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_SearchMaSV")]
+        [DbFunction("QuanLyKTXEntities", "fn_SearchMaSV")]
         public virtual IQueryable<fn_SearchMaSV_Result> fn_SearchMaSV(string maSinhVien)
         {
             var maSinhVienParameter = maSinhVien != null ?
                 new ObjectParameter("MaSinhVien", maSinhVien) :
                 new ObjectParameter("MaSinhVien", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchMaSV_Result>("[DormitoryManagementEntities].[fn_SearchMaSV](@MaSinhVien)", maSinhVienParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchMaSV_Result>("[QuanLyKTXEntities].[fn_SearchMaSV](@MaSinhVien)", maSinhVienParameter);
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_SearchSVToa")]
+        [DbFunction("QuanLyKTXEntities", "fn_SearchSVToa")]
         public virtual IQueryable<fn_SearchSVToa_Result> fn_SearchSVToa(string maToa)
         {
             var maToaParameter = maToa != null ?
                 new ObjectParameter("MaToa", maToa) :
                 new ObjectParameter("MaToa", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchSVToa_Result>("[DormitoryManagementEntities].[fn_SearchSVToa](@MaToa)", maToaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchSVToa_Result>("[QuanLyKTXEntities].[fn_SearchSVToa](@MaToa)", maToaParameter);
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_SearchTenNV")]
+        [DbFunction("QuanLyKTXEntities", "fn_SearchTenNV")]
         public virtual IQueryable<fn_SearchTenNV_Result> fn_SearchTenNV(string tenNV)
         {
             var tenNVParameter = tenNV != null ?
                 new ObjectParameter("TenNV", tenNV) :
                 new ObjectParameter("TenNV", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchTenNV_Result>("[DormitoryManagementEntities].[fn_SearchTenNV](@TenNV)", tenNVParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchTenNV_Result>("[QuanLyKTXEntities].[fn_SearchTenNV](@TenNV)", tenNVParameter);
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_SearchTenSV")]
+        [DbFunction("QuanLyKTXEntities", "fn_SearchTenSV")]
         public virtual IQueryable<fn_SearchTenSV_Result> fn_SearchTenSV(string tenSinhVien)
         {
             var tenSinhVienParameter = tenSinhVien != null ?
                 new ObjectParameter("TenSinhVien", tenSinhVien) :
                 new ObjectParameter("TenSinhVien", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchTenSV_Result>("[DormitoryManagementEntities].[fn_SearchTenSV](@TenSinhVien)", tenSinhVienParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_SearchTenSV_Result>("[QuanLyKTXEntities].[fn_SearchTenSV](@TenSinhVien)", tenSinhVienParameter);
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_ShowPhongChuaThanhToan")]
+        [DbFunction("QuanLyKTXEntities", "fn_ShowPhongChuaThanhToan")]
         public virtual IQueryable<fn_ShowPhongChuaThanhToan_Result> fn_ShowPhongChuaThanhToan()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ShowPhongChuaThanhToan_Result>("[DormitoryManagementEntities].[fn_ShowPhongChuaThanhToan]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ShowPhongChuaThanhToan_Result>("[QuanLyKTXEntities].[fn_ShowPhongChuaThanhToan]()");
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_ShowPhongTrong")]
+        [DbFunction("QuanLyKTXEntities", "fn_ShowPhongTrong")]
         public virtual IQueryable<fn_ShowPhongTrong_Result> fn_ShowPhongTrong()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ShowPhongTrong_Result>("[DormitoryManagementEntities].[fn_ShowPhongTrong]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ShowPhongTrong_Result>("[QuanLyKTXEntities].[fn_ShowPhongTrong]()");
         }
     
-        [DbFunction("DormitoryManagementEntities", "fn_ThanhToan")]
+        [DbFunction("QuanLyKTXEntities", "fn_ThanhToan")]
         public virtual IQueryable<fn_ThanhToan_Result> fn_ThanhToan(string maPhong)
         {
             var maPhongParameter = maPhong != null ?
                 new ObjectParameter("MaPhong", maPhong) :
                 new ObjectParameter("MaPhong", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ThanhToan_Result>("[DormitoryManagementEntities].[fn_ThanhToan](@MaPhong)", maPhongParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fn_ThanhToan_Result>("[QuanLyKTXEntities].[fn_ThanhToan](@MaPhong)", maPhongParameter);
         }
     
         public virtual ObjectResult<string> QL_AuthoLogin(string username, string password)
