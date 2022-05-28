@@ -10,6 +10,66 @@ namespace DormitoryManagement.BusinessLogicLayer
     public class BLL_SinhVien
     {
         QuanLyKTXModel dbs = new QuanLyKTXModel();
-        public List<SinhVien> SelectSinhVien() { return dbs.SinhViens.ToList(); }
+        public List<SinhVien> SelectSinhVien() { return dbs.SinhViens.ToList<SinhVien>(); }
+        public bool InsertSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
+        {
+            bool flag = false;
+            try
+            {
+                SinhVien sv = new SinhVien();
+                sv.MaSV = maSV;
+                sv.TenSV = tenSV;
+                sv.GioiTinh = gioiTinh;
+                sv.SDT = SDT;
+                sv.MaTruong = maTruong;
+                sv.MaPhong = maPhong;
+                dbs.SinhViens.Add(sv);
+                dbs.SaveChanges();
+                flag = true;
+
+            }
+            catch (SqlException)
+            {
+                err = "Loi rui!!!";
+            }
+            return flag;
+        }
+        public bool UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
+        {
+            bool flag = false;
+            try
+            {
+                var sv = dbs.SinhViens.Find(maSV);
+                if (sv != null)
+                {
+                    sv.TenSV = tenSV;
+                    sv.GioiTinh = gioiTinh;
+                    sv.SDT = SDT;
+                    sv.MaTruong = maTruong;
+                    sv.MaPhong = maPhong;
+                    dbs.SaveChanges();
+                    flag = true;
+                }
+
+            }
+            catch (SqlException)
+            {
+                err = "Loi rui!!!";
+            }
+            return flag;
+        }
+        public bool DeleteSinhVien(ref string err, string maSV)
+        {
+            bool flag = false;
+            var deleteSinhVien = dbs.SinhViens.Find(maSV);
+            if (deleteSinhVien != null)
+            {
+                dbs.SinhViens.Remove(deleteSinhVien);
+                dbs.SaveChanges();
+                flag = true;
+            }
+            return flag;
+        }
     }
+    
 }
