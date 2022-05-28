@@ -10,6 +10,7 @@ namespace DormitoryManagement
         public QuanLyKTXModel()
             : base("name=QuanLyKTXModel1")
         {
+            
         }
 
         public virtual DbSet<DienNuocSuDung> DienNuocSuDungs { get; set; }
@@ -133,7 +134,7 @@ namespace DormitoryManagement
             modelBuilder.Entity<SinhVien>()
                 .Property(e => e.MaPhong)
                 .IsFixedLength()
-                .IsUnicode(false);
+                .IsUnicode(false) ;
 
             modelBuilder.Entity<SinhVien>()
                 .HasMany(e => e.HopDongThuePhongs)

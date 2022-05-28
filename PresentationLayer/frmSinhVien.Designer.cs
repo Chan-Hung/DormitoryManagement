@@ -109,6 +109,7 @@ namespace DormitoryManagement.PresentationLayer
             this.masv1.HeaderText = "Mã sinh viên";
             this.masv1.MinimumWidth = 6;
             this.masv1.Name = "masv1";
+            this.masv1.ReadOnly = true;
             this.masv1.Width = 70;
             // 
             // rbSearchTenSV
@@ -156,6 +157,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // lblSDT
             // 
@@ -182,6 +184,7 @@ namespace DormitoryManagement.PresentationLayer
             this.gioitinh1.HeaderText = "Giới tính";
             this.gioitinh1.MinimumWidth = 6;
             this.gioitinh1.Name = "gioitinh1";
+            this.gioitinh1.ReadOnly = true;
             this.gioitinh1.Width = 60;
             // 
             // btnXoa
@@ -200,6 +203,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -217,6 +221,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // sdt1
             // 
@@ -224,6 +229,7 @@ namespace DormitoryManagement.PresentationLayer
             this.sdt1.HeaderText = "Số điện thoại";
             this.sdt1.MinimumWidth = 6;
             this.sdt1.Name = "sdt1";
+            this.sdt1.ReadOnly = true;
             this.sdt1.Width = 120;
             // 
             // dgvSinhvien
@@ -242,9 +248,11 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvSinhvien.Location = new System.Drawing.Point(13, 195);
             this.dgvSinhvien.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSinhvien.Name = "dgvSinhvien";
+            this.dgvSinhvien.ReadOnly = true;
             this.dgvSinhvien.RowHeadersWidth = 51;
             this.dgvSinhvien.Size = new System.Drawing.Size(742, 383);
             this.dgvSinhvien.TabIndex = 117;
+            this.dgvSinhvien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSinhvien_CellClick);
             // 
             // tensv1
             // 
@@ -252,6 +260,7 @@ namespace DormitoryManagement.PresentationLayer
             this.tensv1.HeaderText = "Tên sinh viên";
             this.tensv1.MinimumWidth = 6;
             this.tensv1.Name = "tensv1";
+            this.tensv1.ReadOnly = true;
             this.tensv1.Width = 110;
             // 
             // matruong1
@@ -260,6 +269,7 @@ namespace DormitoryManagement.PresentationLayer
             this.matruong1.HeaderText = "Mã trường";
             this.matruong1.MinimumWidth = 6;
             this.matruong1.Name = "matruong1";
+            this.matruong1.ReadOnly = true;
             this.matruong1.Width = 70;
             // 
             // maphong1
@@ -268,6 +278,7 @@ namespace DormitoryManagement.PresentationLayer
             this.maphong1.HeaderText = "Mã phòng";
             this.maphong1.MinimumWidth = 6;
             this.maphong1.Name = "maphong1";
+            this.maphong1.ReadOnly = true;
             this.maphong1.Width = 70;
             // 
             // btnRefresh
@@ -286,6 +297,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // txtSDT
             // 
