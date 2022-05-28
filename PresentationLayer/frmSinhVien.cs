@@ -22,6 +22,9 @@ namespace DormitoryManagement.PresentationLayer
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
             dgvSinhvien.DataSource = bll.SelectSinhVien();
+            dgvSinhvien.Columns[6].Visible = false;
+            dgvSinhvien.Columns[7].Visible = false;
+            dgvSinhvien.Columns[8].Visible = false;
         }
     }
 }
