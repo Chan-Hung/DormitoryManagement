@@ -11,64 +11,34 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         QuanLyKTXModel dbs = new QuanLyKTXModel();
         public List<SinhVien> SelectSinhVien() { return dbs.SinhViens.ToList<SinhVien>(); }
-        public bool InsertSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
+        public int InsertSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
-            bool flag = false;
-            try
-            {
-                SinhVien sv = new SinhVien();
-                sv.MaSV = maSV;
-                sv.TenSV = tenSV;
-                sv.GioiTinh = gioiTinh;
-                sv.SDT = SDT;
-                sv.MaTruong = maTruong;
-                sv.MaPhong = maPhong;
-                dbs.SinhViens.Add(sv);
-                dbs.SaveChanges();
-                flag = true;
+            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
+            SqlParameter TenSinhVien = new SqlParameter("@TenSinhVien", tenSV);
+            SqlParameter GioiTinh = new SqlParameter("@GioiTinh", gioiTinh);
+            SqlParameter SoDienThoai = new SqlParameter("@SoDienThoai", SDT);
+            SqlParameter MaTruong = new SqlParameter("@MaTruong", maTruong);
+            SqlParameter MaPhong = new SqlParameter("@MaPhong", maPhong);
+            return dbs.Database.ExecuteSqlCommand("sp_InsertSinhVien @MaSinhVien, @TenSinhVien, @GioiTinh, @SoDienThoai, @MaTruong, @MaPhong", 
+                                                       MaSinhVien, TenSinhVien,GioiTinh, SoDienThoai,MaTruong, MaPhong);
 
-            }
-            catch (SqlException)
-            {
-                err = "Loi rui!!!";
-            }
-            return flag;
         }
-        public bool UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
+        public int UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
-            bool flag = false;
-            try
-            {
-                var sv = dbs.SinhViens.Find(maSV);
-                if (sv != null)
-                {
-                    sv.TenSV = tenSV;
-                    sv.GioiTinh = gioiTinh;
-                    sv.SDT = SDT;
-                    sv.MaTruong = maTruong;
-                    sv.MaPhong = maPhong;
-                    dbs.SaveChanges();
-                    flag = true;
-                }
-
-            }
-            catch (SqlException)
-            {
-                err = "Loi rui!!!";
-            }
-            return flag;
+            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
+            SqlParameter TenSinhVien = new SqlParameter("@TenSinhVien", tenSV);
+            SqlParameter GioiTinh = new SqlParameter("@GioiTinh", gioiTinh);
+            SqlParameter SoDienThoai = new SqlParameter("@SoDienThoai", SDT);
+            SqlParameter MaTruong = new SqlParameter("@MaTruong", maTruong);
+            SqlParameter MaPhong = new SqlParameter("@MaPhong", maPhong);
+            return dbs.Database.ExecuteSqlCommand("sp_UpdateSinhVien @MaSinhVien, @TenSinhVien, @GioiTinh, @SoDienThoai, @MaTruong, @MaPhong",
+                                                       MaSinhVien, TenSinhVien, GioiTinh, SoDienThoai, MaTruong, MaPhong);
         }
-        public bool DeleteSinhVien(ref string err, string maSV)
+        public int DeleteSinhVien(ref string err, string maSV)
         {
-            bool flag = false;
-            var deleteSinhVien = dbs.SinhViens.Find(maSV);
-            if (deleteSinhVien != null)
-            {
-                dbs.SinhViens.Remove(deleteSinhVien);
-                dbs.SaveChanges();
-                flag = true;
-            }
-            return flag;
+            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
+            return dbs.Database.ExecuteSqlCommand("sp_DeleteSinhVien @MaSinhVien",
+                                                       MaSinhVien);
         }
     }
     

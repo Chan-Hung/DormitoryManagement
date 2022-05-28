@@ -77,6 +77,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // cbTrangThai
             // 
@@ -137,6 +138,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // trangthai
             // 
@@ -227,6 +229,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // dgvPhong
             // 
@@ -245,6 +248,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvPhong.RowHeadersWidth = 51;
             this.dgvPhong.Size = new System.Drawing.Size(627, 383);
             this.dgvPhong.TabIndex = 71;
+            this.dgvPhong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhong_CellClick);
             // 
             // frmPhong
             // 
@@ -266,6 +270,7 @@ namespace DormitoryManagement.PresentationLayer
             this.Controls.Add(this.dgvPhong);
             this.Name = "frmPhong";
             this.Text = "frmPhong";
+            this.Load += new System.EventHandler(this.frmPhong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

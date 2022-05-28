@@ -62,7 +62,7 @@ namespace DormitoryManagement.PresentationLayer
         private void btnThem_Click(object sender, EventArgs e)
         {
             string err = "";
-            if(!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+            if(bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text)==0)
             {
                 if (err.Contains("PRIMARY KEY"))
                 {
@@ -82,7 +82,7 @@ namespace DormitoryManagement.PresentationLayer
         private void btnSua_Click(object sender, EventArgs e)
         {
             string err = "";
-            if (!bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+            if (bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text)==0)
             {
                 if (err.Contains("PRIMARY KEY"))
                 {
@@ -105,7 +105,7 @@ namespace DormitoryManagement.PresentationLayer
             if (dlr == DialogResult.Yes)
             {
                 string err = "";
-                if (!bll.DeleteSinhVien(ref err, txtMasv.Text))
+                if (bll.DeleteSinhVien(ref err, txtMasv.Text)==0)
                 {
                     MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

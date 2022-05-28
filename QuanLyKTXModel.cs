@@ -241,6 +241,7 @@ namespace DormitoryManagement
                 .Property(e => e.MaToa)
                 .IsFixedLength()
                 .IsUnicode(false);
+            
         }
     }
 }
