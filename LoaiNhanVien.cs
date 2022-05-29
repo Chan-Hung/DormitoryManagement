@@ -25,5 +25,10 @@ namespace DormitoryManagement
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NhanVien> NhanViens { get; set; }
+        public LoaiNhanVien(string MaLoaiNV, string CongViec)
+        {
+            this.MaLoaiNV = MaLoaiNV;
+            this.CongViec = CongViec;
+        }
     }
 }

@@ -62,7 +62,7 @@ namespace DormitoryManagement.PresentationLayer
         private void btnThem_Click(object sender, EventArgs e)
         {
             string err = "";
-            if(bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text)==0)
+            if(!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
             {
                 if (err.Contains("PRIMARY KEY"))
                 {
@@ -94,7 +94,8 @@ namespace DormitoryManagement.PresentationLayer
             }
             else
             {
-                btnRefresh_Click(sender, e);
+                //btnRefresh_Click(sender, e);
+                frmSinhVien_Load(sender, e);
                 MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

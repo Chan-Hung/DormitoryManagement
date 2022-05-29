@@ -4,13 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_Phong
     {
+        DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
         QuanLyKTXModel dbs = new QuanLyKTXModel();
-        public List<Phong> SelectPhong() { return dbs.Phongs.ToList<Phong>(); }
+        //public DataTable SelectPhong()
+        //{
+        //    string sql = "select * from Phong";
+        //    DataTable dt = new DataTable();
+        //    dt = dal.GetTable(sql);
+        //    return dt;
+        //}
+        public List<Phong> SelectPhong()
+        {
+            return dbs.Phongs.ToList();
+        }
         public bool InsertPhong(ref string err, string maphong, string matoa, string maloaiphong, string trangthai)
         {
             bool flag = false;
@@ -21,6 +33,7 @@ namespace DormitoryManagement.BusinessLogicLayer
                 phong.MaToa = matoa;
                 phong.MaLoaiPhong = maloaiphong;
                 phong.TrangThai = trangthai;
+                dbs.Phongs.Add(phong);
                 dbs.SaveChanges();
                 flag = true;
 
@@ -37,8 +50,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             try
             {
                 var phong = dbs.Phongs.Find(maphong);
-                if (phong != null)
-                {
+                if (phong!=null){
                     phong.MaPhong = maphong;
                     phong.MaToa = matoa;
                     phong.MaLoaiPhong = maloaiphong;

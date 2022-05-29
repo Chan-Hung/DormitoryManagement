@@ -14,6 +14,7 @@ namespace DormitoryManagement
         static void Main()
             //Git test
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new PresentationLayer.frmDashboard());

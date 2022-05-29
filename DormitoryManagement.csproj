@@ -60,9 +60,10 @@
   <ItemGroup>
     <Compile Include="BusinessLogicLayer\BLL_Phong.cs" />
     <Compile Include="BusinessLogicLayer\BLL_SinhVien.cs" />
+    <Compile Include="DataAccessLayer\DAL.cs" />
     <Compile Include="DienNuocSuDung.cs" />
-    <Compile Include="HoaDonTienDienNuoc.cs" />
     <Compile Include="HopDongThuePhong.cs" />
+    <Compile Include="Initializer.cs" />
     <Compile Include="LoaiNhanVien.cs" />
     <Compile Include="LoaiPhong.cs" />
     <Compile Include="LoaiTaiKhoan.cs" />
@@ -131,16 +132,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuanLyKTXModel.cs" />
-    <Compile Include="SearchSVToa.cs" />
     <Compile Include="SinhVien.cs" />
-    <Compile Include="SoNVTheoLoaiNV.cs" />
-    <Compile Include="SoPhongTrongTheoToa.cs" />
-    <Compile Include="SVHetHopDong2022.cs" />
-    <Compile Include="SV_SPKT.cs" />
     <Compile Include="TaiKhoan.cs" />
-    <Compile Include="TienPhongMoiSV.cs" />
     <Compile Include="Toa.cs" />
-    <Compile Include="TongSVTheoToa.cs" />
     <Compile Include="Truong.cs" />
     <EmbeddedResource Include="PresentationLayer\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>

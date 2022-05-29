@@ -10,7 +10,7 @@ namespace DormitoryManagement
         public QuanLyKTXModel()
             : base("name=QuanLyKTXModel1")
         {
-            
+            Database.SetInitializer<QuanLyKTXModel>(new Initializer());
         }
 
         public virtual DbSet<DienNuocSuDung> DienNuocSuDungs { get; set; }
@@ -24,14 +24,7 @@ namespace DormitoryManagement
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<Toa> Toas { get; set; }
         public virtual DbSet<Truong> Truongs { get; set; }
-        public virtual DbSet<HoaDonTienDienNuoc> HoaDonTienDienNuocs { get; set; }
-        public virtual DbSet<SearchSVToa> SearchSVToas { get; set; }
-        public virtual DbSet<SoNVTheoLoaiNV> SoNVTheoLoaiNVs { get; set; }
-        public virtual DbSet<SoPhongTrongTheoToa> SoPhongTrongTheoToas { get; set; }
-        public virtual DbSet<SV_SPKT> SV_SPKT { get; set; }
-        public virtual DbSet<SVHetHopDong2022> SVHetHopDong2022 { get; set; }
-        public virtual DbSet<TienPhongMoiSV> TienPhongMoiSVs { get; set; }
-        public virtual DbSet<TongSVTheoToa> TongSVTheoToas { get; set; }
+      
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -167,81 +160,6 @@ namespace DormitoryManagement
             modelBuilder.Entity<Truong>()
                 .Property(e => e.MaTruong)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<HoaDonTienDienNuoc>()
-                .Property(e => e.MaHoaDon)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<HoaDonTienDienNuoc>()
-                .Property(e => e.MaPhong)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SearchSVToa>()
-                .Property(e => e.MaSV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SearchSVToa>()
-                .Property(e => e.GioiTinh)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SearchSVToa>()
-                .Property(e => e.SDT)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SearchSVToa>()
-                .Property(e => e.MaTruong)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SearchSVToa>()
-                .Property(e => e.MaPhong)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SearchSVToa>()
-                .Property(e => e.MaToa)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SoPhongTrongTheoToa>()
-                .Property(e => e.MaToa)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SV_SPKT>()
-                .Property(e => e.MaSV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SV_SPKT>()
-                .Property(e => e.MaTruong)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SVHetHopDong2022>()
-                .Property(e => e.MaSV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TienPhongMoiSV>()
-                .Property(e => e.MaSV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TienPhongMoiSV>()
-                .Property(e => e.MaPhong)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TienPhongMoiSV>()
-                .Property(e => e.Mã_loại_phòng)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TongSVTheoToa>()
-                .Property(e => e.MaToa)
-                .IsFixedLength()
-                .IsUnicode(false);
-            
         }
     }
 }
