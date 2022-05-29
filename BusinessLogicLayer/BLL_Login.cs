@@ -13,11 +13,12 @@ namespace DormitoryManagement.BusinessLogicLayer
         public bool AuthLogin(string username, string password)
         {
             bool flag = false;
-            var toAuth = dbs.TaiKhoans.Find(username);
-            if(toAuth != null)
+            var toAuth = (from e in dbs.TaiKhoans
+                          where e.TenDangNhap == username && e.MatKhau == password
+                          select e).FirstOrDefault();
+            if (toAuth != null)
             {
-                if (password.Equals(toAuth.MatKhau)) //if (password == toAuth.MatKhau)
-                    flag = true;
+                flag = true;
             }
             return flag;
         }

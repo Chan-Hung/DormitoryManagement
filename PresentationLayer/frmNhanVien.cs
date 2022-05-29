@@ -54,7 +54,7 @@ namespace DormitoryManagement.PresentationLayer
 
             else
             {
-
+                btnRefresh_Click(sender, e);
                 MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearBox();
             }

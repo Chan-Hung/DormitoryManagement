@@ -68,7 +68,6 @@
     <Compile Include="BusinessLogicLayer\BLL_TienDien.cs" />
     <Compile Include="BusinessLogicLayer\BLL_Toa.cs" />
     <Compile Include="BusinessLogicLayer\BLL_TaiKhoan.cs" />
-    <Compile Include="DataAccessLayer\DAL.cs" />
     <Compile Include="DienNuocSuDung.cs" />
     <Compile Include="HopDongThuePhong.cs" />
     <Compile Include="Initializer.cs" />
