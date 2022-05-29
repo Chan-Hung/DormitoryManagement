@@ -66,6 +66,8 @@ namespace DormitoryManagement.PresentationLayer
         private void frmTaiKhoan_Load(object sender, EventArgs e)
         {
             dgvTaiKhoan.DataSource = bll.SelectTaiKhoan();
+            dgvTaiKhoan.Columns[5].Visible = false;
+            dgvTaiKhoan.Columns[6].Visible = false;
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
