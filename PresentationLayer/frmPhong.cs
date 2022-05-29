@@ -22,10 +22,10 @@ namespace DormitoryManagement.PresentationLayer
         {
             dgvPhong.DataSource = bll.SelectPhong();
             cbTrangThai.Text = "Còn";
-            //dgvPhong.Columns[4].Visible = false;
-            //dgvPhong.Columns[5].Visible = false;
-            //dgvPhong.Columns[6].Visible = false;
-            //dgvPhong.Columns[7].Visible = false;
+            dgvPhong.Columns[4].Visible = false;
+            dgvPhong.Columns[5].Visible = false;
+            dgvPhong.Columns[6].Visible = false;
+            dgvPhong.Columns[7].Visible = false;
         }
 
         private void dgvPhong_CellClick(object sender, DataGridViewCellEventArgs e)
