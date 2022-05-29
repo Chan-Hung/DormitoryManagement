@@ -151,7 +151,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            //this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -169,7 +169,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            //this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -259,6 +259,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvSoDienTieuThu.RowHeadersWidth = 51;
             this.dgvSoDienTieuThu.Size = new System.Drawing.Size(627, 305);
             this.dgvSoDienTieuThu.TabIndex = 111;
+            //this.dgvSoDienTieuThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoDienTieuThu_CellClick);
             // 
             // ngaylap
             // 

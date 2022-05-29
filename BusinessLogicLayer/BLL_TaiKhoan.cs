@@ -25,6 +25,7 @@ namespace DormitoryManagement.BusinessLogicLayer
                 tk.TenDangNhap = tendangnhap;
                 tk.MatKhau = matkhau;
                 tk.MaLoaiTaiKhoan = maloaitaikhoan;
+                dbs.TaiKhoans.Add(tk);
                 dbs.SaveChanges();
                 flag = true;
             }
