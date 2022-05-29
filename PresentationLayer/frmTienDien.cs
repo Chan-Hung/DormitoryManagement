@@ -20,8 +20,8 @@ namespace DormitoryManagement.PresentationLayer
 
         private void frmTienDien_Load(object sender, EventArgs e)
         {
-            //dgvSoDienTieuThu.DataSource = bll.SelectDienNuoc();
-            //dgvSoDienTieuThu.Columns[6].Visible = false;
+            dgvSoDienTieuThu.DataSource = bll.SelectDienNuoc();
+            dgvSoDienTieuThu.Columns[6].Visible = false;
             //dgvSoDienTieuThu.Columns[6] = dgvSoDienTieuThu.Columns[6];
         }
 
@@ -57,6 +57,16 @@ namespace DormitoryManagement.PresentationLayer
         {
             frmTienDien_Load(sender, e);
             ClearBox();
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

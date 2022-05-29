@@ -259,7 +259,6 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvSoDienTieuThu.RowHeadersWidth = 51;
             this.dgvSoDienTieuThu.Size = new System.Drawing.Size(627, 305);
             this.dgvSoDienTieuThu.TabIndex = 111;
-            this.dgvSoDienTieuThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoDienTieuThu_CellClick);
             // 
             // ngaylap
             // 
