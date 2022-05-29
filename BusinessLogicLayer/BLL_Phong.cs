@@ -12,13 +12,6 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
         QuanLyKTXModel dbs = new QuanLyKTXModel();
-        //public DataTable SelectPhong()
-        //{
-        //    string sql = "select * from Phong";
-        //    DataTable dt = new DataTable();
-        //    dt = dal.GetTable(sql);
-        //    return dt;
-        //}
         public List<Phong> SelectPhong()
         {
             return dbs.Phongs.ToList();

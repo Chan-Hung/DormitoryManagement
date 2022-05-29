@@ -133,6 +133,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnXoa
             // 
@@ -184,6 +185,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // trangthai
             // 
@@ -368,6 +370,7 @@ namespace DormitoryManagement.PresentationLayer
             this.Controls.Add(this.txtSoDienTieuThu);
             this.Name = "frmTienDien";
             this.Text = "frmTienDien";
+            this.Load += new System.EventHandler(this.frmTienDien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSoDienTieuThu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

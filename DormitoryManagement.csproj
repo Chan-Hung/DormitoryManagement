@@ -58,8 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogicLayer\BLL_DienNuoc.cs" />
     <Compile Include="BusinessLogicLayer\BLL_Phong.cs" />
     <Compile Include="BusinessLogicLayer\BLL_SinhVien.cs" />
+    <Compile Include="BusinessLogicLayer\BLL_TaiKhoan.cs" />
     <Compile Include="DataAccessLayer\DAL.cs" />
     <Compile Include="DienNuocSuDung.cs" />
     <Compile Include="HopDongThuePhong.cs" />
