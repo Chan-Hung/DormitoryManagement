@@ -65,6 +65,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvHopDong.RowHeadersWidth = 51;
             this.dgvHopDong.Size = new System.Drawing.Size(806, 536);
             this.dgvHopDong.TabIndex = 77;
+            this.dgvHopDong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHopDong_CellClick);
             // 
             // mahd
             // 
@@ -175,6 +176,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // dtpNgayketthuc
             // 
@@ -208,6 +210,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // frmHopDong
             // 
@@ -227,6 +230,7 @@ namespace DormitoryManagement.PresentationLayer
             this.Controls.Add(this.btnSua);
             this.Name = "frmHopDong";
             this.Text = "frmHopDong";
+            this.Load += new System.EventHandler(this.frmHopDong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHopDong)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -11,7 +11,10 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         QuanLyKTXModel dbs = new QuanLyKTXModel();
 
-        public List<SinhVien> SelectSinhVien() { return dbs.SinhViens.ToList<SinhVien>(); }
+        public List<SinhVien> SelectSinhVien() 
+        { 
+            return dbs.SinhViens.ToList(); 
+        }
         public bool InsertSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
             bool flag = false;
@@ -30,28 +33,49 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             catch (SqlException)
             {
-                err = "Lỗi";
+                err = "Đã xảy ra lỗi";
             }
             return flag;
 
         }
-        public int UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
+        public bool UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
-            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
-            SqlParameter TenSinhVien = new SqlParameter("@TenSinhVien", tenSV);
-            SqlParameter GioiTinh = new SqlParameter("@GioiTinh", gioiTinh);
-            SqlParameter SoDienThoai = new SqlParameter("@SoDienThoai", SDT);
-            SqlParameter MaTruong = new SqlParameter("@MaTruong", maTruong);
-            SqlParameter MaPhong = new SqlParameter("@MaPhong", maPhong);
-            return dbs.Database.ExecuteSqlCommand("sp_UpdateSinhVien @MaSinhVien, @TenSinhVien, @GioiTinh, @SoDienThoai, @MaTruong, @MaPhong",
-                                                       MaSinhVien, TenSinhVien, GioiTinh, SoDienThoai, MaTruong, MaPhong);
+            bool flag = false;
+            try
+            {
+                var sinhvien = dbs.SinhViens.Find(maSV);
+                if (sinhvien != null)
+                {
+                    sinhvien.TenSV = tenSV;
+                    sinhvien.GioiTinh = gioiTinh;
+                    sinhvien.SDT = SDT;
+                    sinhvien.MaTruong = maTruong;
+                    sinhvien.MaPhong = maPhong;
+                    dbs.SaveChanges();
+                    flag = true;
+                }
+            }
+            catch (SqlException)
+            {
+                err = "Đã xảy ra lỗi";
+            }
+            return flag;
         }
-        public int DeleteSinhVien(ref string err, string maSV)
+
+        
+        public bool DeleteSinhVien(ref string err, string maSV)
         {
-            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
-            return dbs.Database.ExecuteSqlCommand("sp_DeleteSinhVien @MaSinhVien",
-                                                       MaSinhVien);
+        bool flag = false;
+        var sinhvien = dbs.SinhViens.Find(maSV);
+        if (sinhvien != null)
+            {
+                dbs.SinhViens.Remove(sinhvien);
+                dbs.SaveChanges();
+                flag = true;
+            }
+            return flag;
         }
+
     }
     
 }

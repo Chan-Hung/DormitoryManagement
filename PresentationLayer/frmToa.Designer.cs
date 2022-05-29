@@ -66,6 +66,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvToa.RowHeadersWidth = 51;
             this.dgvToa.Size = new System.Drawing.Size(627, 383);
             this.dgvToa.TabIndex = 61;
+            this.dgvToa.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToa_CellClick);
             // 
             // matoa
             // 
@@ -115,6 +116,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnSua
             // 
@@ -132,6 +134,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -149,6 +152,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // txtSucChua
             // 
@@ -245,6 +249,7 @@ namespace DormitoryManagement.PresentationLayer
             this.Controls.Add(this.lblMaToa);
             this.Name = "frmToa";
             this.Text = "frmToa";
+            this.Load += new System.EventHandler(this.frmToa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvToa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

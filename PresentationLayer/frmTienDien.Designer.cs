@@ -133,6 +133,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnXoa
             // 
@@ -150,6 +151,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -167,6 +169,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.Text = "Sửa";
             this.btnSua.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // btnThem
             // 
@@ -184,6 +187,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // trangthai
             // 
@@ -255,6 +259,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvSoDienTieuThu.RowHeadersWidth = 51;
             this.dgvSoDienTieuThu.Size = new System.Drawing.Size(627, 305);
             this.dgvSoDienTieuThu.TabIndex = 111;
+            this.dgvSoDienTieuThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoDienTieuThu_CellClick);
             // 
             // ngaylap
             // 
@@ -368,6 +373,7 @@ namespace DormitoryManagement.PresentationLayer
             this.Controls.Add(this.txtSoDienTieuThu);
             this.Name = "frmTienDien";
             this.Text = "frmTienDien";
+            this.Load += new System.EventHandler(this.frmTienDien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSoDienTieuThu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
