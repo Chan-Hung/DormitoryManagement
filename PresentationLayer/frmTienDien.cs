@@ -20,8 +20,8 @@ namespace DormitoryManagement.PresentationLayer
 
         private void frmTienDien_Load(object sender, EventArgs e)
         {
-            //dgvSoDienTieuThu.DataSource = bll.SelectDienNuoc();
-            //dgvSoDienTieuThu.Columns[6].Visible = false;
+            dgvSoDienTieuThu.DataSource = bll.SelectDienNuoc();
+            dgvSoDienTieuThu.Columns[6].Visible = false;
             //dgvSoDienTieuThu.Columns[6] = dgvSoDienTieuThu.Columns[6];
         }
 
