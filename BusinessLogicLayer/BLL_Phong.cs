@@ -10,7 +10,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_Phong
     {
-        DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
+        //DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
         QuanLyKTXModel dbs = new QuanLyKTXModel();
         //public DataTable SelectPhong()
         //{

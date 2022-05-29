@@ -52,6 +52,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnHuybo.TabIndex = 17;
             this.btnHuybo.Text = "Hủy bỏ";
             this.btnHuybo.UseVisualStyleBackColor = false;
+            this.btnHuybo.Click += new System.EventHandler(this.btnHuybo_Click);
             // 
             // btnXacnhan
             // 
@@ -66,6 +67,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnXacnhan.TabIndex = 18;
             this.btnXacnhan.Text = "Đổi mật khẩu";
             this.btnXacnhan.UseVisualStyleBackColor = false;
+            this.btnXacnhan.Click += new System.EventHandler(this.btnXacnhan_Click);
             // 
             // txtMatkhaucu
             // 
