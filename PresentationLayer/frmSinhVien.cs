@@ -82,7 +82,7 @@ namespace DormitoryManagement.PresentationLayer
         private void btnSua_Click(object sender, EventArgs e)
         {
             string err = "";
-            if (bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text)==0)
+            if (!bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
             {
                 if (err.Contains("PRIMARY KEY"))
                 {
@@ -102,22 +102,7 @@ namespace DormitoryManagement.PresentationLayer
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            DialogResult dlr = MessageBox.Show("Bạn có chắc chắn xóa", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dlr == DialogResult.Yes)
-            {
-                string err = "";
-                if (bll.DeleteSinhVien(ref err, txtMasv.Text)==0)
-                {
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    btnRefresh_Click(sender, e);
-                    MessageBox.Show("Đã xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            else if (dlr == DialogResult.No)
-                return;
+            
         }
     }
 }

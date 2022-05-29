@@ -10,15 +10,9 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_Phong
     {
-        DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
+        //DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
         QuanLyKTXModel dbs = new QuanLyKTXModel();
-        //public DataTable SelectPhong()
-        //{
-        //    string sql = "select * from Phong";
-        //    DataTable dt = new DataTable();
-        //    dt = dal.GetTable(sql);
-        //    return dt;
-        //}
+        
         public List<Phong> SelectPhong()
         {
             return dbs.Phongs.ToList();
@@ -58,7 +52,6 @@ namespace DormitoryManagement.BusinessLogicLayer
                     dbs.SaveChanges();
                     flag = true;
                 }
-
             }
             catch (SqlException)
             {

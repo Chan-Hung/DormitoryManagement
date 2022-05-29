@@ -35,23 +35,31 @@ namespace DormitoryManagement.BusinessLogicLayer
             return flag;
 
         }
-        public int UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
+        public bool UpdateSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
-            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
-            SqlParameter TenSinhVien = new SqlParameter("@TenSinhVien", tenSV);
-            SqlParameter GioiTinh = new SqlParameter("@GioiTinh", gioiTinh);
-            SqlParameter SoDienThoai = new SqlParameter("@SoDienThoai", SDT);
-            SqlParameter MaTruong = new SqlParameter("@MaTruong", maTruong);
-            SqlParameter MaPhong = new SqlParameter("@MaPhong", maPhong);
-            return dbs.Database.ExecuteSqlCommand("sp_UpdateSinhVien @MaSinhVien, @TenSinhVien, @GioiTinh, @SoDienThoai, @MaTruong, @MaPhong",
-                                                       MaSinhVien, TenSinhVien, GioiTinh, SoDienThoai, MaTruong, MaPhong);
+            bool flag = false;
+            try
+            {
+                var sv = dbs.SinhViens.Find(maSV);
+                if (sv != null)
+                {
+                    sv.MaSV = maSV;
+                    sv.TenSV = tenSV;
+                    sv.GioiTinh = gioiTinh;
+                    sv.SDT = SDT;
+                    sv.MaTruong = maTruong;
+                    sv.MaPhong = maPhong;
+                    dbs.SaveChanges();
+                    flag = true;
+                }
+            }
+            catch (SqlException)
+            {
+                err = "Loi rui!!!";
+            }
+            return flag;
         }
-        public int DeleteSinhVien(ref string err, string maSV)
-        {
-            SqlParameter MaSinhVien = new SqlParameter("@MaSinhVien", maSV);
-            return dbs.Database.ExecuteSqlCommand("sp_DeleteSinhVien @MaSinhVien",
-                                                       MaSinhVien);
-        }
+
     }
     
 }
