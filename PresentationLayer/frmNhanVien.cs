@@ -120,5 +120,27 @@ namespace DormitoryManagement.PresentationLayer
             else if (dlr == DialogResult.No)
                 return;
         }
+
+        private void btnTimkiem_Click(object sender, EventArgs e)
+        {
+            if (txtTimkiem.Text == "")
+            {
+                MessageBox.Show("Bạn chưa nhập trường tìm kiếm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (rbSearchMaNV.Checked)
+            {
+                dgvNhanvien.DataSource = bll.searchMaNhanVien(txtTimkiem.Text);
+            }
+            else if (rbSearchTenNV.Checked)
+            {
+                dgvNhanvien.DataSource = bll.searchTenNhanVien(txtTimkiem.Text);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 1 trường để tìm kiếm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+        }
     }
 }

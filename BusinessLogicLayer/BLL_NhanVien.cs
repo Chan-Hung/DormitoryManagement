@@ -69,5 +69,14 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
+        public List<NhanVien> searchTenNhanVien(string tennv)
+        {
+            return dbs.NhanViens.Where(x => x.TenNV.Contains(tennv)).ToList();
+        }
+        public List<NhanVien> searchMaNhanVien(string manv)
+        {
+            return dbs.NhanViens.Where(x => x.MaNV == manv).ToList();
+
+        }
     }
 }
