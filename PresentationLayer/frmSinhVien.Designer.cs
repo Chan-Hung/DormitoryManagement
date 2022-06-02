@@ -141,6 +141,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnTien.Text = "Giá Phòng";
             this.btnTien.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnTien.UseVisualStyleBackColor = true;
+            this.btnTien.Click += new System.EventHandler(this.btnTien_Click);
             // 
             // btnThem
             // 

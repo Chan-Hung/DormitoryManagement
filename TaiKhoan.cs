@@ -29,5 +29,16 @@ namespace DormitoryManagement
         public virtual LoaiTaiKhoan LoaiTaiKhoan { get; set; }
 
         public virtual NhanVien NhanVien { get; set; }
+        public TaiKhoan(string MaNV, string TenDangNhap, string MatKhau, string MaLoaiTaiKhoan)
+        {
+            this.MaNV = MaNV;
+            this.TenDangNhap = TenDangNhap;
+            this.MatKhau = MatKhau;
+            this.MaLoaiTaiKhoan = MaLoaiTaiKhoan;
+        }
+
+        public TaiKhoan()
+        {
+        }
     }
 }

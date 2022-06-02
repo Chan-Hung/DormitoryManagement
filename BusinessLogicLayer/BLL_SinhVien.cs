@@ -90,6 +90,12 @@ namespace DormitoryManagement.BusinessLogicLayer
             var ShowToa= dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { MaSV = sinhVien.MaSV, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.MaToa}).Where(toaa=>toaa.MaToa == toa).ToList();
             return ShowToa;
         }
+        public Object tienPhongCuaSV()
+        {
+            var tienPhongCuaSV = dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { SinhVien = sinhVien, Phong = phong})
+                .Join(dbs.LoaiPhongs, phong=>phong.Phong.MaLoaiPhong, loaiPhong=>loaiPhong.MaLoaiPhong, (phong, loaiPhong)=> new {MaSV = phong.SinhVien.MaSV,TenSV = phong.SinhVien.TenSV,MaPhong = phong.SinhVien.MaPhong, MaLoaiPhong = phong.Phong.MaLoaiPhong,Gia = (loaiPhong.Gia * 10).ToString()}).ToList();
+            return tienPhongCuaSV;
+        }
     }
     
 }

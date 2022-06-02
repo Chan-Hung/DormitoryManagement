@@ -144,5 +144,10 @@ namespace DormitoryManagement.PresentationLayer
                 return;
             }
         }
+
+        private void btnTien_Click(object sender, EventArgs e)
+        {
+            dgvSinhvien.DataSource = bll.tienPhongCuaSV();
+        }
     }
 }

@@ -64,6 +64,95 @@ namespace DormitoryManagement
             loaiNhanViens.Add(new LoaiNhanVien("07", "Quản trị hệ thống"));
             context.LoaiNhanViens.AddRange(loaiNhanViens);
 
+
+            //khởi tạo phòng
+            IList<Phong> phongs = new List<Phong>();
+            phongs.Add(new Phong("001",toas[0].MaToa, loaiPhongs[2].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("002",toas[1].MaToa, loaiPhongs[1].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("003",toas[2].MaToa, loaiPhongs[0].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("004",toas[3].MaToa, loaiPhongs[3].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("011",toas[0].MaToa, loaiPhongs[2].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("012",toas[1].MaToa, loaiPhongs[1].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("013",toas[2].MaToa, loaiPhongs[1].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("014",toas[3].MaToa, loaiPhongs[3].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("021",toas[0].MaToa, loaiPhongs[1].MaLoaiPhong, "Còn"));
+            phongs.Add(new Phong("022",toas[1].MaToa, loaiPhongs[2].MaLoaiPhong, "Còn"));
+            context.Phongs.AddRange(phongs);
+
+
+            //khởi tạo Nhân Viên
+            IList<NhanVien> nhanViens = new List<NhanVien>();
+            nhanViens.Add(new NhanVien("BH11", loaiNhanViens[3].MaLoaiNV, toas[0].MaToa, "Lưu Thùy Điên", "0956248635", 123465));
+            nhanViens.Add(new NhanVien("BH13", loaiNhanViens[3].MaLoaiNV, toas[0].MaToa, "Tăng Trường Phúc", "0766612564", 4000000));
+            nhanViens.Add(new NhanVien("BH21", loaiNhanViens[3].MaLoaiNV, toas[1].MaToa, "Lê Thành Long", "0999564128", 4000000));
+            nhanViens.Add(new NhanVien("BH22", loaiNhanViens[3].MaLoaiNV, toas[1].MaToa, "Sơn Huy Thành", "0799164512", 4000000));
+            nhanViens.Add(new NhanVien("BH23", loaiNhanViens[3].MaLoaiNV, toas[1].MaToa, "Bì Hữu Trung", "0777653147", 4000000));
+            nhanViens.Add(new NhanVien("BH31", loaiNhanViens[3].MaLoaiNV, toas[2].MaToa, "Thành Bích Hà", "0787332168", 4000000));
+            nhanViens.Add(new NhanVien("BH32", loaiNhanViens[3].MaLoaiNV, toas[2].MaToa, "Lục Tuyết Hân", "0792108736", 4000000));
+            nhanViens.Add(new NhanVien("BH33", loaiNhanViens[3].MaLoaiNV, toas[2].MaToa, "Châu Ngọc Lân", "0777712554", 4000000));
+            nhanViens.Add(new NhanVien("BH41", loaiNhanViens[3].MaLoaiNV, toas[3].MaToa, "Mai Ngân Thanh", "0771121121", 4000000));
+            nhanViens.Add(new NhanVien("BH42", loaiNhanViens[3].MaLoaiNV, toas[3].MaToa, "Duy Minh Huệ", "0777777111", 4000000));
+            nhanViens.Add(new NhanVien("BH43", loaiNhanViens[3].MaLoaiNV, toas[3].MaToa, "Văn Thủy Tâm", "0309499599", 4000000));
+
+            nhanViens.Add(new NhanVien("BV11", loaiNhanViens[0].MaLoaiNV, toas[0].MaToa, "Trần Mạnh Vũ", "0905671234", 5000000));
+            nhanViens.Add(new NhanVien("BV12", loaiNhanViens[0].MaLoaiNV, toas[0].MaToa, "Đặng Tuấn Linh", "0358848976", 5000000));
+            nhanViens.Add(new NhanVien("BV21", loaiNhanViens[0].MaLoaiNV, toas[1].MaToa, "Võ Khánh An", "0941325978", 5000000));
+            nhanViens.Add(new NhanVien("BV22", loaiNhanViens[0].MaLoaiNV, toas[1].MaToa, "Vương Ðình Hảo", "0356831549", 5000000));
+            nhanViens.Add(new NhanVien("BV31", loaiNhanViens[0].MaLoaiNV, toas[2].MaToa, "Tạ Ðức Giang", "0948512348", 5000000));
+            nhanViens.Add(new NhanVien("BV32", loaiNhanViens[0].MaLoaiNV, toas[2].MaToa, "Trần Việt Khôi", "0789312358", 5000000));
+            nhanViens.Add(new NhanVien("BV41", loaiNhanViens[0].MaLoaiNV, toas[3].MaToa, "Đức Quang Hải", "0933156876", 5000000));
+            nhanViens.Add(new NhanVien("BV42", loaiNhanViens[0].MaLoaiNV, toas[3].MaToa, "Thục Quang Minh", "0333456878", 5000000));
+
+
+
+            nhanViens.Add(new NhanVien("DB11", loaiNhanViens[2].MaLoaiNV, toas[0].MaToa, "Nguyễn Ðức Hải", "0898315498", 6000000));
+            nhanViens.Add(new NhanVien("DB12", loaiNhanViens[2].MaLoaiNV, toas[0].MaToa, "Hồ Minh Trung", "0333158621", 6000000));
+            nhanViens.Add(new NhanVien("DB21", loaiNhanViens[2].MaLoaiNV, toas[1].MaToa, "Lâm Quang Triều", "0878991234", 6000000));
+            nhanViens.Add(new NhanVien("DB22", loaiNhanViens[2].MaLoaiNV, toas[1].MaToa, "Hán Minh Tuấn", "0334913646", 6000000));
+            nhanViens.Add(new NhanVien("DB31", loaiNhanViens[2].MaLoaiNV, toas[2].MaToa, "Giao Tịnh Như", "0920025941", 6000000));
+            nhanViens.Add(new NhanVien("DB32", loaiNhanViens[2].MaLoaiNV, toas[2].MaToa, "Điêu Linh Lan", "0989222213", 6000000));
+            nhanViens.Add(new NhanVien("DB41", loaiNhanViens[2].MaLoaiNV, toas[3].MaToa, "Trang Anh Thi", "0897864222", 6000000));
+            nhanViens.Add(new NhanVien("DB42", loaiNhanViens[2].MaLoaiNV, toas[3].MaToa, "Dương Hồng Quế", "0320034685", 6000000));
+
+            nhanViens.Add(new NhanVien("LC11", loaiNhanViens[1].MaLoaiNV, toas[0].MaToa, "Đặng Thị Tú Quyên", "0948389184", 4500000));
+            nhanViens.Add(new NhanVien("LC12", loaiNhanViens[1].MaLoaiNV, toas[0].MaToa, "Lý Kim Chi", "0948389184", 4500000));
+            nhanViens.Add(new NhanVien("LC21", loaiNhanViens[1].MaLoaiNV, toas[1].MaToa, "Diêm Hồng Thúy", "0333158971", 4500000));
+            nhanViens.Add(new NhanVien("LC22", loaiNhanViens[1].MaLoaiNV, toas[1].MaToa, "Đào Mai Châu", "0935486782", 4500000));
+            nhanViens.Add(new NhanVien("LC31", loaiNhanViens[1].MaLoaiNV, toas[2].MaToa, "Trưng Thế Minh", "0791356972", 4500000));
+            nhanViens.Add(new NhanVien("LC32", loaiNhanViens[1].MaLoaiNV, toas[2].MaToa, "Trương Ðình Toàn", "0946333158", 4500000));
+            nhanViens.Add(new NhanVien("LC41", loaiNhanViens[1].MaLoaiNV, toas[3].MaToa, "Mai Quốc Hùng", "0988464111", 4500000));
+            nhanViens.Add(new NhanVien("LC42", loaiNhanViens[1].MaLoaiNV, toas[3].MaToa, "Lý Thế Doanh", "0936689994", 4500000));
+
+            nhanViens.Add(new NhanVien("QL11", loaiNhanViens[4].MaLoaiNV, toas[0].MaToa, "Trần Quang Hải", "0991012364", 7000000));
+            nhanViens.Add(new NhanVien("QL12", loaiNhanViens[4].MaLoaiNV, toas[0].MaToa, "Trần Tuấn Việt", "0912358768", 7000000));
+            nhanViens.Add(new NhanVien("QL21", loaiNhanViens[4].MaLoaiNV, toas[1].MaToa, "Ngô Xuân Trung", "0303489185", 7000000));
+            nhanViens.Add(new NhanVien("QL22", loaiNhanViens[4].MaLoaiNV, toas[1].MaToa, "Đoàn Huy Khánh", "0923111592", 7000000));
+            nhanViens.Add(new NhanVien("QL31", loaiNhanViens[4].MaLoaiNV, toas[2].MaToa, "Đăng Minh Tú", "0991223485", 7000000));
+            nhanViens.Add(new NhanVien("QL32", loaiNhanViens[4].MaLoaiNV, toas[2].MaToa, "Đan Cảnh Tuấn", "0948565131", 7000000));
+            nhanViens.Add(new NhanVien("QL41", loaiNhanViens[4].MaLoaiNV, toas[3].MaToa, "Ngũ Khánh Hà", "0909999111", 7000000));
+            nhanViens.Add(new NhanVien("QL42", loaiNhanViens[4].MaLoaiNV, toas[3].MaToa, "Lý Trọng Hiếu", "0933115554", 7000000));
+
+            nhanViens.Add(new NhanVien("QT01", loaiNhanViens[6].MaLoaiNV, toas[0].MaToa, "NP", "", 40000000));
+
+
+            nhanViens.Add(new NhanVien("VP11", loaiNhanViens[5].MaLoaiNV, toas[0].MaToa, "Trần Bảo Hân", "0715862431", 5500000));
+            nhanViens.Add(new NhanVien("VP12", loaiNhanViens[5].MaLoaiNV, toas[0].MaToa, "Diệp Bích Quyên", "0777321564", 5500000));
+            nhanViens.Add(new NhanVien("VP21", loaiNhanViens[5].MaLoaiNV, toas[1].MaToa, "Lưu Ðức Phú", "0333125975", 5500000));
+            nhanViens.Add(new NhanVien("VP22", loaiNhanViens[5].MaLoaiNV, toas[1].MaToa, "Tôn Lan Phương", "0755648186", 5500000));
+            nhanViens.Add(new NhanVien("VP31", loaiNhanViens[5].MaLoaiNV, toas[2].MaToa, "Vũ Hảo Nhi", "0788113456", 5500000));
+            nhanViens.Add(new NhanVien("VP32", loaiNhanViens[5].MaLoaiNV, toas[2].MaToa, "Tạ Minh Chiến", "0309945125", 5500000));
+            nhanViens.Add(new NhanVien("VP41", loaiNhanViens[5].MaLoaiNV, toas[3].MaToa, "Đồng Trung Anh", "0700315648", 5500000));
+            nhanViens.Add(new NhanVien("VP42", loaiNhanViens[5].MaLoaiNV, toas[3].MaToa, "Nhâm Vĩnh Hưng", "0766445221", 5500000));
+
+            context.NhanViens.AddRange(nhanViens);
+
+            //Khởi tạo tài khoản
+            IList<TaiKhoan> taiKhoans = new List<TaiKhoan>();
+            taiKhoans.Add(new TaiKhoan(nhanViens[47].MaNV, "emp1", "@emp1", loaiTaiKhoans[1].MaLoaiTaiKhoan));
+            taiKhoans.Add(new TaiKhoan(nhanViens[46].MaNV, "admin1", "@admin1", loaiTaiKhoans[0].MaLoaiTaiKhoan));
+            taiKhoans.Add(new TaiKhoan(nhanViens[48].MaNV, "emp2", "@emp2", loaiTaiKhoans[1].MaLoaiTaiKhoan));
+            context.TaiKhoans.AddRange(taiKhoans);
+
             context.SaveChanges();
             base.Seed(context);
         }
