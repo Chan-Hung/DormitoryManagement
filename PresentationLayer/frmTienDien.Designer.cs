@@ -215,6 +215,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnPhongChuaThanhToan.TabIndex = 120;
             this.btnPhongChuaThanhToan.Text = "Hiển thị phòng chưa thanh toán";
             this.btnPhongChuaThanhToan.UseVisualStyleBackColor = false;
+            this.btnPhongChuaThanhToan.Click += new System.EventHandler(this.btnPhongChuaThanhToan_Click);
             // 
             // sodientieuthu
             // 
@@ -259,6 +260,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvSoDienTieuThu.RowHeadersWidth = 51;
             this.dgvSoDienTieuThu.Size = new System.Drawing.Size(627, 305);
             this.dgvSoDienTieuThu.TabIndex = 111;
+            this.dgvSoDienTieuThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoDienTieuThu_CellClick);
             // 
             // ngaylap
             // 

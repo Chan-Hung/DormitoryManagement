@@ -58,5 +58,9 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
+        public List<Phong> ShowPhongTrong()
+        {
+            return dbs.Phongs.Where(x=>x.TrangThai=="Còn").ToList();
+        }
     }
 }

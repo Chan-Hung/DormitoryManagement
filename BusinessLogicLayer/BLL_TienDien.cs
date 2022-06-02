@@ -73,5 +73,9 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
+        public List<DienNuocSuDung> SelectChuaThanhToan()
+        {
+            return dbs.DienNuocSuDungs.Where(x=>x.TrangThai=="Chưa thanh toán").ToList();
+        }
     }
 }

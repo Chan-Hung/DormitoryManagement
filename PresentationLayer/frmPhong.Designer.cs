@@ -60,6 +60,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnPhongTrong.TabIndex = 79;
             this.btnPhongTrong.Text = "Hiển thị danh sách phòng trống";
             this.btnPhongTrong.UseVisualStyleBackColor = false;
+            this.btnPhongTrong.Click += new System.EventHandler(this.btnPhongTrong_Click);
             // 
             // btnRefresh
             // 

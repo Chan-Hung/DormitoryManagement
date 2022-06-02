@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.Entity;
 
 namespace DormitoryManagement.BusinessLogicLayer
 {
@@ -75,7 +76,20 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
-
+        public List<SinhVien> searchMaSinhVien(string masv)
+        {
+            return dbs.SinhViens.Where(x => x.MaSV == masv).ToList();
+        }
+        public List<SinhVien> searchTenSinhVien(string tenSV)
+        {
+            return dbs.SinhViens.Where(x => x.TenSV.Contains(tenSV)).ToList();
+        }
+        public Object searchTenToa(string toa)
+        {
+            
+            var ShowToa= dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { MaSV = sinhVien.MaSV, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.MaToa}).Where(toaa=>toaa.MaToa == toa).ToList();
+            return ShowToa;
+        }
     }
     
 }

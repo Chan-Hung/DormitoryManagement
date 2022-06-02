@@ -99,5 +99,23 @@ namespace DormitoryManagement.PresentationLayer
             else if (dlr == DialogResult.No)
                 return;
         }
+
+        private void btnPhongChuaThanhToan_Click(object sender, EventArgs e)
+        {
+            dgvSoDienTieuThu.DataSource = bll.SelectChuaThanhToan();
+        }
+
+        private void dgvSoDienTieuThu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int vitri = e.RowIndex;
+            if (vitri >= 0)
+            {
+                txtMaHoaDon.Text = dgvSoDienTieuThu.Rows[vitri].Cells[0].Value.ToString();
+                txtMaPhong.Text = dgvSoDienTieuThu.Rows[vitri].Cells[1].Value.ToString();
+                txtSoDienTieuThu.Text = dgvSoDienTieuThu.Rows[vitri].Cells[3].Value.ToString();
+                txtSoNuocTieuThu.Text = dgvSoDienTieuThu.Rows[vitri].Cells[4].Value.ToString();
+                cbTrangThai.Text = dgvSoDienTieuThu.Rows[vitri].Cells[5].Value.ToString();
+            }
+        }
     }
 }

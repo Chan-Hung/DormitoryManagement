@@ -94,5 +94,10 @@ namespace DormitoryManagement.PresentationLayer
                 MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnPhongTrong_Click(object sender, EventArgs e)
+        {
+            dgvPhong.DataSource = bll.ShowPhongTrong();
+        }
     }
 }
