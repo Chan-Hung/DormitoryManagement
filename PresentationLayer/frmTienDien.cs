@@ -117,5 +117,15 @@ namespace DormitoryManagement.PresentationLayer
                 cbTrangThai.Text = dgvSoDienTieuThu.Rows[vitri].Cells[5].Value.ToString();
             }
         }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            string err = "";
+            if (bll.ThanhToan(ref err, txtMaHoaDon.Text))
+            {
+                MessageBox.Show("Phòng " + txtMaPhong.Text.ToString() + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnRefresh_Click(sender, e);
+            }
+        }
     }
 }

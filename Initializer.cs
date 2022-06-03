@@ -167,6 +167,29 @@ namespace DormitoryManagement
             sinhViens.Add(new SinhVien("20687487", "Võ Hoàng Long", "M", "0769978564", truongs[9].MaTruong, phongs[1].MaPhong));
             context.SinhViens.AddRange(sinhViens);
 
+            
+
+            //Khởi tạo điện nước tiêu thụ
+            IList<DienNuocSuDung> dienNuocSuDungs = new List<DienNuocSuDung>();
+            dienNuocSuDungs.Add(new DienNuocSuDung("001", phongs[6].MaPhong,DateTime.Parse("2022,01,05"),131,17,"Chưa thanh toán"));
+            dienNuocSuDungs.Add(new DienNuocSuDung("002", phongs[1].MaPhong,DateTime.Parse("2022,01,05"),70,13,"Chưa thanh toán"));
+            dienNuocSuDungs.Add(new DienNuocSuDung("003", phongs[3].MaPhong,DateTime.Parse("2022,01,05"),68,14,"Chưa thanh toán"));
+            context.DienNuocSuDungs.AddRange(dienNuocSuDungs);
+
+            //Khởi tạo hợp đồng
+            IList<HopDongThuePhong> hopDongThuePhongs = new List<HopDongThuePhong>();
+            hopDongThuePhongs.Add(new HopDongThuePhong("0001", "11950527",DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0002", "20110031", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0003", "19941297", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0004", "30150404", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0005", "66937210", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0006", "49495277", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0007", "40219226", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0008", "96112364", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new HopDongThuePhong("0009", "20687487", DateTime.Now, DateTime.Now.AddYears(1)));
+            context.HopDongThuePhongs.AddRange(hopDongThuePhongs);
+
+
             context.SaveChanges();
             base.Seed(context);
         }

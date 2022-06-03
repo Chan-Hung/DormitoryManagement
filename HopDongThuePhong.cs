@@ -23,5 +23,16 @@ namespace DormitoryManagement
         public DateTime NgayKTHD { get; set; }
 
         public virtual SinhVien SinhVien { get; set; }
+        public HopDongThuePhong(string MaHD, string MaSV, DateTime NgayKHD, DateTime NgayKTHD)
+        {
+            this.MaHD = MaHD;
+            this.MaSV = MaSV;
+            this.NgayKHD = NgayKHD.Date;
+            this.NgayKTHD = NgayKTHD.Date;
+        }
+        public HopDongThuePhong()
+        {
+
+        }
     }
 }
