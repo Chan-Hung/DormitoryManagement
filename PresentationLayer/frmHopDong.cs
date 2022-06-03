@@ -48,6 +48,7 @@ namespace DormitoryManagement.PresentationLayer
         private void frmHopDong_Load(object sender, EventArgs e)
         {
             dgvHopDong.DataSource = bll.SelectHopDong();
+            dgvHopDong.Columns[4].Visible = false;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

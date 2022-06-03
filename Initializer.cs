@@ -153,6 +153,20 @@ namespace DormitoryManagement
             taiKhoans.Add(new TaiKhoan(nhanViens[48].MaNV, "emp2", "@emp2", loaiTaiKhoans[1].MaLoaiTaiKhoan));
             context.TaiKhoans.AddRange(taiKhoans);
 
+            //Khởi tạo danh sách sinh viên
+
+            IList<SinhVien> sinhViens = new List<SinhVien>();
+            sinhViens.Add(new SinhVien("11950527", "Phạm An Hạ", "F", "0768212654", truongs[4].MaTruong, phongs[6].MaPhong));
+            sinhViens.Add(new SinhVien("20110031", "Hoàng Minh Long", "M", "0798312687", truongs[9].MaTruong, phongs[1].MaPhong));
+            sinhViens.Add(new SinhVien("19941297", "Châu Thành Long", "M", "0955514031", truongs[8].MaTruong, phongs[3].MaPhong));
+            sinhViens.Add(new SinhVien("30150404", "Phạm Xuân Hương", "F", "0361334887", truongs[4].MaTruong, phongs[6].MaPhong));
+            sinhViens.Add(new SinhVien("66937210", "Trương Khắc Tuấn", "M", "0952135797", truongs[8].MaTruong, phongs[3].MaPhong));
+            sinhViens.Add(new SinhVien("49495277", "Thái Tuyết Hương", "F", "096125879 ", truongs[4].MaTruong, phongs[6].MaPhong));
+            sinhViens.Add(new SinhVien("40219226", "Lục Quang Đông", "M", "0304846879", truongs[8].MaTruong, phongs[3].MaPhong));
+            sinhViens.Add(new SinhVien("96112364", "Bành Thái Duy", "M", "0741324697", truongs[8].MaTruong, phongs[3].MaPhong));
+            sinhViens.Add(new SinhVien("20687487", "Võ Hoàng Long", "M", "0769978564", truongs[9].MaTruong, phongs[1].MaPhong));
+            context.SinhViens.AddRange(sinhViens);
+
             context.SaveChanges();
             base.Seed(context);
         }

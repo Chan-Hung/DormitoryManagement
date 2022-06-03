@@ -42,5 +42,14 @@ namespace DormitoryManagement
         public virtual Phong Phong { get; set; }
 
         public virtual Truong Truong { get; set; }
+        public SinhVien(string MaSV, string TenSV, string GioiTinh, string SDT, string MaTruong, string MaPhong)
+        {
+            this.MaSV = MaSV;
+            this.TenSV = TenSV;
+            this.GioiTinh = GioiTinh;
+            this.SDT = SDT;
+            this.MaTruong = MaTruong;
+            this.MaPhong = MaPhong;
+        }
     }
 }
