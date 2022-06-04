@@ -9,7 +9,6 @@ namespace DormitoryManagement.BusinessLogicLayer
     class BLL_Login
     {
         QuanLyKTXModel dbs = new QuanLyKTXModel();
-
         public bool AuthLogin(string username, string password)
         {
             bool flag = false;
@@ -18,6 +17,8 @@ namespace DormitoryManagement.BusinessLogicLayer
                           select e).FirstOrDefault();
             if (toAuth != null)
             {
+                Global.account_ID = toAuth.MaTaiKhoan;
+                Global.account_role = toAuth.MaLoaiTaiKhoan;
                 flag = true;
             }
             return flag;
