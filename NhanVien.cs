@@ -1,19 +1,13 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DormitoryManagement
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("NhanVien")]
     public partial class NhanVien
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NhanVien()
-        {
-            TaiKhoans = new HashSet<TaiKhoan>();
-        }
+        public NhanVien() => TaiKhoans = new HashSet<TaiKhoan>();
 
         [Key]
         [StringLength(5)]
@@ -38,7 +32,6 @@ namespace DormitoryManagement
 
         public virtual Toa Toa { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
         public NhanVien(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
         {

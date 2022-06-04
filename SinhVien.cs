@@ -1,15 +1,12 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DormitoryManagement
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("SinhVien")]
     public partial class SinhVien
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SinhVien()
         {
             HopDongThuePhongs = new HashSet<HopDongThuePhong>();
@@ -36,7 +33,6 @@ namespace DormitoryManagement
         [StringLength(3)]
         public string MaPhong { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HopDongThuePhong> HopDongThuePhongs { get; set; }
 
         public virtual Phong Phong { get; set; }

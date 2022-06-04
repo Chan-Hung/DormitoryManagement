@@ -1,15 +1,12 @@
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DormitoryManagement
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("LoaiPhong")]
     public partial class LoaiPhong
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LoaiPhong()
         {
             Phongs = new HashSet<Phong>();
@@ -25,7 +22,6 @@ namespace DormitoryManagement
 
         public int Gia { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Phong> Phongs { get; set; }
         public LoaiPhong(string MaLoaiPhong, string TenLoaiPhong, int Gia)
         {
