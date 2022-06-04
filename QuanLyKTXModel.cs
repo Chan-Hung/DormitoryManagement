@@ -1,7 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 
 namespace DormitoryManagement
 {
@@ -10,7 +7,7 @@ namespace DormitoryManagement
         public QuanLyKTXModel()
             : base("name=QuanLyKTXModel1")
         {
-            Database.SetInitializer<QuanLyKTXModel>(new Initializer());
+            Database.SetInitializer(new Initializer());
         }
 
         public virtual DbSet<DienNuocSuDung> DienNuocSuDungs { get; set; }

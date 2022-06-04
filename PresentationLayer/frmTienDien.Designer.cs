@@ -74,6 +74,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThanhToan.Text = "Thanh toán";
             this.btnThanhToan.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnThanhToan.UseVisualStyleBackColor = true;
+            this.btnThanhToan.Click += new System.EventHandler(this.btnThanhToan_Click);
             // 
             // cbTrangThai
             // 

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DormitoryManagement.PresentationLayer
@@ -115,6 +108,16 @@ namespace DormitoryManagement.PresentationLayer
                 txtSoDienTieuThu.Text = dgvSoDienTieuThu.Rows[vitri].Cells[3].Value.ToString();
                 txtSoNuocTieuThu.Text = dgvSoDienTieuThu.Rows[vitri].Cells[4].Value.ToString();
                 cbTrangThai.Text = dgvSoDienTieuThu.Rows[vitri].Cells[5].Value.ToString();
+            }
+        }
+
+        private void btnThanhToan_Click(object sender, EventArgs e)
+        {
+            string err = "";
+            if (bll.ThanhToan(ref err, txtMaHoaDon.Text))
+            {
+                MessageBox.Show("Phòng " + txtMaPhong.Text.ToString() + " thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnRefresh_Click(sender, e);
             }
         }
     }

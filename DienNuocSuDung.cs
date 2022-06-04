@@ -1,11 +1,9 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DormitoryManagement
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     [Table("DienNuocSuDung")]
     public partial class DienNuocSuDung
     {
@@ -28,5 +26,18 @@ namespace DormitoryManagement
         public string TrangThai { get; set; }
 
         public virtual Phong Phong { get; set; }
+        public DienNuocSuDung(string MaHoaDon, string MaPhong, DateTime NgayLap, int SoDienTieuThu, int SoNuocTieuThu, string TrangThai)
+        {
+            this.MaHoaDon = MaHoaDon;
+            this.MaPhong = MaPhong;
+            this.NgayLap = NgayLap;
+            this.SoDienTieuThu = SoDienTieuThu;
+            this.SoNuocTieuthu = SoNuocTieuThu;
+            this.TrangThai = TrangThai;
+        }
+
+        public DienNuocSuDung()
+        {
+        }
     }
 }

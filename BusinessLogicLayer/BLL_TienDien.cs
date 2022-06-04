@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 namespace DormitoryManagement.BusinessLogicLayer
 {
@@ -76,6 +74,25 @@ namespace DormitoryManagement.BusinessLogicLayer
         public List<DienNuocSuDung> SelectChuaThanhToan()
         {
             return dbs.DienNuocSuDungs.Where(x=>x.TrangThai=="Chưa thanh toán").ToList();
+        }
+        public bool ThanhToan(ref string err, string mahoadon)
+        {
+            bool flag = false;
+            try
+            {
+                var dnsd = dbs.DienNuocSuDungs.Find(mahoadon);
+                if (dnsd != null)
+                {
+                    dnsd.TrangThai = "Đã thanh toán";
+                    dbs.SaveChanges();
+                    flag = true;
+                }
+            }
+            catch (SqlException)
+            {
+                err = "Lỗi";
+            }
+            return flag;
         }
     }
 }
