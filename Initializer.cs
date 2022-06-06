@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace DormitoryManagement
 {
-    public class Initializer: DropCreateDatabaseIfModelChanges<DormitoryContext>
+    public class Initializer: DropCreateDatabaseAlways<DormitoryContext>
     {
         protected override void Seed(DormitoryContext context)
         {

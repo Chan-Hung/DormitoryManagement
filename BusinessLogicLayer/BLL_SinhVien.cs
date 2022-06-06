@@ -65,12 +65,20 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
         bool flag = false;
         var sinhvien = dbs.SinhViens.Find(maSV);
-        if (sinhvien != null)
-            {
+            try 
+            { 
+                if (sinhvien != null)
+                {
                 dbs.SinhViens.Remove(sinhvien);
                 dbs.SaveChanges();
                 flag = true;
+                }
             }
+            catch(SqlException)
+            {
+                err = "Lỗi";
+            }
+        
             return flag;
         }
         public List<SinhVien> searchMaSinhVien(string masv)
@@ -81,14 +89,36 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
             return dbs.SinhViens.Where(x => x.TenSV.Contains(tenSV)).ToList();
         }
-        public List<SinhVien> count1()
+        public int countSinhVien()
         {
-            return dbs.SinhViens.Select(x => x).ToList();
+            return dbs.SinhViens.Select(x => x).ToList().Count();
+        }
+
+        //Trigger chiaToaNamNu
+        public bool chiaToaNamNu(string gioiTinh, string maPhong)
+        {
+            //Tòa lẻ: Nữ
+            //Tòa chẵn: Nam
+            var Toa = dbs.Phongs.Join(dbs.Toas, p => p.MaPhong,
+                t => t.MaToa,
+                (p, t) => new { matoa = p.MaToa, maphong = p.MaPhong })
+                .Where(p => p.maphong == maPhong).FirstOrDefault();
+            int maToaInt = Convert.ToInt32(Toa.matoa);
+            if (maToaInt % 2 == 0 && gioiTinh == "F")
+                return false;
+            else if (maToaInt % 2 != 0 && gioiTinh == "M")
+                return false;
+            return true;
         }
         public Object searchTenToa(string toa)
         {
             
-            var ShowToa= dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { MaSV = sinhVien.MaSV, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.MaToa}).Where(toaa=>toaa.MaToa == toa).ToList();
+            var ShowToa= dbs.SinhViens.
+                Join(dbs.Phongs, 
+                sinhVien => sinhVien.MaPhong, 
+                phong => phong.MaPhong, 
+                (sinhVien, phong) => new { MaSV = sinhVien.MaSV, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.MaToa}).
+                Where(toaa=>toaa.MaToa == toa).ToList();
             return ShowToa;
         }
         public Object tienPhongCuaSV()

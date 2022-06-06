@@ -134,7 +134,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTien.Image = ((System.Drawing.Image)(resources.GetObject("btnTien.Image")));
             this.btnTien.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTien.Location = new System.Drawing.Point(867, 417);
+            this.btnTien.Location = new System.Drawing.Point(867, 498);
             this.btnTien.Margin = new System.Windows.Forms.Padding(4);
             this.btnTien.Name = "btnTien";
             this.btnTien.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -473,6 +473,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnLuu.Text = "Lưu";
             this.btnLuu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnHuy
             // 
@@ -490,6 +491,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnHuy.Text = "Hủy bỏ";
             this.btnHuy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // frmSinhVien
             // 
