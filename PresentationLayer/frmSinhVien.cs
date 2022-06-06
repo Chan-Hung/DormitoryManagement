@@ -147,37 +147,42 @@ namespace DormitoryManagement.PresentationLayer
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string err = "";
-            
+
             if (them)
             {
 
-                if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text) || !bll.chiaToaNamNu(cbGioitinh.Text, txtMaPhong.Text))
+                if (bll.chiaToaNamNu(cbGioitinh.Text, txtMaPhong.Text))
                 {
-                    if (err.Contains("PRIMARY KEY"))
-                    {
-                        MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ClearBox();
-                    }
+                    if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+                        if (err.Contains("PRIMARY KEY"))
+                        {
+                            MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ClearBox();
+                        }
+                        else
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
-                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Insert Hop Dong
+                        int tongSV = bll.countSinhVien();
+                        string maHD;
+                        if (tongSV < 10)
+                            maHD = $"000{tongSV}";
+                        else if (tongSV <= 99)
+                            maHD = $"00{tongSV}";
+                        else maHD = $"0{tongSV}";
+                        if (!bllhd.InsertHopDong(ref err, maHD, txtMasv.Text, DateTime.Now, DateTime.Now.AddYears(1)))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Sinh viên không được ở tòa khác giới", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                //Insert Hop Dong
-                int tongSV = bll.countSinhVien();
-                string maHD;
-                if (tongSV < 10)
-                    maHD = $"000{tongSV}";
-                else if (tongSV <= 99)
-                    maHD = $"00{tongSV}";
-                else maHD = $"0{tongSV}";
-                if (!bllhd.InsertHopDong(ref err, maHD, txtMasv.Text, DateTime.Now, DateTime.Now.AddYears(1)))
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 btnRefresh_Click(sender, e);
+
             }
             else
             {
@@ -192,7 +197,7 @@ namespace DormitoryManagement.PresentationLayer
                         MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
-                { 
+                {
                     btnRefresh_Click(sender, e);
 
                     MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace DormitoryManagement.BusinessLogicLayer
 {
@@ -99,11 +100,12 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
             //Tòa lẻ: Nữ
             //Tòa chẵn: Nam
-            var Toa = dbs.Phongs.Join(dbs.Toas, p => p.MaPhong,
+            var Toa = dbs.Phongs.Join(dbs.Toas, p => p.MaToa,
                 t => t.MaToa,
                 (p, t) => new { matoa = p.MaToa, maphong = p.MaPhong })
                 .Where(p => p.maphong == maPhong).FirstOrDefault();
-            int maToaInt = Convert.ToInt32(Toa.matoa);
+            string maToa = Regex.Match(Toa.matoa, @"\d+").Value;
+            int maToaInt = Int32.Parse(maToa);
             if (maToaInt % 2 == 0 && gioiTinh == "F")
                 return false;
             else if (maToaInt % 2 != 0 && gioiTinh == "M")
