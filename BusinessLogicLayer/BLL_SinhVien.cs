@@ -104,11 +104,10 @@ namespace DormitoryManagement.BusinessLogicLayer
                 t => t.MaToa,
                 (p, t) => new { matoa = p.MaToa, maphong = p.MaPhong })
                 .Where(p => p.maphong == maPhong).FirstOrDefault();
-            string maToa = Regex.Match(Toa.matoa, @"\d+").Value;
-            int maToaInt = Int32.Parse(maToa);
-            if (maToaInt % 2 == 0 && gioiTinh == "F")
+            int maToa = Int32.Parse(Regex.Match(Toa.matoa, @"\d+").Value);
+            if (maToa % 2 == 0 && gioiTinh == "F")
                 return false;
-            else if (maToaInt % 2 != 0 && gioiTinh == "M")
+            else if (maToa % 2 != 0 && gioiTinh == "M")
                 return false;
             return true;
         }
