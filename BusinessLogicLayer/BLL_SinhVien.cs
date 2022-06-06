@@ -103,8 +103,9 @@ namespace DormitoryManagement.BusinessLogicLayer
             var Toa = dbs.Phongs.Join(dbs.Toas, p => p.MaToa,
                 t => t.MaToa,
                 (p, t) => new { matoa = p.MaToa, maphong = p.MaPhong })
-                .Where(p => p.maphong == maPhong).FirstOrDefault();
-            int maToa = Int32.Parse(Regex.Match(Toa.matoa, @"\d+").Value);
+                .Where(p => p.maphong == maPhong)
+                .FirstOrDefault();
+            int maToa = int.Parse(Regex.Match(Toa.matoa, @"\d+").Value);
             if (maToa % 2 == 0 && gioiTinh == "F")
                 return false;
             else if (maToa % 2 != 0 && gioiTinh == "M")
