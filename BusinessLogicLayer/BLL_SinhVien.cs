@@ -7,7 +7,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_SinhVien
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
 
         public List<SinhVien> SelectSinhVien() 
         { 
@@ -80,6 +80,10 @@ namespace DormitoryManagement.BusinessLogicLayer
         public List<SinhVien> searchTenSinhVien(string tenSV)
         {
             return dbs.SinhViens.Where(x => x.TenSV.Contains(tenSV)).ToList();
+        }
+        public List<SinhVien> count1()
+        {
+            return dbs.SinhViens.Select(x => x).ToList();
         }
         public Object searchTenToa(string toa)
         {

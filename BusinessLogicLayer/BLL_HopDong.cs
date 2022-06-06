@@ -6,12 +6,35 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_HopDong
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
 
         public List<HopDongThuePhong> SelectHopDong()
         {
             return dbs.HopDongThuePhongs.ToList();
         }
+
+        public bool InsertHopDong(ref string err, string mahd, string masv, DateTime ngaykhd, DateTime ngaykthd)
+        {
+            bool flag = false;
+            try
+            {
+                HopDongThuePhong hopDong = new HopDongThuePhong();
+
+                hopDong.MaHD = mahd;
+                hopDong.MaSV = masv;
+                hopDong.NgayKHD = ngaykhd;
+                hopDong.NgayKTHD = ngaykthd;
+                dbs.HopDongThuePhongs.Add(hopDong);
+                dbs.SaveChanges();
+                flag = true;
+            }
+            catch (SqlException)
+            {
+                err = "Loi rui!!!";
+            }
+            return flag;
+        }
+
         public bool UpdateHopDong(ref string err, string mahd, string masv, DateTime ngaykhd, DateTime ngaykthd)
         {
             bool flag = false;

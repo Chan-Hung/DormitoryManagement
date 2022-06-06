@@ -2,9 +2,9 @@
 
 namespace DormitoryManagement
 {
-    public partial class QuanLyKTXModel : DbContext
+    public partial class DormitoryContext : DbContext
     {
-        public QuanLyKTXModel()
+        public DormitoryContext()
             : base("name=QuanLyKTXModel1")
         {
             Database.SetInitializer(new Initializer());

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace DormitoryManagement.PresentationLayer
@@ -6,6 +7,8 @@ namespace DormitoryManagement.PresentationLayer
     public partial class frmSinhVien : Form
     {
         BusinessLogicLayer.BLL_SinhVien bll = new BusinessLogicLayer.BLL_SinhVien();
+
+        BusinessLogicLayer.BLL_HopDong bllhd = new BusinessLogicLayer.BLL_HopDong();
         public frmSinhVien()
         {
             InitializeComponent();
@@ -13,6 +16,8 @@ namespace DormitoryManagement.PresentationLayer
 
         private void frmSinhVien_Load(object sender, EventArgs e)
         {
+
+
             dgvSinhvien.DataSource = bll.SelectSinhVien();
             dgvSinhvien.Columns[6].Visible = false;
             dgvSinhvien.Columns[7].Visible = false;
@@ -55,7 +60,7 @@ namespace DormitoryManagement.PresentationLayer
         private void btnThem_Click(object sender, EventArgs e)
         {
             string err = "";
-            if(!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+            if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
             {
                 if (err.Contains("PRIMARY KEY"))
                 {
@@ -67,9 +72,15 @@ namespace DormitoryManagement.PresentationLayer
             }
             else
             {
-                btnRefresh_Click(sender, e);
+
+                
                 MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            List<SinhVien> sv = new List<SinhVien>();
+            int haha = sv.Count;
+            if (!bllhd.InsertHopDong(ref err, (haha + 1).ToString(), txtMasv.Text, DateTime.Now, DateTime.Now))
+                MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            btnRefresh_Click(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -87,7 +98,11 @@ namespace DormitoryManagement.PresentationLayer
             }
             else
             {
+
+                 
+                
                 btnRefresh_Click(sender, e);
+                
                 MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

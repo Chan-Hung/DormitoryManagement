@@ -4,9 +4,9 @@ using System.Data.Entity;
 
 namespace DormitoryManagement
 {
-    public class Initializer:DropCreateDatabaseIfModelChanges<QuanLyKTXModel>
+    public class Initializer: DropCreateDatabaseIfModelChanges<DormitoryContext>
     {
-        protected override void Seed(QuanLyKTXModel context)
+        protected override void Seed(DormitoryContext context)
         {
             
             //khoi tao truong

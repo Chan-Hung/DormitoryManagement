@@ -6,7 +6,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_Toa
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
         public List<Toa> SelectToa()
         {
             return dbs.Toas.ToList();

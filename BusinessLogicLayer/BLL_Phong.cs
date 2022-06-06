@@ -8,7 +8,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     public class BLL_Phong
     {
         //DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
         public List<Phong> SelectPhong()
         {
             return dbs.Phongs.ToList();

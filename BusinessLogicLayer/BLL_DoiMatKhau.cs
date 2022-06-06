@@ -2,7 +2,7 @@
 {
     class BLL_DoiMatKhau
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
         public bool ChangePassword(ref string err, string oldPassword)
         {
             bool flag = false;
