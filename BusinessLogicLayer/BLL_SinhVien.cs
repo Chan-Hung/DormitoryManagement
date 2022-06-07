@@ -103,7 +103,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             return false;
         }
 
-        //Trigger chiaToaNamNu
+        //Kiểm tra sinh viên nam/nữ phải ở theo đúng tòa nam/nữ
         public bool chiaToaNamNu(string gioiTinh, string maPhong)
         {
             //Tòa lẻ: Nữ
@@ -120,6 +120,9 @@ namespace DormitoryManagement.BusinessLogicLayer
                 return false;
             return true;
         }
+
+        //
+
         public Object searchTenToa(string toa)
         {
             
