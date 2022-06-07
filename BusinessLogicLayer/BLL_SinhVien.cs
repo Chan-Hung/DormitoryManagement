@@ -121,14 +121,15 @@ namespace DormitoryManagement.BusinessLogicLayer
             return true;
         }
 
-        //Kiểm tra full phòng và đổi trạng thái thành 'hết
-        public bool checkFullPhong(string masv, string maPhong)
+        //Đổi trạng thái khi phòng đủ SV
+        public void doiTrangThaiPhong(string masv, string maPhong)
         {
+            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             //Tìm mã loại phòng của phòng đó
             var Phong = dbs.Phongs.Join(dbs.LoaiPhongs,
                 p => p.MaLoaiPhong,
                 lp => lp.MaLoaiPhong,
-                (p, lp) => new { maphong = p.MaPhong, maloaiphong = p.MaLoaiPhong})
+                (p, lp) => new { maphong = p.MaPhong, maloaiphong = p.MaLoaiPhong, trangthai = p.TrangThai})
                 .Where(p => p.maphong == maPhong)
                 .FirstOrDefault();
 
@@ -145,12 +146,24 @@ namespace DormitoryManagement.BusinessLogicLayer
             //Ký hiệu chữ số ở mã loại phòng là sức chứa của phòng
             //VD: ML2 là phòng máy lạnh cho 2 người
             int maLoaiPhong = int.Parse(Regex.Match(Phong.maloaiphong, @"\d+").Value);
-            
-            //Nếu sức chứa = số SV trong phòng -> phòng đầy
+
+            //Nếu sức chứa = số SV trong phòng -> phòng đầy 
+            //-> Sau khi thêm 1 SV -> phòng đầy
             if (maLoaiPhong == tongSVtrongphong)
-                return false;
+            {
+                phong.TrangThai = "Hết";
+                dbs.SaveChanges();
+            }
+        }
+
+        //Kiểm tra phòng đầy hay chưa
+        public bool checkFullPhong( string maPhong)
+        {
+            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            if (phong.TrangThai == "Hết") return false;
             return true;
         }
+
 
         public Object searchTenToa(string toa)
         {
