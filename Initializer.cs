@@ -153,7 +153,7 @@ namespace DormitoryManagement
             //Khởi tạo danh sách sinh viên
 
             IList<SinhVien> sinhViens = new List<SinhVien>();
-            sinhViens.Add(new SinhVien("11950527", "Phạm An Hạ", "F", "0768212654", truongs[4].MaTruong, phongs[6].MaPhong));
+            sinhViens.Add(new SinhVien("11950527", "Phạm An Hạ", "F", "0768212654", truongs[4].MaTruong, phongs[2].MaPhong));
             sinhViens.Add(new SinhVien("20110031", "Hoàng Minh Long", "M", "0798312687", truongs[9].MaTruong, phongs[1].MaPhong));
             sinhViens.Add(new SinhVien("19941297", "Châu Thành Long", "M", "0955514031", truongs[8].MaTruong, phongs[3].MaPhong));
             sinhViens.Add(new SinhVien("30150404", "Phạm Xuân Hương", "F", "0361334887", truongs[4].MaTruong, phongs[6].MaPhong));

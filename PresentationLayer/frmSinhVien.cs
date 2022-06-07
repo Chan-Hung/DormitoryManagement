@@ -182,6 +182,8 @@ namespace DormitoryManagement.PresentationLayer
 
             //Thông báo lỗi
             string err = "";
+            //Kiểm tra trạng thái phòng
+            bll.doiTrangThaiPhong(txtMasv.Text, txtMaPhong.Text);
 
             //Kiểm tra full phòng
             if (!bll.checkFullPhong(txtMaPhong.Text))
@@ -189,6 +191,7 @@ namespace DormitoryManagement.PresentationLayer
                 MessageBox.Show("Phòng đã đầy, vui lòng chọn phòng khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
 
             //Kiểm tra sinh viên nam/nữ phải ở tòa danh cho nam/nữ
             if (!bll.checkChiaToaTheoGioiTinh(cbGioitinh.Text, txtMaPhong.Text))
@@ -214,9 +217,9 @@ namespace DormitoryManagement.PresentationLayer
                             MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
                         {
+                        
                             MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             //Đổi trạng thái phòng
-                            bll.doiTrangThaiPhong(txtMasv.Text, txtMaPhong.Text);
 
                             //Insert hợp đồng vào table HopDong
                             int tongSV = bll.countSinhVien();
@@ -238,6 +241,7 @@ namespace DormitoryManagement.PresentationLayer
                         else
                             MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    bll.doiTrangThaiPhong(txtMasv.Text, txtMaPhong.Text);
                     btnRefresh_Click(sender, e);
                     transaction.Commit();
                 }
@@ -255,7 +259,7 @@ namespace DormitoryManagement.PresentationLayer
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
 
-            //Bật txtMaNV
+            //Bật txtMaSv
             txtMasv.Enabled = true;
 
             //Tắt các nút Lưu/ Hủy
