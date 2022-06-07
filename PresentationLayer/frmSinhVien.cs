@@ -30,6 +30,9 @@ namespace DormitoryManagement.PresentationLayer
             btnThem.Enabled = true;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+
+            //Bật txtMaSV
+            txtMasv.Enabled = true;
         }
 
         private void dgvSinhvien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -236,6 +239,9 @@ namespace DormitoryManagement.PresentationLayer
             btnThem.Enabled = true;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+
+            //Bật txtMaSv
+            txtMasv.Enabled = true;
 
             //Tắt các nút Lưu/ Hủy
             btnLuu.Enabled = false;
