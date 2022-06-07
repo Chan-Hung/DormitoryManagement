@@ -10,7 +10,7 @@ namespace DormitoryManagement.PresentationLayer
         BusinessLogicLayer.BLL_SinhVien bll = new BusinessLogicLayer.BLL_SinhVien();
 
         BusinessLogicLayer.BLL_HopDong bllhd = new BusinessLogicLayer.BLL_HopDong();
-
+        DormitoryContext dbs = new DormitoryContext();
         bool them = true;
         public frmSinhVien()
         {
@@ -183,51 +183,68 @@ namespace DormitoryManagement.PresentationLayer
             //Thông báo lỗi
             string err = "";
 
-            //Kiểm tra mã sinh viên không được trùng
-            if (!bll.checkMaSinhVien(txtMasv.Text))
+            //Kiểm tra full phòng
+            if (!bll.checkFullPhong(txtMaPhong.Text))
             {
-                MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phòng đã đầy, vui lòng chọn phòng khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             //Kiểm tra sinh viên nam/nữ phải ở tòa danh cho nam/nữ
-            if (!bll.chiaToaNamNu(cbGioitinh.Text, txtMaPhong.Text))
+            if (!bll.checkChiaToaTheoGioiTinh(cbGioitinh.Text, txtMaPhong.Text))
             {
                 MessageBox.Show("Sinh viên không được ở tòa khác giới", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             //Nút thêm được chọn (thao tác Insert)
-            if (them)
-            {
-                if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                {
-                    MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    //Insert hợp đồng vào table HopDong
-                    int tongSV = bll.countSinhVien();
-                    string maHD;
-                    if (tongSV < 10)
-                        maHD = $"000{tongSV}";
-                    else if (tongSV <= 99)
-                        maHD = $"00{tongSV}";
-                    else maHD = $"0{tongSV}";
-                    if (!bllhd.InsertHopDong(ref err, maHD, txtMasv.Text, DateTime.Now, DateTime.Now.AddYears(1)))
-                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            using (var transaction = dbs.Database.BeginTransaction())
+            {
+                try
+                {
+                    if (them)
+                    {
+                        //Kiểm tra mã sinh viên không được trùng khi thêm
+                        if (!bll.checkMaSinhVien(txtMasv.Text))
+                        {
+                            MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //Đổi trạng thái phòng
+                            bll.doiTrangThaiPhong(txtMasv.Text, txtMaPhong.Text);
+
+                            //Insert hợp đồng vào table HopDong
+                            int tongSV = bll.countSinhVien();
+                            string maHD;
+                            if (tongSV < 10)
+                                maHD = $"000{tongSV}";
+                            else if (tongSV <= 99)
+                                maHD = $"00{tongSV}";
+                            else maHD = $"0{tongSV}";
+                            if (!bllhd.InsertHopDong(ref err, maHD, txtMasv.Text, DateTime.Now, DateTime.Now.AddYears(1)))
+                                MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                    //Nút sửa được chọn (thao tác Update)
+                    else
+                    {
+                        if (!bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                     btnRefresh_Click(sender, e);
+                    transaction.Commit();
                 }
-            }
-
-            //Nút sửa được chọn (thao tác Update)
-            else
-            {
-                if (!bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnRefresh_Click(sender, e);
+                    transaction.Rollback();
                 }
             }
 
