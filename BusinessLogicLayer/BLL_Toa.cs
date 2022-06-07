@@ -53,5 +53,11 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
+        public bool checkMaToa(string matoa)
+        {
+            var toa = dbs.Toas.Where(x => x.MaToa == matoa).FirstOrDefault();
+            if (toa == null) return true;
+            return false;
+        }
     }
 }

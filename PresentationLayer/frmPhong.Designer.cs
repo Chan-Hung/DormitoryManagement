@@ -47,6 +47,8 @@ namespace DormitoryManagement.PresentationLayer
             this.maphong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSua = new System.Windows.Forms.Button();
             this.dgvPhong = new System.Windows.Forms.DataGridView();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhong)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@ namespace DormitoryManagement.PresentationLayer
             // 
             this.btnPhongTrong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnPhongTrong.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPhongTrong.Location = new System.Drawing.Point(752, 98);
+            this.btnPhongTrong.Location = new System.Drawing.Point(174, 475);
             this.btnPhongTrong.Name = "btnPhongTrong";
             this.btnPhongTrong.Size = new System.Drawing.Size(134, 46);
             this.btnPhongTrong.TabIndex = 79;
@@ -247,15 +249,53 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvPhong.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPhong.Name = "dgvPhong";
             this.dgvPhong.RowHeadersWidth = 51;
-            this.dgvPhong.Size = new System.Drawing.Size(627, 383);
+            this.dgvPhong.Size = new System.Drawing.Size(626, 378);
             this.dgvPhong.TabIndex = 71;
             this.dgvPhong.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhong_CellClick);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLuu.FlatAppearance.BorderSize = 0;
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLuu.Location = new System.Drawing.Point(665, 69);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnLuu.Size = new System.Drawing.Size(80, 74);
+            this.btnLuu.TabIndex = 123;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuy.FlatAppearance.BorderSize = 0;
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHuy.Location = new System.Drawing.Point(767, 65);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnHuy.Size = new System.Drawing.Size(80, 74);
+            this.btnHuy.TabIndex = 123;
+            this.btnHuy.Text = "Hủy bỏ";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
             // frmPhong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 603);
+            this.ClientSize = new System.Drawing.Size(978, 598);
+            this.Controls.Add(this.btnHuy);
+            this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnPhongTrong);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.cbTrangThai);
@@ -297,5 +337,7 @@ namespace DormitoryManagement.PresentationLayer
         private System.Windows.Forms.DataGridViewTextBoxColumn maphong;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.DataGridView dgvPhong;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

@@ -13,15 +13,15 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
             return dbs.Phongs.ToList();
         }
-        public bool InsertPhong(ref string err, string maphong, string matoa, string maloaiphong, string trangthai)
+        public bool InsertPhong(ref string err, string maphong, string maloaiphong, string matoa, string trangthai)
         {
             bool flag = false;
             try
             {
                 Phong phong = new Phong();
                 phong.MaPhong = maphong;
-                phong.MaToa = matoa;
                 phong.MaLoaiPhong = maloaiphong;
+                phong.MaToa = matoa;
                 phong.TrangThai = trangthai;
                 dbs.Phongs.Add(phong);
                 dbs.SaveChanges();
@@ -34,7 +34,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
-        public bool UpdatePhong(ref string err, string maphong, string matoa, string maloaiphong, string trangthai)
+        public bool UpdatePhong(ref string err, string maphong, string maloaiphong, string matoa, string trangthai)
         {
             bool flag = false;
             try
@@ -42,8 +42,8 @@ namespace DormitoryManagement.BusinessLogicLayer
                 var phong = dbs.Phongs.Find(maphong);
                 if (phong!=null){
                     phong.MaPhong = maphong;
-                    phong.MaToa = matoa;
                     phong.MaLoaiPhong = maloaiphong;
+                    phong.MaToa = matoa;
                     phong.TrangThai = trangthai;
                     dbs.SaveChanges();
                     flag = true;
@@ -57,7 +57,13 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public List<Phong> ShowPhongTrong()
         {
-            return dbs.Phongs.Where(x=>x.TrangThai=="Còn").ToList();
+            return dbs.Phongs.Where(x=>x.TrangThai == "Còn").ToList();
+        }
+        public bool checkMaPhong(string maPhong)
+        {
+            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            if (phong != null) return false;
+            return true;
         }
     }
 }

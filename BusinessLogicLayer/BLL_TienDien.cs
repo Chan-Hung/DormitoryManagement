@@ -94,5 +94,12 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
+        //Kiểm tra không trùng khóa chính (Mã hóa đơn)
+        public bool checkMaHoaDon(string mahoadon)
+        {
+            var hoadon = dbs.DienNuocSuDungs.Where(x => x.MaHoaDon == mahoadon).FirstOrDefault();
+            if (hoadon == null) return true;
+            return false;
+        }
     }
 }

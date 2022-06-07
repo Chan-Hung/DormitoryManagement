@@ -6,6 +6,8 @@ namespace DormitoryManagement.PresentationLayer
     public partial class frmPhong : Form
     {
         BusinessLogicLayer.BLL_Phong bll = new BusinessLogicLayer.BLL_Phong();
+        DormitoryContext dbs = new DormitoryContext();
+        bool them = true;
         public frmPhong()
         {
             InitializeComponent();
@@ -19,6 +21,15 @@ namespace DormitoryManagement.PresentationLayer
             dgvPhong.Columns[5].Visible = false;
             dgvPhong.Columns[6].Visible = false;
             dgvPhong.Columns[7].Visible = false;
+
+            btnLuu.Enabled = false;
+            btnHuy.Enabled = false;
+
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+
+            //Bật txtMaPhong
+            txtMaPhong.Enabled = true;
         }
 
         private void dgvPhong_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -48,49 +59,108 @@ namespace DormitoryManagement.PresentationLayer
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string err = "";
-            if (!bll.InsertPhong(ref err, txtMaPhong.Text, txtMaToa.Text, cbMaLoaiPhong.Text, cbTrangThai.Text))
-            {
-                if (err.Contains("PRIMARY KEY"))
-                {
-                    MessageBox.Show("Mã phòng không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ClearBox();
-                }
-                else
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            them = true;
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
 
-            else
-            {
-                btnRefresh_Click(sender, e);
-                MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+
+            txtMaPhong.Focus();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string err = "";
-            if (!bll.UpdatePhong(ref err, txtMaPhong.Text, txtMaToa.Text, cbMaLoaiPhong.Text, cbTrangThai.Text))
-            {
-                if (err.Contains("PRIMARY KEY"))
-                {
-                    MessageBox.Show("Mã phòng không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ClearBox();
-                }
-                else
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //Tắt cờ them (thao tác Update)
+            them = false;
 
-            else
-            {
-                btnRefresh_Click(sender, e);
-                MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //Bật nút Lưu/ Hủy
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+
+            //Tắt nút Thêm/ Sửa/ Xóa
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+
+            //Vô hiệu hóa trường textbox Mã phòng
+            txtMaPhong.Enabled = false;
+            cbMaLoaiPhong.Focus();
         }
 
         private void btnPhongTrong_Click(object sender, EventArgs e)
         {
             dgvPhong.DataSource = bll.ShowPhongTrong();
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            //Bật các nút Thêm/ Sửa/ Xóa
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+
+            //Bật txtMaPhong
+            txtMaPhong.Enabled = true;
+
+            //Tắt các nút Lưu/ Hủy
+            btnLuu.Enabled = false;
+            btnHuy.Enabled = false;
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra nhập đủ các trường not null
+            if (txtMaPhong.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã phòng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (cbMaLoaiPhong.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn mã loại phòng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (txtMaToa.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã tòa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Thông báo lỗi
+            string err = "";
+
+            using (var transaction = dbs.Database.BeginTransaction())
+            {
+                try
+                {
+                    if (them)
+                    {
+                        //Kiểm tra phòng có tồn tại hay chưa
+                        if (!bll.checkMaPhong(txtMaPhong.Text))
+                        {
+                            MessageBox.Show("Phòng đã tồn tại, vui lòng nhập mã phòng khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else if (!bll.InsertPhong(ref err, txtMaPhong.Text, cbMaLoaiPhong.Text, txtMaToa.Text, cbTrangThai.Text))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //Nút sửa được chọn (thao tác Update)
+                    else
+                    {
+                        if (!bll.UpdatePhong(ref err, txtMaPhong.Text, cbMaLoaiPhong.Text, txtMaToa.Text, cbTrangThai.Text))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    btnRefresh_Click(sender, e);
+                    transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    transaction.Rollback();
+                }
+            }
         }
     }
 }

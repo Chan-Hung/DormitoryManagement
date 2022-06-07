@@ -6,6 +6,7 @@ namespace DormitoryManagement.PresentationLayer
     public partial class frmNhanVien : Form
     {
         BusinessLogicLayer.BLL_NhanVien bll = new BusinessLogicLayer.BLL_NhanVien();
+        DormitoryContext dbs = new DormitoryContext();
         bool them = true;
         public frmNhanVien()
         {
@@ -179,39 +180,44 @@ namespace DormitoryManagement.PresentationLayer
             }
             //Thông báo lỗi
             string err = "";
-
-            //Nút thêm được chọn (thao tác Insert)
-            if (them)
+            using (var transaction = dbs.Database.BeginTransaction())
             {
-                //Kiểm tra mã nhân viên đúng định dạng
-                if(!bll.checkDinhDangMaNV(txtMaNV.Text, cbMaLoaiNV.Text))
+                try
                 {
-                    MessageBox.Show("Mã nhân viên hoặc mã loại nhân viên không đúng định dạng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                //Kiểm tra mã nhân viên không được trùng
-                else if (!bll.checkMaNhanVien(txtMaNV.Text))
-                {
-                    MessageBox.Show("Mã nhân viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                else if (!bll.InsertNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, int.Parse(txtLuong.Text)))
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
-                {
-                    MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Nút thêm được chọn (thao tác Insert)
+                    if (them)
+                    {
+                        //Kiểm tra mã nhân viên đúng định dạng
+                        if (!bll.checkDinhDangMaNV(txtMaNV.Text, cbMaLoaiNV.Text))
+                        {
+                            MessageBox.Show("Mã nhân viên hoặc mã loại nhân viên không đúng định dạng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        //Kiểm tra mã nhân viên không được trùng
+                        else if (!bll.checkMaNhanVien(txtMaNV.Text))
+                        {
+                            MessageBox.Show("Mã nhân viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else if (!bll.InsertNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, int.Parse(txtLuong.Text)))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    //Nút sửa được chọn (thao tác Update)
+                    else
+                    {
+                        if (!bll.UpdateNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, int.Parse(txtLuong.Text)))
+                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                            MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     btnRefresh_Click(sender, e);
+                    transaction.Commit();
                 }
-            }
-            //Nút sửa được chọn (thao tác Update)
-            else
-            {
-                if (!bll.UpdateNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, int.Parse(txtLuong.Text)))
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    btnRefresh_Click(sender, e);
+                    transaction.Rollback();
                 }
             }
         }

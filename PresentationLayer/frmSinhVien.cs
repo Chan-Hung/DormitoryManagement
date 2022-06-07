@@ -95,7 +95,7 @@ namespace DormitoryManagement.PresentationLayer
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
 
-            //Vô hiệu hóa trườn textbox Mã sinh viên
+            //Vô hiệu hóa trườn textbox Mã nhân viên
             txtMasv.Enabled = false;
             txtTensv.Focus();
         }
@@ -166,7 +166,7 @@ namespace DormitoryManagement.PresentationLayer
             }
             else if (cbGioitinh.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập giới tính", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn giới tính", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             else if (txtMaTruong.Text == "")
@@ -230,15 +230,14 @@ namespace DormitoryManagement.PresentationLayer
                                 MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-
                     //Nút sửa được chọn (thao tác Update)
                     else
                     {
                         if (!bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
                             MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        else
+                            MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
                     btnRefresh_Click(sender, e);
                     transaction.Commit();
                 }
@@ -247,7 +246,6 @@ namespace DormitoryManagement.PresentationLayer
                     transaction.Rollback();
                 }
             }
-
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -257,7 +255,7 @@ namespace DormitoryManagement.PresentationLayer
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
 
-            //Bật txtMaSv
+            //Bật txtMaNV
             txtMasv.Enabled = true;
 
             //Tắt các nút Lưu/ Hủy

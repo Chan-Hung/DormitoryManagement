@@ -55,6 +55,8 @@ namespace DormitoryManagement.PresentationLayer
             this.lblMaPhong = new System.Windows.Forms.Label();
             this.lblMaHoaDon = new System.Windows.Forms.Label();
             this.txtSoDienTieuThu = new System.Windows.Forms.TextBox();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSoDienTieuThu)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +67,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThanhToan.FlatAppearance.BorderSize = 0;
             this.btnThanhToan.Image = ((System.Drawing.Image)(resources.GetObject("btnThanhToan.Image")));
             this.btnThanhToan.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThanhToan.Location = new System.Drawing.Point(220, 108);
+            this.btnThanhToan.Location = new System.Drawing.Point(159, 108);
             this.btnThanhToan.Margin = new System.Windows.Forms.Padding(4);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -125,7 +127,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefresh.Location = new System.Drawing.Point(697, 108);
+            this.btnRefresh.Location = new System.Drawing.Point(595, 108);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -143,7 +145,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnXoa.FlatAppearance.BorderSize = 0;
             this.btnXoa.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.Image")));
             this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnXoa.Location = new System.Drawing.Point(584, 108);
+            this.btnXoa.Location = new System.Drawing.Point(496, 108);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -161,7 +163,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnSua.FlatAppearance.BorderSize = 0;
             this.btnSua.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.Image")));
             this.btnSua.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSua.Location = new System.Drawing.Point(468, 108);
+            this.btnSua.Location = new System.Drawing.Point(389, 108);
             this.btnSua.Margin = new System.Windows.Forms.Padding(4);
             this.btnSua.Name = "btnSua";
             this.btnSua.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -179,7 +181,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnThem.FlatAppearance.BorderSize = 0;
             this.btnThem.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.Image")));
             this.btnThem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnThem.Location = new System.Drawing.Point(345, 108);
+            this.btnThem.Location = new System.Drawing.Point(281, 108);
             this.btnThem.Margin = new System.Windows.Forms.Padding(4);
             this.btnThem.Name = "btnThem";
             this.btnThem.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -210,7 +212,7 @@ namespace DormitoryManagement.PresentationLayer
             // 
             this.btnPhongChuaThanhToan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnPhongChuaThanhToan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPhongChuaThanhToan.Location = new System.Drawing.Point(795, 124);
+            this.btnPhongChuaThanhToan.Location = new System.Drawing.Point(187, 518);
             this.btnPhongChuaThanhToan.Name = "btnPhongChuaThanhToan";
             this.btnPhongChuaThanhToan.Size = new System.Drawing.Size(132, 43);
             this.btnPhongChuaThanhToan.TabIndex = 120;
@@ -259,7 +261,7 @@ namespace DormitoryManagement.PresentationLayer
             this.dgvSoDienTieuThu.Margin = new System.Windows.Forms.Padding(4);
             this.dgvSoDienTieuThu.Name = "dgvSoDienTieuThu";
             this.dgvSoDienTieuThu.RowHeadersWidth = 51;
-            this.dgvSoDienTieuThu.Size = new System.Drawing.Size(627, 305);
+            this.dgvSoDienTieuThu.Size = new System.Drawing.Size(624, 305);
             this.dgvSoDienTieuThu.TabIndex = 111;
             this.dgvSoDienTieuThu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSoDienTieuThu_CellClick);
             // 
@@ -349,11 +351,49 @@ namespace DormitoryManagement.PresentationLayer
             this.txtSoDienTieuThu.TabIndex = 105;
             this.txtSoDienTieuThu.Text = "0";
             // 
+            // btnLuu
+            // 
+            this.btnLuu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLuu.FlatAppearance.BorderSize = 0;
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLuu.Location = new System.Drawing.Point(699, 108);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnLuu.Size = new System.Drawing.Size(80, 74);
+            this.btnLuu.TabIndex = 123;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuy.FlatAppearance.BorderSize = 0;
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHuy.Location = new System.Drawing.Point(797, 108);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnHuy.Size = new System.Drawing.Size(80, 74);
+            this.btnHuy.TabIndex = 123;
+            this.btnHuy.Text = "Hủy bỏ";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
             // frmTienDien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 603);
+            this.ClientSize = new System.Drawing.Size(976, 603);
+            this.Controls.Add(this.btnHuy);
+            this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnThanhToan);
             this.Controls.Add(this.cbTrangThai);
             this.Controls.Add(this.label1);
@@ -409,5 +449,7 @@ namespace DormitoryManagement.PresentationLayer
         private System.Windows.Forms.Label lblMaPhong;
         private System.Windows.Forms.Label lblMaHoaDon;
         private System.Windows.Forms.TextBox txtSoDienTieuThu;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnHuy;
     }
 }
