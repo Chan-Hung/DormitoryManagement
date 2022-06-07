@@ -10,8 +10,8 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     class BLL_DoiMatKhau
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
-        public bool ChangePassword(ref string err, int id, string oldPassword, string newPassword, string confirmation)
+        DormitoryContext dbs = new DormitoryContext();
+        public bool ChangePassword(ref string err, string oldPassword)
         {
             bool flag = false;
             try

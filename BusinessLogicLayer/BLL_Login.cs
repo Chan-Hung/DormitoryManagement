@@ -4,7 +4,8 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     class BLL_Login
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
+
         public bool AuthLogin(string username, string password)
         {
             bool flag = false;

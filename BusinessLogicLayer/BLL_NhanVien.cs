@@ -6,7 +6,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_NhanVien
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
 
         public List<NhanVien> SelectNhanVien() { return dbs.NhanViens.ToList(); }
         public bool InsertNhanVien(ref string err, string maNV, string maLoaiNV, string maToa, string tenNV, string SDT, int Luong)

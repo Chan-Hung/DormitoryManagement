@@ -7,7 +7,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 
     public class BLL_TienDien
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
         public List<DienNuocSuDung> SelectTienDien()
         {
             return dbs.DienNuocSuDungs.ToList();

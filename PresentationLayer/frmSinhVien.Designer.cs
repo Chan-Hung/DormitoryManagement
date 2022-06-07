@@ -62,6 +62,8 @@ namespace DormitoryManagement.PresentationLayer
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblMaSV = new System.Windows.Forms.Label();
+            this.btnLuu = new System.Windows.Forms.Button();
+            this.btnHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSinhvien)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +134,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTien.Image = ((System.Drawing.Image)(resources.GetObject("btnTien.Image")));
             this.btnTien.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTien.Location = new System.Drawing.Point(867, 255);
+            this.btnTien.Location = new System.Drawing.Point(867, 498);
             this.btnTien.Margin = new System.Windows.Forms.Padding(4);
             this.btnTien.Name = "btnTien";
             this.btnTien.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
@@ -455,11 +457,49 @@ namespace DormitoryManagement.PresentationLayer
             this.lblMaSV.Text = "Mã sinh viên";
             this.lblMaSV.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnLuu
+            // 
+            this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLuu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLuu.FlatAppearance.BorderSize = 0;
+            this.btnLuu.Image = ((System.Drawing.Image)(resources.GetObject("btnLuu.Image")));
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLuu.Location = new System.Drawing.Point(867, 255);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnLuu.Size = new System.Drawing.Size(80, 74);
+            this.btnLuu.TabIndex = 121;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btnHuy
+            // 
+            this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuy.FlatAppearance.BorderSize = 0;
+            this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
+            this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnHuy.Location = new System.Drawing.Point(867, 335);
+            this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
+            this.btnHuy.Name = "btnHuy";
+            this.btnHuy.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            this.btnHuy.Size = new System.Drawing.Size(80, 74);
+            this.btnHuy.TabIndex = 122;
+            this.btnHuy.Text = "Hủy bỏ";
+            this.btnHuy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHuy.UseVisualStyleBackColor = true;
+            this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
+            // 
             // frmSinhVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 603);
+            this.Controls.Add(this.btnHuy);
+            this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnTien);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.lblSDT);
@@ -525,5 +565,7 @@ namespace DormitoryManagement.PresentationLayer
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblMaSV;
+        private System.Windows.Forms.Button btnLuu;
+        private System.Windows.Forms.Button btnHuy;
     }
 }

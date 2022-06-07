@@ -6,7 +6,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 {
     public class BLL_TaiKhoan
     {
-        QuanLyKTXModel dbs = new QuanLyKTXModel();
+        DormitoryContext dbs = new DormitoryContext();
         
         public List<TaiKhoan> SelectTaiKhoan()
         {
