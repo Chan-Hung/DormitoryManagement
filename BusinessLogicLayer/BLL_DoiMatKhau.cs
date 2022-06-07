@@ -11,7 +11,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     class BLL_DoiMatKhau
     {
         DormitoryContext dbs = new DormitoryContext();
-        public bool ChangePassword(ref string err, string oldPassword)
+        public bool ChangePassword(ref string err, int id, string oldPassword, string newPassword, string confirmation)
         {
             bool flag = false;
             try
