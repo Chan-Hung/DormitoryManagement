@@ -95,6 +95,14 @@ namespace DormitoryManagement.BusinessLogicLayer
             return dbs.SinhViens.Select(x => x).ToList().Count();
         }
 
+        //Kiểm tra không trùng khóa chính (Mã sinh viên)
+        public bool checkMaSinhVien(string masv)
+        {
+            var sv = dbs.SinhViens.Where(x => x.MaSV == masv).FirstOrDefault();
+            if (sv == null) return true;
+            return false;
+        }
+
         //Trigger chiaToaNamNu
         public bool chiaToaNamNu(string gioiTinh, string maPhong)
         {

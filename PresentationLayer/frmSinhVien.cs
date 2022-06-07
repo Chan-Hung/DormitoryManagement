@@ -80,15 +80,19 @@ namespace DormitoryManagement.PresentationLayer
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            //Tắt cờ them (thao tác Update)
             them = false;
 
+            //Bật nút Lưu/ Hủy
             btnLuu.Enabled = true;
             btnHuy.Enabled = true;
 
+            //Tắt nút Thêm/ Sửa/ Xóa
             btnThem.Enabled = false;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
 
+            //Vô hiệu hóa trườn textbox Mã sinh viên
             txtMasv.Enabled = false;
             txtTensv.Focus();
         }
@@ -146,61 +150,81 @@ namespace DormitoryManagement.PresentationLayer
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            //Kiểm tra nhập đủ các trường
+            if (txtMasv.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã sinh viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (txtTensv.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên sinh viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (cbGioitinh.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập giới tính", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (txtMaTruong.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã trường", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (txtMaPhong.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã phòng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //Thông báo lỗi
             string err = "";
 
+            //Kiểm tra mã sinh viên không được trùng
+            if (!bll.checkMaSinhVien(txtMasv.Text))
+            {
+                MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //Kiểm tra sinh viên nam/nữ phải ở tòa danh cho nam/nữ
+            if (!bll.chiaToaNamNu(cbGioitinh.Text, txtMaPhong.Text))
+            {
+                MessageBox.Show("Sinh viên không được ở tòa khác giới", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //Nút thêm được chọn (thao tác Insert)
             if (them)
             {
-
-                if (bll.chiaToaNamNu(cbGioitinh.Text, txtMaPhong.Text))
-                {
-                    if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
-                        if (err.Contains("PRIMARY KEY"))
-                        {
-                            MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            ClearBox();
-                        }
-                        else
-                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
-                    {
-                        MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //Insert Hop Dong
-                        int tongSV = bll.countSinhVien();
-                        string maHD;
-                        if (tongSV < 10)
-                            maHD = $"000{tongSV}";
-                        else if (tongSV <= 99)
-                            maHD = $"00{tongSV}";
-                        else maHD = $"0{tongSV}";
-                        if (!bllhd.InsertHopDong(ref err, maHD, txtMasv.Text, DateTime.Now, DateTime.Now.AddYears(1)))
-                            MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                    }
-                }
+                if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
+                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    MessageBox.Show("Sinh viên không được ở tòa khác giới", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                btnRefresh_Click(sender, e);
+                    MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    //Insert hợp đồng vào table HopDong
+                    int tongSV = bll.countSinhVien();
+                    string maHD;
+                    if (tongSV < 10)
+                        maHD = $"000{tongSV}";
+                    else if (tongSV <= 99)
+                        maHD = $"00{tongSV}";
+                    else maHD = $"0{tongSV}";
+                    if (!bllhd.InsertHopDong(ref err, maHD, txtMasv.Text, DateTime.Now, DateTime.Now.AddYears(1)))
+                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    btnRefresh_Click(sender, e);
+                }
             }
+
+            //Nút sửa được chọn (thao tác Update)
             else
             {
                 if (!bll.UpdateSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
-                {
-                    if (err.Contains("PRIMARY KEY"))
-                    {
-                        MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ClearBox();
-                    }
-                    else
-                        MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    btnRefresh_Click(sender, e);
-
                     MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnRefresh_Click(sender, e);
                 }
             }
 
@@ -208,10 +232,12 @@ namespace DormitoryManagement.PresentationLayer
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
+            //Bật các nút Thêm/ Sửa/ Xóa
             btnThem.Enabled = true;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
 
+            //Tắt các nút Lưu/ Hủy
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
         }
