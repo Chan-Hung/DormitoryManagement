@@ -10,9 +10,9 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DormitoryContext dbs = new DormitoryContext();
 
-        public List<SinhVien> SelectSinhVien() 
-        { 
-            return dbs.SinhViens.ToList(); 
+        public List<SinhVien> SelectSinhVien()
+        {
+            return dbs.SinhViens.ToList();
         }
         public bool InsertSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
@@ -61,25 +61,25 @@ namespace DormitoryManagement.BusinessLogicLayer
             return flag;
         }
 
-        
+
         public bool DeleteSinhVien(ref string err, string maSV)
         {
-        bool flag = false;
-        var sinhvien = dbs.SinhViens.Find(maSV);
-            try 
-            { 
+            bool flag = false;
+            var sinhvien = dbs.SinhViens.Find(maSV);
+            try
+            {
                 if (sinhvien != null)
                 {
-                dbs.SinhViens.Remove(sinhvien);
-                dbs.SaveChanges();
-                flag = true;
+                    dbs.SinhViens.Remove(sinhvien);
+                    dbs.SaveChanges();
+                    flag = true;
                 }
             }
-            catch(SqlException)
+            catch (SqlException)
             {
                 err = "Lỗi";
             }
-        
+
             return flag;
         }
         public List<SinhVien> searchMaSinhVien(string masv)
@@ -129,7 +129,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             var Phong = dbs.Phongs.Join(dbs.LoaiPhongs,
                 p => p.MaLoaiPhong,
                 lp => lp.MaLoaiPhong,
-                (p, lp) => new { maphong = p.MaPhong, maloaiphong = p.MaLoaiPhong, trangthai = p.TrangThai})
+                (p, lp) => new { maphong = p.MaPhong, maloaiphong = p.MaLoaiPhong, trangthai = p.TrangThai })
                 .Where(p => p.maphong == maPhong)
                 .FirstOrDefault();
 
@@ -149,39 +149,37 @@ namespace DormitoryManagement.BusinessLogicLayer
 
             //Nếu sức chứa = số SV trong phòng -> phòng đầy 
             //-> Sau khi thêm 1 SV -> phòng đầy
-            if (maLoaiPhong == tongSVtrongphong)
-            {
+            if (maLoaiPhong  == tongSVtrongphong)
                 phong.TrangThai = "Hết";
-                dbs.SaveChanges();
-            }
+            else phong.TrangThai = "Còn";
+            dbs.SaveChanges();
         }
 
         //Kiểm tra phòng đầy hay chưa
-        public bool checkFullPhong( string maPhong)
+        public bool checkFullPhong(string maPhong)
         {
             Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             if (phong.TrangThai == "Hết") return false;
             return true;
         }
 
-
         public Object searchTenToa(string toa)
         {
-            
-            var ShowToa= dbs.SinhViens.
-                Join(dbs.Phongs, 
-                sinhVien => sinhVien.MaPhong, 
-                phong => phong.MaPhong, 
-                (sinhVien, phong) => new { MaSV = sinhVien.MaSV, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.MaToa}).
-                Where(toaa=>toaa.MaToa == toa).ToList();
+
+            var ShowToa = dbs.SinhViens.
+                Join(dbs.Phongs,
+                sinhVien => sinhVien.MaPhong,
+                phong => phong.MaPhong,
+                (sinhVien, phong) => new { MaSV = sinhVien.MaSV, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.MaToa }).
+                Where(toaa => toaa.MaToa == toa).ToList();
             return ShowToa;
         }
         public Object tienPhongCuaSV()
         {
-            var tienPhongCuaSV = dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { SinhVien = sinhVien, Phong = phong})
-                .Join(dbs.LoaiPhongs, phong=>phong.Phong.MaLoaiPhong, loaiPhong=>loaiPhong.MaLoaiPhong, (phong, loaiPhong)=> new {MaSV = phong.SinhVien.MaSV,TenSV = phong.SinhVien.TenSV,MaPhong = phong.SinhVien.MaPhong, MaLoaiPhong = phong.Phong.MaLoaiPhong,Gia = (loaiPhong.Gia * 10).ToString()}).ToList();
+            var tienPhongCuaSV = dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { SinhVien = sinhVien, Phong = phong })
+                .Join(dbs.LoaiPhongs, phong => phong.Phong.MaLoaiPhong, loaiPhong => loaiPhong.MaLoaiPhong, (phong, loaiPhong) => new { MaSV = phong.SinhVien.MaSV, TenSV = phong.SinhVien.TenSV, MaPhong = phong.SinhVien.MaPhong, MaLoaiPhong = phong.Phong.MaLoaiPhong, Gia = (loaiPhong.Gia * 10).ToString() }).ToList();
             return tienPhongCuaSV;
         }
     }
-    
+
 }
