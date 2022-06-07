@@ -6,7 +6,7 @@ namespace DormitoryManagement.PresentationLayer
     public partial class frmNhanVien : Form
     {
         BusinessLogicLayer.BLL_NhanVien bll = new BusinessLogicLayer.BLL_NhanVien();
-
+        bool them = true;
         public frmNhanVien()
         {
             InitializeComponent();
@@ -17,6 +17,16 @@ namespace DormitoryManagement.PresentationLayer
             dgvNhanvien.Columns[6].Visible = false;
             dgvNhanvien.Columns[7].Visible = false;
             dgvNhanvien.Columns[8].Visible = false;
+
+            btnLuu.Enabled = false;
+            btnHuy.Enabled = false;
+
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+
+            //Bật txtMaNV
+            txtMaNV.Enabled = true;
         }
         private void ClearBox()
         {
@@ -29,49 +39,38 @@ namespace DormitoryManagement.PresentationLayer
             txtTimkiem.Clear();
             rbSearchTenNV.Checked = false;
             rbSearchMaNV.Checked = false;
+            //rbSearchToa.Checked = false;
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
-            string err = "";
-            if (!bll.InsertNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, Convert.ToInt32(txtLuong.Text)))
-            {
-                if (err.Contains("PRIMARY KEY"))
-                {
-                    MessageBox.Show("Mã nhân viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ClearBox();
-                }
-                else
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            them = true;
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
 
-            else
-            {
-                btnRefresh_Click(sender, e);
-                MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearBox();
-            }
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+
+            txtMaNV.Focus();
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            string err = "";
-            if (!bll.UpdateNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, Convert.ToInt32(txtLuong.Text)))
-            {
-                if (err.Contains("PRIMARY KEY"))
-                {
-                    MessageBox.Show("Mã nhân viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    ClearBox();
-                }
-                else
-                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //Tắt cờ them (thao tác Update)
+            them = false;
 
-            else
-            {
-                btnRefresh_Click(sender, e);
-                MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //Bật nút Lưu/ Hủy
+            btnLuu.Enabled = true;
+            btnHuy.Enabled = true;
+
+            //Tắt nút Thêm/ Sửa/ Xóa
+            btnThem.Enabled = false;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
+
+            //Vô hiệu hóa trường textbox Mã nhân viên
+            txtMaNV.Enabled = false;
+            txtTenNV.Focus();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -133,6 +132,83 @@ namespace DormitoryManagement.PresentationLayer
             {
                 MessageBox.Show("Vui lòng chọn 1 trường để tìm kiếm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            //Bật các nút Thêm/ Sửa/ Xóa
+            btnThem.Enabled = true;
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+
+            //Bật txtMaNV
+            txtMaNV.Enabled = true;
+
+            //Tắt các nút Lưu/ Hủy
+            btnLuu.Enabled = false;
+            btnHuy.Enabled = false;
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            //Kiểm tra nhập đủ các trường not null
+            if (txtMaNV.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã nhân viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (txtTenNV.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên nhân viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (cbMaLoaiNV.Text == "")
+            {
+                MessageBox.Show("Vui lòng chọn mã loại nhân viên", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if (txtMaToa.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập mã tòa", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //Thông báo lỗi
+            string err = "";
+
+            //Nút thêm được chọn (thao tác Insert)
+            if (them)
+            {
+                //Kiểm tra mã nhân viên đúng định dạng
+                if(!bll.checkDinhDangMaNV(txtMaNV.Text, cbMaLoaiNV.Text))
+                {
+                    MessageBox.Show("Mã nhân viên hoặc mã loại nhân viên không đúng định dạng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                //Kiểm tra mã nhân viên không được trùng
+                else if (!bll.checkMaNhanVien(txtMaNV.Text))
+                {
+                    MessageBox.Show("Mã nhân viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (!bll.InsertNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, int.Parse(txtLuong.Text)))
+                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("Đã thêm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnRefresh_Click(sender, e);
+                }
+            }
+            //Nút sửa được chọn (thao tác Update)
+            else
+            {
+                if (!bll.UpdateNhanVien(ref err, txtMaNV.Text, cbMaLoaiNV.Text, txtMaToa.Text, txtTenNV.Text, txtSDT.Text, int.Parse(txtLuong.Text)))
+                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("Đã sửa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnRefresh_Click(sender, e);
+                }
             }
         }
     }
