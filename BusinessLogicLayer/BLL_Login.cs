@@ -14,6 +14,8 @@ namespace DormitoryManagement.BusinessLogicLayer
                           select e).FirstOrDefault();
             if (toAuth != null)
             {
+                Global.account_ID = toAuth.MaTaiKhoan;
+                Global.account_role = toAuth.MaLoaiTaiKhoan;
                 flag = true;
             }
             return flag;

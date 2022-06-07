@@ -9,7 +9,6 @@ namespace DormitoryManagement
         /// </summary>
         [STAThread]
         static void Main()
-            //Git test
         {
 
             Application.EnableVisualStyles();

@@ -14,7 +14,16 @@ namespace DormitoryManagement.PresentationLayer
 
         private void btnXacnhan_Click(object sender, EventArgs e)
         {
-            
+            string err = "";
+            if (!bll.ChangePassword(ref err, Global.account_ID, txtMatkhaucu.Text, txtMatkhaumoi.Text, txtXacnhan.Text))
+            {
+                MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                btnHuybo_Click(sender, e);
+                MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnHuybo_Click(object sender, EventArgs e)
