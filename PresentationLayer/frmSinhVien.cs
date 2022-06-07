@@ -183,15 +183,15 @@ namespace DormitoryManagement.PresentationLayer
             //Thông báo lỗi
             string err = "";
 
-            //Kiểm tra mã sinh viên không được trùng
-            if (!bll.checkMaSinhVien(txtMasv.Text))
+            //Kiểm tra full phòng
+            if (!bll.checkFullPhong(txtMasv.Text, txtMaPhong.Text))
             {
-                MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Phòng đã đầy, vui lòng chọn phòng khác", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             //Kiểm tra sinh viên nam/nữ phải ở tòa danh cho nam/nữ
-            if (!bll.chiaToaNamNu(cbGioitinh.Text, txtMaPhong.Text))
+            if (!bll.checkChiaToaTheoGioiTinh(cbGioitinh.Text, txtMaPhong.Text))
             {
                 MessageBox.Show("Sinh viên không được ở tòa khác giới", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -199,6 +199,12 @@ namespace DormitoryManagement.PresentationLayer
             //Nút thêm được chọn (thao tác Insert)
             if (them)
             {
+                //Kiểm tra mã sinh viên không được trùng khi thêm
+                if (!bll.checkMaSinhVien(txtMasv.Text))
+                {
+                    MessageBox.Show("Mã sinh viên không được trùng", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 if (!bll.InsertSinhVien(ref err, txtMasv.Text, txtTensv.Text, cbGioitinh.Text, txtSDT.Text, txtMaTruong.Text, txtMaPhong.Text))
                     MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else

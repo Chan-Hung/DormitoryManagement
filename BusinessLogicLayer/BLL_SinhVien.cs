@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace DormitoryManagement.BusinessLogicLayer
@@ -104,7 +104,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
 
         //Kiểm tra sinh viên nam/nữ phải ở theo đúng tòa nam/nữ
-        public bool chiaToaNamNu(string gioiTinh, string maPhong)
+        public bool checkChiaToaTheoGioiTinh(string gioiTinh, string maPhong)
         {
             //Tòa lẻ: Nữ
             //Tòa chẵn: Nam
@@ -121,7 +121,36 @@ namespace DormitoryManagement.BusinessLogicLayer
             return true;
         }
 
-        //
+        //Kiểm tra full phòng và đổi trạng thái thành 'hết
+        public bool checkFullPhong(string masv, string maPhong)
+        {
+            //Tìm mã loại phòng của phòng đó
+            var Phong = dbs.Phongs.Join(dbs.LoaiPhongs,
+                p => p.MaLoaiPhong,
+                lp => lp.MaLoaiPhong,
+                (p, lp) => new { maphong = p.MaPhong, maloaiphong = p.MaLoaiPhong})
+                .Where(p => p.maphong == maPhong)
+                .FirstOrDefault();
+
+            //Đếm số lượng sinh viên ở trong phòng có mã phòng = maPhong
+            int tongSVtrongphong = dbs.SinhViens
+                .Join(dbs.Phongs,
+                sv => sv.MaPhong,
+                p => p.MaPhong,
+                (sv, p) => new { maphong = p.MaPhong })
+                .Where(p => p.maphong == maPhong)
+                .ToList()
+                .Count();
+
+            //Ký hiệu chữ số ở mã loại phòng là sức chứa của phòng
+            //VD: ML2 là phòng máy lạnh cho 2 người
+            int maLoaiPhong = int.Parse(Regex.Match(Phong.maloaiphong, @"\d+").Value);
+            
+            //Nếu sức chứa = số SV trong phòng -> phòng đầy
+            if (maLoaiPhong == tongSVtrongphong)
+                return false;
+            return true;
+        }
 
         public Object searchTenToa(string toa)
         {
