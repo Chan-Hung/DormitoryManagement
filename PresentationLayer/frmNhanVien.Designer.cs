@@ -61,6 +61,7 @@ namespace DormitoryManagement.PresentationLayer
             this.txtMaNV = new System.Windows.Forms.TextBox();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnHuy = new System.Windows.Forms.Button();
+            this.rbSearchToa = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhanvien)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +85,7 @@ namespace DormitoryManagement.PresentationLayer
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(26, 83);
+            this.label11.Location = new System.Drawing.Point(25, 110);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(160, 17);
             this.label11.TabIndex = 8;
@@ -119,11 +120,11 @@ namespace DormitoryManagement.PresentationLayer
             this.btnTimkiem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTimkiem.FlatAppearance.BorderSize = 0;
             this.btnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTimkiem.Location = new System.Drawing.Point(23, 135);
+            this.btnTimkiem.Location = new System.Drawing.Point(19, 161);
             this.btnTimkiem.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimkiem.Name = "btnTimkiem";
             this.btnTimkiem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.btnTimkiem.Size = new System.Drawing.Size(184, 46);
+            this.btnTimkiem.Size = new System.Drawing.Size(184, 55);
             this.btnTimkiem.TabIndex = 3;
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -133,7 +134,7 @@ namespace DormitoryManagement.PresentationLayer
             // txtTimkiem
             // 
             this.txtTimkiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTimkiem.Location = new System.Drawing.Point(23, 105);
+            this.txtTimkiem.Location = new System.Drawing.Point(19, 131);
             this.txtTimkiem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTimkiem.Name = "txtTimkiem";
             this.txtTimkiem.Size = new System.Drawing.Size(184, 24);
@@ -213,6 +214,7 @@ namespace DormitoryManagement.PresentationLayer
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.rbSearchToa);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.rbSearchMaNV);
             this.groupBox1.Controls.Add(this.rbSearchTenNV);
@@ -222,7 +224,7 @@ namespace DormitoryManagement.PresentationLayer
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(214, 194);
+            this.groupBox1.Size = new System.Drawing.Size(214, 224);
             this.groupBox1.TabIndex = 66;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TÌM KIẾM";
@@ -437,6 +439,17 @@ namespace DormitoryManagement.PresentationLayer
             this.btnHuy.UseVisualStyleBackColor = true;
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
             // 
+            // rbSearchToa
+            // 
+            this.rbSearchToa.AutoSize = true;
+            this.rbSearchToa.Location = new System.Drawing.Point(28, 81);
+            this.rbSearchToa.Margin = new System.Windows.Forms.Padding(4);
+            this.rbSearchToa.Name = "rbSearchToa";
+            this.rbSearchToa.Size = new System.Drawing.Size(141, 21);
+            this.rbSearchToa.TabIndex = 124;
+            this.rbSearchToa.Text = "Tìm kiếm theo tòa";
+            this.rbSearchToa.UseVisualStyleBackColor = true;
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -506,5 +519,6 @@ namespace DormitoryManagement.PresentationLayer
         private System.Windows.Forms.TextBox txtMaNV;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.RadioButton rbSearchToa;
     }
 }

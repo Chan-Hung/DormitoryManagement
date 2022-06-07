@@ -73,7 +73,10 @@ namespace DormitoryManagement.BusinessLogicLayer
         public List<NhanVien> searchMaNhanVien(string manv)
         {
             return dbs.NhanViens.Where(x => x.MaNV == manv).ToList();
-
+        }
+        public List<NhanVien> searchMaToa(string matoa)
+        {
+            return dbs.NhanViens.Where(x => x.MaToa == matoa).ToList();
         }
         //Kiểm tra không trùng khóa chính (Mã nhân viên)
         public bool checkMaNhanVien(string manv)

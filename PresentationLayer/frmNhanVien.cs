@@ -128,6 +128,10 @@ namespace DormitoryManagement.PresentationLayer
             {
                 dgvNhanvien.DataSource = bll.searchTenNhanVien(txtTimkiem.Text);
             }
+            else if (rbSearchToa.Checked)
+            {
+                dgvNhanvien.DataSource = bll.searchMaToa(txtTimkiem.Text);
+            }
             else
             {
                 MessageBox.Show("Vui lòng chọn 1 trường để tìm kiếm", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

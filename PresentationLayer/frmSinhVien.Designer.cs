@@ -134,11 +134,11 @@ namespace DormitoryManagement.PresentationLayer
             this.btnTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTien.Image = ((System.Drawing.Image)(resources.GetObject("btnTien.Image")));
             this.btnTien.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTien.Location = new System.Drawing.Point(867, 498);
+            this.btnTien.Location = new System.Drawing.Point(867, 499);
             this.btnTien.Margin = new System.Windows.Forms.Padding(4);
             this.btnTien.Name = "btnTien";
             this.btnTien.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.btnTien.Size = new System.Drawing.Size(99, 74);
+            this.btnTien.Size = new System.Drawing.Size(80, 74);
             this.btnTien.TabIndex = 120;
             this.btnTien.Text = "Giá Phòng";
             this.btnTien.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
