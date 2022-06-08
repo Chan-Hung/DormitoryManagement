@@ -38,7 +38,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var tk = dbs.TaiKhoans.Find(manv);
+                var tk = dbs.TaiKhoans.Where(x=>x.MaNV==manv).FirstOrDefault();
                 if (tk != null)
                 {
                     tk.MaNV = manv;
@@ -57,10 +57,10 @@ namespace DormitoryManagement.BusinessLogicLayer
         public bool deleteTaiKhoan(ref string err, string manv)
         {
             bool flag = false;
-            var sinhvien = dbs.SinhViens.Find(manv);
-            if (sinhvien != null)
+            var tk = dbs.TaiKhoans.Where(x => x.MaNV == manv).FirstOrDefault();
+            if (tk != null)
             {
-                dbs.SinhViens.Remove(sinhvien);
+                dbs.TaiKhoans.Remove(tk);
                 dbs.SaveChanges();
                 flag = true;
             }

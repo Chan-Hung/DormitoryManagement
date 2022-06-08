@@ -278,7 +278,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnHuy.FlatAppearance.BorderSize = 0;
             this.btnHuy.Image = ((System.Drawing.Image)(resources.GetObject("btnHuy.Image")));
             this.btnHuy.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnHuy.Location = new System.Drawing.Point(767, 65);
+            this.btnHuy.Location = new System.Drawing.Point(767, 69);
             this.btnHuy.Margin = new System.Windows.Forms.Padding(4);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);

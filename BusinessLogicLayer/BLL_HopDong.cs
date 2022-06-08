@@ -45,8 +45,8 @@ namespace DormitoryManagement.BusinessLogicLayer
                 {
                     hopDong.MaHD = mahd;
                     hopDong.MaSV = masv;
-                    hopDong.NgayKHD = ngaykhd;
-                    hopDong.NgayKTHD = ngaykthd;
+                    hopDong.NgayKHD = ngaykhd.Date;
+                    hopDong.NgayKTHD = ngaykthd.Date;
                     dbs.SaveChanges();
                     flag = true;
                 }
