@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
     [Table("HopDongThuePhong")]
-    public partial class HopDongThuePhong
+    public partial class Contract
     {
         [Key]
         [StringLength(5)]
@@ -20,15 +20,15 @@ namespace DormitoryManagement
         [Column(TypeName = "date")]
         public DateTime NgayKTHD { get; set; }
 
-        public virtual SinhVien SinhVien { get; set; }
-        public HopDongThuePhong(string MaHD, string MaSV, DateTime NgayKHD, DateTime NgayKTHD)
+        public virtual Student SinhVien { get; set; }
+        public Contract(string MaHD, string MaSV, DateTime NgayKHD, DateTime NgayKTHD)
         {
             this.MaHD = MaHD;
             this.MaSV = MaSV;
             this.NgayKHD = NgayKHD.Date;
             this.NgayKTHD = NgayKTHD.Date;
         }
-        public HopDongThuePhong()
+        public Contract()
         {
 
         }

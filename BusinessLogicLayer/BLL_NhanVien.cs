@@ -8,13 +8,13 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DormitoryContext dbs = new DormitoryContext();
 
-        public List<NhanVien> SelectNhanVien() { return dbs.NhanViens.ToList(); }
+        public List<Employee> SelectNhanVien() { return dbs.NhanViens.ToList(); }
         public bool InsertNhanVien(ref string err, string maNV, string maLoaiNV, string maToa, string tenNV, string SDT, int Luong)
         {
             bool flag = false;
             try
             {
-                NhanVien nv = new NhanVien();
+                Employee nv = new Employee();
                 nv.MaNV = maNV;
                 nv.MaLoaiNV = maLoaiNV;
                 nv.MaToa = maToa;
@@ -66,15 +66,15 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
-        public List<NhanVien> searchTenNhanVien(string tennv)
+        public List<Employee> searchTenNhanVien(string tennv)
         {
             return dbs.NhanViens.Where(x => x.TenNV.Contains(tennv)).ToList();
         }
-        public List<NhanVien> searchMaNhanVien(string manv)
+        public List<Employee> searchMaNhanVien(string manv)
         {
             return dbs.NhanViens.Where(x => x.MaNV == manv).ToList();
         }
-        public List<NhanVien> searchMaToa(string matoa)
+        public List<Employee> searchMaToa(string matoa)
         {
             return dbs.NhanViens.Where(x => x.MaToa == matoa).ToList();
         }

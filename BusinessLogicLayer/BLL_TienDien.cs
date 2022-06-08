@@ -8,7 +8,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     public class BLL_TienDien
     {
         DormitoryContext dbs = new DormitoryContext();
-        public List<DienNuocSuDung> SelectTienDien()
+        public List<ElectricityAndWaterBill> SelectTienDien()
         {
             return dbs.DienNuocSuDungs.ToList();
         }
@@ -17,7 +17,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                DienNuocSuDung dnsd = new DienNuocSuDung();
+                ElectricityAndWaterBill dnsd = new ElectricityAndWaterBill();
                 dnsd.MaHoaDon = mahoadon;
                 dnsd.MaPhong = maphong;
                 dnsd.NgayLap = ngaylap.Date;
@@ -71,7 +71,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
-        public List<DienNuocSuDung> SelectChuaThanhToan()
+        public List<ElectricityAndWaterBill> SelectChuaThanhToan()
         {
             return dbs.DienNuocSuDungs.Where(x=>x.TrangThai=="Chưa thanh toán").ToList();
         }

@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DormitoryManagement
 {
     [Table("SinhVien")]
-    public partial class SinhVien
+    public partial class Student
     {
-        public SinhVien()
+        public Student()
         {
-            HopDongThuePhongs = new HashSet<HopDongThuePhong>();
+            HopDongThuePhongs = new HashSet<Contract>();
         }
 
         [Key]
@@ -33,12 +33,12 @@ namespace DormitoryManagement
         [StringLength(3)]
         public string MaPhong { get; set; }
 
-        public virtual ICollection<HopDongThuePhong> HopDongThuePhongs { get; set; }
+        public virtual ICollection<Contract> HopDongThuePhongs { get; set; }
 
-        public virtual Phong Phong { get; set; }
+        public virtual Room Phong { get; set; }
 
-        public virtual Truong Truong { get; set; }
-        public SinhVien(string MaSV, string TenSV, string GioiTinh, string SDT, string MaTruong, string MaPhong)
+        public virtual School Truong { get; set; }
+        public Student(string MaSV, string TenSV, string GioiTinh, string SDT, string MaTruong, string MaPhong)
         {
             this.MaSV = MaSV;
             this.TenSV = TenSV;

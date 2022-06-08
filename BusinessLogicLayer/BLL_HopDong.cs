@@ -8,7 +8,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DormitoryContext dbs = new DormitoryContext();
 
-        public List<HopDongThuePhong> SelectHopDong()
+        public List<Contract> SelectHopDong()
         {
             return dbs.HopDongThuePhongs.ToList();
         }
@@ -18,7 +18,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                HopDongThuePhong hopDong = new HopDongThuePhong();
+                Contract hopDong = new Contract();
 
                 hopDong.MaHD = mahd;
                 hopDong.MaSV = masv;

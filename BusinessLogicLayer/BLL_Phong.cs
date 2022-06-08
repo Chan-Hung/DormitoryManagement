@@ -9,7 +9,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         //DataAccessLayer.DAL dal = new DataAccessLayer.DAL();
         DormitoryContext dbs = new DormitoryContext();
-        public List<Phong> SelectPhong()
+        public List<Room> SelectPhong()
         {
             return dbs.Phongs.ToList();
         }
@@ -18,7 +18,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                Phong phong = new Phong();
+                Room phong = new Room();
                 phong.MaPhong = maphong;
                 phong.MaLoaiPhong = maloaiphong;
                 phong.MaToa = matoa;
@@ -55,13 +55,13 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             return flag;
         }
-        public List<Phong> ShowPhongTrong()
+        public List<Room> ShowPhongTrong()
         {
             return dbs.Phongs.Where(x=>x.TrangThai == "Còn").ToList();
         }
         public bool checkMaPhong(string maPhong)
         {
-            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            Room phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             if (phong != null) return false;
             return true;
         }

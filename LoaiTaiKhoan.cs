@@ -9,7 +9,7 @@ namespace DormitoryManagement
     {
         public LoaiTaiKhoan()
         {
-            TaiKhoans = new HashSet<TaiKhoan>();
+            TaiKhoans = new HashSet<Account>();
         }
 
         [Key]
@@ -23,7 +23,7 @@ namespace DormitoryManagement
         [Required]
         public string ChucNang { get; set; }
 
-        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
+        public virtual ICollection<Account> TaiKhoans { get; set; }
         public LoaiTaiKhoan(string MaLoaiTaiKhoan, string TenLoaiTaiKhoan, string ChucNang)
         {
             this.MaLoaiTaiKhoan = MaLoaiTaiKhoan;

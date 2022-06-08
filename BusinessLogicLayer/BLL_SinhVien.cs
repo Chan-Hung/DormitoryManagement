@@ -10,7 +10,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DormitoryContext dbs = new DormitoryContext();
 
-        public List<SinhVien> SelectSinhVien()
+        public List<Student> SelectSinhVien()
         {
             return dbs.SinhViens.ToList();
         }
@@ -19,7 +19,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                SinhVien sv = new SinhVien();
+                Student sv = new Student();
                 sv.MaSV = maSV;
                 sv.TenSV = tenSV;
                 sv.GioiTinh = gioiTinh;
@@ -82,11 +82,11 @@ namespace DormitoryManagement.BusinessLogicLayer
 
             return flag;
         }
-        public List<SinhVien> searchMaSinhVien(string masv)
+        public List<Student> searchMaSinhVien(string masv)
         {
             return dbs.SinhViens.Where(x => x.MaSV == masv).ToList();
         }
-        public List<SinhVien> searchTenSinhVien(string tenSV)
+        public List<Student> searchTenSinhVien(string tenSV)
         {
             return dbs.SinhViens.Where(x => x.TenSV.Contains(tenSV)).ToList();
         }
@@ -124,7 +124,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         //Đổi trạng thái khi phòng đủ SV
         public void doiTrangThaiPhong(string masv, string maPhong)
         {
-            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            Room phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             //Tìm mã loại phòng của phòng đó
             var Phong = dbs.Phongs.Join(dbs.LoaiPhongs,
                 p => p.MaLoaiPhong,
@@ -158,7 +158,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         //Kiểm tra phòng đầy hay chưa
         public bool checkFullPhong(string maPhong)
         {
-            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            Room phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             if (phong.TrangThai == "Hết") return false;
             return true;
         }
