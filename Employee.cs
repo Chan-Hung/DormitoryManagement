@@ -7,6 +7,7 @@ namespace DormitoryManagement
     [Table("NhanVien")]
     public partial class Employee
     {
+        public NhanVien() => TaiKhoans = new HashSet<Account>();
         public Employee() => TaiKhoans = new HashSet<TaiKhoan>();
 
         [Key]
@@ -34,6 +35,8 @@ namespace DormitoryManagement
 
         public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
         public Employee(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
+        public virtual ICollection<Account> TaiKhoans { get; set; }
+        public NhanVien(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
         {
             this.MaNV = MaNV;
             this.MaLoaiNV = MaLoaiNV;
