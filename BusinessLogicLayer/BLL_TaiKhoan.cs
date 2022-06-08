@@ -8,7 +8,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DormitoryContext dbs = new DormitoryContext();
         
-        public List<TaiKhoan> SelectTaiKhoan()
+        public List<Account> SelectTaiKhoan()
         {
             return dbs.TaiKhoans.ToList();
         }
@@ -17,7 +17,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                TaiKhoan tk = new TaiKhoan();
+                Account tk = new Account();
                 tk.MaNV = manv;
                 tk.TenDangNhap = tendangnhap;
                 tk.MatKhau = matkhau;

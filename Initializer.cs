@@ -144,10 +144,10 @@ namespace DormitoryManagement
             context.NhanViens.AddRange(nhanViens);
 
             //Khởi tạo tài khoản
-            IList<TaiKhoan> taiKhoans = new List<TaiKhoan>();
-            taiKhoans.Add(new TaiKhoan(nhanViens[47].MaNV, "emp1", "@emp1", loaiTaiKhoans[1].MaLoaiTaiKhoan));
-            taiKhoans.Add(new TaiKhoan(nhanViens[46].MaNV, "admin1", "@admin1", loaiTaiKhoans[0].MaLoaiTaiKhoan));
-            taiKhoans.Add(new TaiKhoan(nhanViens[48].MaNV, "emp2", "@emp2", loaiTaiKhoans[1].MaLoaiTaiKhoan));
+            IList<Account> taiKhoans = new List<Account>();
+            taiKhoans.Add(new Account(nhanViens[47].MaNV, "emp1", "@emp1", loaiTaiKhoans[1].MaLoaiTaiKhoan));
+            taiKhoans.Add(new Account(nhanViens[46].MaNV, "admin1", "@admin1", loaiTaiKhoans[0].MaLoaiTaiKhoan));
+            taiKhoans.Add(new Account(nhanViens[48].MaNV, "emp2", "@emp2", loaiTaiKhoans[1].MaLoaiTaiKhoan));
             context.TaiKhoans.AddRange(taiKhoans);
 
             //Khởi tạo danh sách sinh viên
@@ -167,10 +167,10 @@ namespace DormitoryManagement
             
 
             //Khởi tạo điện nước tiêu thụ
-            IList<DienNuocSuDung> dienNuocSuDungs = new List<DienNuocSuDung>();
-            dienNuocSuDungs.Add(new DienNuocSuDung("001", phongs[6].MaPhong,DateTime.Parse("2022,01,05"),131,17,"Chưa thanh toán"));
-            dienNuocSuDungs.Add(new DienNuocSuDung("002", phongs[1].MaPhong,DateTime.Parse("2022,01,05"),70,13,"Chưa thanh toán"));
-            dienNuocSuDungs.Add(new DienNuocSuDung("003", phongs[3].MaPhong,DateTime.Parse("2022,01,05"),68,14,"Chưa thanh toán"));
+            IList<ElectricityAndWaterBill> dienNuocSuDungs = new List<ElectricityAndWaterBill>();
+            dienNuocSuDungs.Add(new ElectricityAndWaterBill("001", phongs[6].MaPhong,DateTime.Parse("2022,01,05"),131,17,"Chưa thanh toán"));
+            dienNuocSuDungs.Add(new ElectricityAndWaterBill("002", phongs[1].MaPhong,DateTime.Parse("2022,01,05"),70,13,"Chưa thanh toán"));
+            dienNuocSuDungs.Add(new ElectricityAndWaterBill("003", phongs[3].MaPhong,DateTime.Parse("2022,01,05"),68,14,"Chưa thanh toán"));
             context.DienNuocSuDungs.AddRange(dienNuocSuDungs);
 
             //Khởi tạo hợp đồng

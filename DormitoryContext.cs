@@ -10,7 +10,7 @@ namespace DormitoryManagement
             Database.SetInitializer(new Initializer());
         }
 
-        public virtual DbSet<DienNuocSuDung> DienNuocSuDungs { get; set; }
+        public virtual DbSet<ElectricityAndWaterBill> DienNuocSuDungs { get; set; }
         public virtual DbSet<HopDongThuePhong> HopDongThuePhongs { get; set; }
         public virtual DbSet<LoaiNhanVien> LoaiNhanViens { get; set; }
         public virtual DbSet<LoaiPhong> LoaiPhongs { get; set; }
@@ -18,7 +18,7 @@ namespace DormitoryManagement
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<Phong> Phongs { get; set; }
         public virtual DbSet<Student> SinhViens { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
+        public virtual DbSet<Account> TaiKhoans { get; set; }
         public virtual DbSet<Toa> Toas { get; set; }
         public virtual DbSet<Truong> Truongs { get; set; }
       
@@ -27,15 +27,9 @@ namespace DormitoryManagement
         {
             modelBuilder.Configurations.Add(new Configurations.StudentConfig());
 
-            modelBuilder.Entity<DienNuocSuDung>()
-                .Property(e => e.MaHoaDon)
-                .IsFixedLength()
-                .IsUnicode(false);
+            modelBuilder.Configurations.Add(new Configurations.AccountConfig());
 
-            modelBuilder.Entity<DienNuocSuDung>()
-                .Property(e => e.MaPhong)
-                .IsFixedLength()
-                .IsUnicode(false);
+            modelBuilder.Configurations.Add(new Configurations.ElectricityAndWaterBillConfig());
 
             modelBuilder.Entity<HopDongThuePhong>()
                 .Property(e => e.MaHD)
@@ -104,26 +98,6 @@ namespace DormitoryManagement
                 .HasMany(e => e.DienNuocSuDungs)
                 .WithRequired(e => e.Phong)
                 .WillCascadeOnDelete(false);
-
-           
-
-            modelBuilder.Entity<TaiKhoan>()
-                .Property(e => e.MaNV)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TaiKhoan>()
-                .Property(e => e.TenDangNhap)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TaiKhoan>()
-                .Property(e => e.MatKhau)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TaiKhoan>()
-                .Property(e => e.MaLoaiTaiKhoan)
-                .IsFixedLength()
-                .IsUnicode(false);
 
             modelBuilder.Entity<Toa>()
                 .Property(e => e.MaToa)

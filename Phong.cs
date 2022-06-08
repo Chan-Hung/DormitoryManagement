@@ -9,7 +9,7 @@ namespace DormitoryManagement
     {
         public Phong()
         {
-            DienNuocSuDungs = new HashSet<DienNuocSuDung>();
+            DienNuocSuDungs = new HashSet<ElectricityAndWaterBill>();
             SinhViens = new HashSet<Student>();
         }
 
@@ -27,7 +27,7 @@ namespace DormitoryManagement
         [StringLength(10)]
         public string TrangThai { get; set; }
 
-        public virtual ICollection<DienNuocSuDung> DienNuocSuDungs { get; set; }
+        public virtual ICollection<ElectricityAndWaterBill> DienNuocSuDungs { get; set; }
 
         public virtual LoaiPhong LoaiPhong { get; set; }
 

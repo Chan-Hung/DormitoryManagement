@@ -67,8 +67,10 @@
     <Compile Include="BusinessLogicLayer\BLL_TienDien.cs" />
     <Compile Include="BusinessLogicLayer\BLL_Toa.cs" />
     <Compile Include="BusinessLogicLayer\BLL_TaiKhoan.cs" />
+    <Compile Include="Configurations\AccountConfig.cs" />
+    <Compile Include="Configurations\ElectricityAndWaterBillConfig.cs" />
     <Compile Include="Configurations\StudentConfig.cs" />
-    <Compile Include="DienNuocSuDung.cs" />
+    <Compile Include="ElectricityAndWaterBill.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="HopDongThuePhong.cs" />
     <Compile Include="Initializer.cs" />
@@ -141,7 +143,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DormitoryContext.cs" />
     <Compile Include="Student.cs" />
-    <Compile Include="TaiKhoan.cs" />
+    <Compile Include="Account.cs" />
     <Compile Include="Toa.cs" />
     <Compile Include="Truong.cs" />
     <EmbeddedResource Include="PresentationLayer\frmDashboard.resx">

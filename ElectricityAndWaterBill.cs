@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DormitoryManagement
 {
     [Table("DienNuocSuDung")]
-    public partial class DienNuocSuDung
+    public partial class ElectricityAndWaterBill
     {
         [Key]
         [StringLength(5)]
@@ -26,7 +26,7 @@ namespace DormitoryManagement
         public string TrangThai { get; set; }
 
         public virtual Phong Phong { get; set; }
-        public DienNuocSuDung(string MaHoaDon, string MaPhong, DateTime NgayLap, int SoDienTieuThu, int SoNuocTieuThu, string TrangThai)
+        public ElectricityAndWaterBill(string MaHoaDon, string MaPhong, DateTime NgayLap, int SoDienTieuThu, int SoNuocTieuThu, string TrangThai)
         {
             this.MaHoaDon = MaHoaDon;
             this.MaPhong = MaPhong;
@@ -36,7 +36,7 @@ namespace DormitoryManagement
             this.TrangThai = TrangThai;
         }
 
-        public DienNuocSuDung()
+        public ElectricityAndWaterBill()
         {
         }
     }

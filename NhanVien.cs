@@ -7,7 +7,7 @@ namespace DormitoryManagement
     [Table("NhanVien")]
     public partial class NhanVien
     {
-        public NhanVien() => TaiKhoans = new HashSet<TaiKhoan>();
+        public NhanVien() => TaiKhoans = new HashSet<Account>();
 
         [Key]
         [StringLength(5)]
@@ -32,7 +32,7 @@ namespace DormitoryManagement
 
         public virtual Toa Toa { get; set; }
 
-        public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
+        public virtual ICollection<Account> TaiKhoans { get; set; }
         public NhanVien(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
         {
             this.MaNV = MaNV;
