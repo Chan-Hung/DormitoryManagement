@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DormitoryManagement
 {
     [Table("SinhVien")]
-    public partial class SinhVien
+    public partial class Student
     {
-        public SinhVien()
+        public Student()
         {
             HopDongThuePhongs = new HashSet<HopDongThuePhong>();
         }
@@ -38,7 +38,7 @@ namespace DormitoryManagement
         public virtual Phong Phong { get; set; }
 
         public virtual Truong Truong { get; set; }
-        public SinhVien(string MaSV, string TenSV, string GioiTinh, string SDT, string MaTruong, string MaPhong)
+        public Student(string MaSV, string TenSV, string GioiTinh, string SDT, string MaTruong, string MaPhong)
         {
             this.MaSV = MaSV;
             this.TenSV = TenSV;

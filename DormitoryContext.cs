@@ -17,7 +17,7 @@ namespace DormitoryManagement
         public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<Phong> Phongs { get; set; }
-        public virtual DbSet<SinhVien> SinhViens { get; set; }
+        public virtual DbSet<Student> SinhViens { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<Toa> Toas { get; set; }
         public virtual DbSet<Truong> Truongs { get; set; }
@@ -25,6 +25,8 @@ namespace DormitoryManagement
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new Configurations.StudentConfig());
+
             modelBuilder.Entity<DienNuocSuDung>()
                 .Property(e => e.MaHoaDon)
                 .IsFixedLength()
@@ -103,33 +105,7 @@ namespace DormitoryManagement
                 .WithRequired(e => e.Phong)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SinhVien>()
-                .Property(e => e.MaSV)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SinhVien>()
-                .Property(e => e.GioiTinh)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SinhVien>()
-                .Property(e => e.SDT)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SinhVien>()
-                .Property(e => e.MaTruong)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SinhVien>()
-                .Property(e => e.MaPhong)
-                .IsFixedLength()
-                .IsUnicode(false) ;
-
-            modelBuilder.Entity<SinhVien>()
-                .HasMany(e => e.HopDongThuePhongs)
-                .WithOptional(e => e.SinhVien)
-                .WillCascadeOnDelete();
+           
 
             modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.MaNV)

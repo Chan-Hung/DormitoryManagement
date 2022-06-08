@@ -9,7 +9,7 @@ namespace DormitoryManagement
     {
         public Truong()
         {
-            SinhViens = new HashSet<SinhVien>();
+            SinhViens = new HashSet<Student>();
         }
 
         [Key]
@@ -20,7 +20,7 @@ namespace DormitoryManagement
         [StringLength(50)]
         public string TenTruong { get; set; }
 
-        public virtual ICollection<SinhVien> SinhViens { get; set; }
+        public virtual ICollection<Student> SinhViens { get; set; }
 
         public Truong(string MaTruong, string TenTruong)
         {

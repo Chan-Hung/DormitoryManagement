@@ -10,7 +10,7 @@ namespace DormitoryManagement
         public Phong()
         {
             DienNuocSuDungs = new HashSet<DienNuocSuDung>();
-            SinhViens = new HashSet<SinhVien>();
+            SinhViens = new HashSet<Student>();
         }
 
         [Key]
@@ -33,7 +33,7 @@ namespace DormitoryManagement
 
         public virtual Toa Toa { get; set; }
 
-        public virtual ICollection<SinhVien> SinhViens { get; set; }
+        public virtual ICollection<Student> SinhViens { get; set; }
         public Phong(string MaPhong,string MaToa, string MaLoaiPhong, string TrangThai)
         {
             this.MaPhong = MaPhong;

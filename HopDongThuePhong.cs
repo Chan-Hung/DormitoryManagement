@@ -20,7 +20,7 @@ namespace DormitoryManagement
         [Column(TypeName = "date")]
         public DateTime NgayKTHD { get; set; }
 
-        public virtual SinhVien SinhVien { get; set; }
+        public virtual Student SinhVien { get; set; }
         public HopDongThuePhong(string MaHD, string MaSV, DateTime NgayKHD, DateTime NgayKTHD)
         {
             this.MaHD = MaHD;

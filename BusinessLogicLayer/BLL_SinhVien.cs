@@ -10,7 +10,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     {
         DormitoryContext dbs = new DormitoryContext();
 
-        public List<SinhVien> SelectSinhVien()
+        public List<Student> SelectSinhVien()
         {
             return dbs.SinhViens.ToList();
         }
@@ -19,7 +19,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                SinhVien sv = new SinhVien();
+                Student sv = new Student();
                 sv.MaSV = maSV;
                 sv.TenSV = tenSV;
                 sv.GioiTinh = gioiTinh;
@@ -82,11 +82,11 @@ namespace DormitoryManagement.BusinessLogicLayer
 
             return flag;
         }
-        public List<SinhVien> searchMaSinhVien(string masv)
+        public List<Student> searchMaSinhVien(string masv)
         {
             return dbs.SinhViens.Where(x => x.MaSV == masv).ToList();
         }
-        public List<SinhVien> searchTenSinhVien(string tenSV)
+        public List<Student> searchTenSinhVien(string tenSV)
         {
             return dbs.SinhViens.Where(x => x.TenSV.Contains(tenSV)).ToList();
         }
