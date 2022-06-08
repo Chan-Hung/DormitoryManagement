@@ -67,16 +67,22 @@
     <Compile Include="BusinessLogicLayer\BLL_TienDien.cs" />
     <Compile Include="BusinessLogicLayer\BLL_Toa.cs" />
     <Compile Include="BusinessLogicLayer\BLL_TaiKhoan.cs" />
+    <Compile Include="Configurations\BuildingConfig.cs" />
+    <Compile Include="Configurations\RoomConfig.cs" />
+    <Compile Include="Configurations\RoomTypeConfig.cs" />
+    <Compile Include="Configurations\EmployeeConfig.cs" />
+    <Compile Include="Configurations\EmployeeTypeConfig.cs" />
+    <Compile Include="Configurations\SchoolConfig.cs" />
     <Compile Include="Configurations\StudentConfig.cs" />
     <Compile Include="DienNuocSuDung.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="HopDongThuePhong.cs" />
+    <Compile Include="Contract.cs" />
     <Compile Include="Initializer.cs" />
-    <Compile Include="LoaiNhanVien.cs" />
-    <Compile Include="LoaiPhong.cs" />
+    <Compile Include="EmployeeType.cs" />
+    <Compile Include="RoomType.cs" />
     <Compile Include="LoaiTaiKhoan.cs" />
-    <Compile Include="NhanVien.cs" />
-    <Compile Include="Phong.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="Room.cs" />
     <Compile Include="PresentationLayer\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,8 +148,8 @@
     <Compile Include="DormitoryContext.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="TaiKhoan.cs" />
-    <Compile Include="Toa.cs" />
-    <Compile Include="Truong.cs" />
+    <Compile Include="Building.cs" />
+    <Compile Include="School.cs" />
     <EmbeddedResource Include="PresentationLayer\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>

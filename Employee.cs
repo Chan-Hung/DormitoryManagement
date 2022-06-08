@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DormitoryManagement
 {
     [Table("NhanVien")]
-    public partial class NhanVien
+    public partial class Employee
     {
-        public NhanVien() => TaiKhoans = new HashSet<TaiKhoan>();
+        public Employee() => TaiKhoans = new HashSet<TaiKhoan>();
 
         [Key]
         [StringLength(5)]
@@ -28,12 +28,12 @@ namespace DormitoryManagement
 
         public int Luong { get; set; }
 
-        public virtual LoaiNhanVien LoaiNhanVien { get; set; }
+        public virtual EmployeeType LoaiNhanVien { get; set; }
 
-        public virtual Toa Toa { get; set; }
+        public virtual Building Toa { get; set; }
 
         public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
-        public NhanVien(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
+        public Employee(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
         {
             this.MaNV = MaNV;
             this.MaLoaiNV = MaLoaiNV;

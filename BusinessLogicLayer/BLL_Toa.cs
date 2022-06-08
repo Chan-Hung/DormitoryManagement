@@ -7,7 +7,7 @@ namespace DormitoryManagement.BusinessLogicLayer
     public class BLL_Toa
     {
         DormitoryContext dbs = new DormitoryContext();
-        public List<Toa> SelectToa()
+        public List<Building> SelectToa()
         {
             return dbs.Toas.ToList();
         }
@@ -16,7 +16,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                Toa toa = new Toa();
+                Building toa = new Building();
                 toa.MaToa = matoa;
                 toa.SoTang = sotang;
                 toa.SucChua = succhua;

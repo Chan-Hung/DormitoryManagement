@@ -124,7 +124,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         //Đổi trạng thái khi phòng đủ SV
         public void doiTrangThaiPhong(string masv, string maPhong)
         {
-            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            Room phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             //Tìm mã loại phòng của phòng đó
             var Phong = dbs.Phongs.Join(dbs.LoaiPhongs,
                 p => p.MaLoaiPhong,
@@ -158,7 +158,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         //Kiểm tra phòng đầy hay chưa
         public bool checkFullPhong(string maPhong)
         {
-            Phong phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            Room phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             if (phong.TrangThai == "Hết") return false;
             return true;
         }
