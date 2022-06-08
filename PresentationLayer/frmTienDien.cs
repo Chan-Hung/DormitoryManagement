@@ -209,6 +209,5 @@ namespace DormitoryManagement.PresentationLayer
                 }
             }
         }
-        //Thêm trigger ngày kết thúc > ngày đăng ký
-    }
+     }
 }

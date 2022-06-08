@@ -27,6 +27,7 @@ namespace DormitoryManagement.PresentationLayer
 
             btnThem.Enabled = true;
             btnSua.Enabled = true;
+            btnPhongTrong.Enabled = true;
 
             //Bật txtMaPhong
             txtMaPhong.Enabled = true;
@@ -65,6 +66,7 @@ namespace DormitoryManagement.PresentationLayer
 
             btnThem.Enabled = false;
             btnSua.Enabled = false;
+            btnPhongTrong.Enabled = false;
 
             txtMaPhong.Focus();
         }
@@ -81,6 +83,7 @@ namespace DormitoryManagement.PresentationLayer
             //Tắt nút Thêm/ Sửa/ Xóa
             btnThem.Enabled = false;
             btnSua.Enabled = false;
+            btnPhongTrong.Enabled = false;
 
             //Vô hiệu hóa trường textbox Mã phòng
             txtMaPhong.Enabled = false;
@@ -100,8 +103,10 @@ namespace DormitoryManagement.PresentationLayer
 
             //Bật txtMaPhong
             txtMaPhong.Enabled = true;
+            //Bật nút phòng trống
+            btnPhongTrong.Enabled = true;
 
-            //Tắt các nút Lưu/ Hủy
+            //Tắt các nút Lưu/ Hủy/
             btnLuu.Enabled = false;
             btnHuy.Enabled = false;
         }
