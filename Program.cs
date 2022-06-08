@@ -13,7 +13,7 @@ namespace DormitoryManagement
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PresentationLayer.frmDashboard());
+            Application.Run(new PresentationLayer.frmLogin());
         }
     }
 }
