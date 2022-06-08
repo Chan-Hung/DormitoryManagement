@@ -76,9 +76,9 @@
     <Compile Include="Configurations\EmployeeTypeConfig.cs" />
     <Compile Include="Configurations\SchoolConfig.cs" />
     <Compile Include="Configurations\StudentConfig.cs" />
+    <Compile Include="Contract.cs" />
     <Compile Include="ElectricityAndWaterBill.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Contract.cs" />
     <Compile Include="Initializer.cs" />
     <Compile Include="EmployeeType.cs" />
     <Compile Include="RoomType.cs" />
@@ -150,9 +150,6 @@
     <Compile Include="DormitoryContext.cs" />
     <Compile Include="Student.cs" />
     <Compile Include="Account.cs" />
-    <Compile Include="Toa.cs" />
-    <Compile Include="Truong.cs" />
-    <Compile Include="TaiKhoan.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="School.cs" />
     <EmbeddedResource Include="PresentationLayer\frmDashboard.resx">

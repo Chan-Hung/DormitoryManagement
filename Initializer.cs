@@ -174,16 +174,16 @@ namespace DormitoryManagement
             context.DienNuocSuDungs.AddRange(dienNuocSuDungs);
 
             //Khởi tạo hợp đồng
-            IList<HopDongThuePhong> hopDongThuePhongs = new List<HopDongThuePhong>();
-            hopDongThuePhongs.Add(new HopDongThuePhong("0001", "11950527",DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0002", "20110031", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0003", "19941297", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0004", "30150404", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0005", "66937210", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0006", "49495277", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0007", "40219226", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0008", "96112364", DateTime.Now, DateTime.Now.AddYears(1)));
-            hopDongThuePhongs.Add(new HopDongThuePhong("0009", "20687487", DateTime.Now, DateTime.Now.AddYears(1)));
+            IList<Contract> hopDongThuePhongs = new List<Contract>();
+            hopDongThuePhongs.Add(new Contract("0001", "11950527",DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0002", "20110031", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0003", "19941297", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0004", "30150404", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0005", "66937210", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0006", "49495277", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0007", "40219226", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0008", "96112364", DateTime.Now, DateTime.Now.AddYears(1)));
+            hopDongThuePhongs.Add(new Contract("0009", "20687487", DateTime.Now, DateTime.Now.AddYears(1)));
             context.HopDongThuePhongs.AddRange(hopDongThuePhongs);
 
 

@@ -9,7 +9,7 @@ namespace DormitoryManagement
     {
         public Student()
         {
-            HopDongThuePhongs = new HashSet<HopDongThuePhong>();
+            HopDongThuePhongs = new HashSet<Contract>();
         }
 
         [Key]
@@ -33,7 +33,7 @@ namespace DormitoryManagement
         [StringLength(3)]
         public string MaPhong { get; set; }
 
-        public virtual ICollection<HopDongThuePhong> HopDongThuePhongs { get; set; }
+        public virtual ICollection<Contract> HopDongThuePhongs { get; set; }
 
         public virtual Room Phong { get; set; }
 

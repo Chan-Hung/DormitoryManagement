@@ -25,10 +25,8 @@ namespace DormitoryManagement
         [StringLength(50)]
         public string TrangThai { get; set; }
 
-        public virtual Phong Phong { get; set; }
-        public ElectricityAndWaterBill(string MaHoaDon, string MaPhong, DateTime NgayLap, int SoDienTieuThu, int SoNuocTieuThu, string TrangThai)
         public virtual Room Phong { get; set; }
-        public DienNuocSuDung(string MaHoaDon, string MaPhong, DateTime NgayLap, int SoDienTieuThu, int SoNuocTieuThu, string TrangThai)
+        public ElectricityAndWaterBill(string MaHoaDon, string MaPhong, DateTime NgayLap, int SoDienTieuThu, int SoNuocTieuThu, string TrangThai)
         {
             this.MaHoaDon = MaHoaDon;
             this.MaPhong = MaPhong;
