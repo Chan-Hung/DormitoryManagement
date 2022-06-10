@@ -9,7 +9,7 @@ namespace DormitoryManagement
     {
         public RoomType()
         {
-            Phongs = new HashSet<Room>();
+            Rooms = new HashSet<Room>();
         }
 
         [Key]
@@ -22,7 +22,7 @@ namespace DormitoryManagement
 
         public int Fee { get; set; }
 
-        public virtual ICollection<Room> Phongs { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
         public RoomType(string RoomTypeID, string RoomTypeName, int Fee)
         {
             this.RoomTypeID = RoomTypeID;

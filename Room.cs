@@ -9,8 +9,8 @@ namespace DormitoryManagement
     {
         public Room()
         {
-            DienNuocSuDungs = new HashSet<ElectricityAndWaterBill>();
-            SinhViens = new HashSet<Student>();
+            ElectricityAndWaterBills = new HashSet<ElectricityAndWaterBill>();
+            Students = new HashSet<Student>();
         }
 
         [Key]
@@ -27,13 +27,15 @@ namespace DormitoryManagement
         [StringLength(10)]
         public string State { get; set; }
 
-        public virtual ICollection<ElectricityAndWaterBill> DienNuocSuDungs { get; set; }
+        public virtual ICollection<ElectricityAndWaterBill> ElectricityAndWaterBills { get; set; }
 
         public virtual RoomType RoomType { get; set; }
 
         public virtual Building Building { get; set; }
 
-        public virtual ICollection<Student> SinhViens { get; set; }
+
+        public virtual ICollection<Student> Students { get; set; }
+
         public Room(string RoomID,string BuildingID, string RoomTypeID, string State)
         {
             this.RoomID = RoomID;

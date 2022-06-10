@@ -18,7 +18,7 @@ namespace DormitoryManagement.Configurations
             .IsFixedLength()
             .IsUnicode(false);
 
-            HasMany(e => e.DienNuocSuDungs)
+            HasMany(e => e.ElectricityAndWaterBills)
             .WithRequired(e => e.Phong)
             .WillCascadeOnDelete(false);
         }
