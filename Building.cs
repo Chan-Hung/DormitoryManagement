@@ -9,8 +9,8 @@ namespace DormitoryManagement
     {
         public Building()
         {
-            NhanViens = new HashSet<Employee>();
-            Phongs = new HashSet<Room>();
+            Employees = new HashSet<Employee>();
+            Rooms = new HashSet<Room>();
         }
 
         [Key]
@@ -23,9 +23,9 @@ namespace DormitoryManagement
 
         public short NumberOfRooms { get; set; }
 
-        public virtual ICollection<Employee> NhanViens { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
 
-        public virtual ICollection<Room> Phongs { get; set; }
+        public virtual ICollection<Room> Rooms { get; set; }
         public Building(string BuildingID, short Floor, int Capacity, short NumberOfRooms)
         {
             this.BuildingID = BuildingID;
