@@ -18,6 +18,8 @@ namespace DormitoryManagement.BusinessLogicLayer
             {
                 var taikhoan = dbs.TaiKhoans.Find(id);
                 if(taikhoan.Password == oldPassword)
+                var taikhoan = dbs.Accounts.Find(id);
+                if(taikhoan.MatKhau == oldPassword)
                 {
                     if(newPassword == confirmation)
                     {

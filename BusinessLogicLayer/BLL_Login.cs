@@ -11,6 +11,8 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             var toAuth = (from e in dbs.TaiKhoans
                           where e.Username == username && e.Password == password
+            var toAuth = (from e in dbs.Accounts
+                          where e.TenDangNhap == username && e.MatKhau == password
                           select e).FirstOrDefault();
             if (toAuth != null)
             {

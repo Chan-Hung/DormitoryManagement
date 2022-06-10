@@ -10,7 +10,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         
         public List<Account> SelectTaiKhoan()
         {
-            return dbs.TaiKhoans.ToList();
+            return dbs.Accounts.ToList();
         }
         public bool insertTaiKhoan(ref string err, string manv, string tendangnhap, string matkhau, string maloaitaikhoan)
         {
@@ -38,7 +38,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var tk = dbs.TaiKhoans.Where(x=>x.EmployeeID==manv).FirstOrDefault();
+                var tk = dbs.Accounts.Where(x=>x.MaNV==manv).FirstOrDefault();
                 if (tk != null)
                 {
                     tk.EmployeeID = manv;
@@ -57,10 +57,10 @@ namespace DormitoryManagement.BusinessLogicLayer
         public bool deleteTaiKhoan(ref string err, string manv)
         {
             bool flag = false;
-            var tk = dbs.TaiKhoans.Where(x => x.EmployeeID == manv).FirstOrDefault();
+            var tk = dbs.Accounts.Where(x => x.MaNV == manv).FirstOrDefault();
             if (tk != null)
             {
-                dbs.TaiKhoans.Remove(tk);
+                dbs.Accounts.Remove(tk);
                 dbs.SaveChanges();
                 flag = true;
             }

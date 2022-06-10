@@ -9,7 +9,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         DormitoryContext dbs = new DormitoryContext();
         public List<Building> SelectToa()
         {
-            return dbs.Toas.ToList();
+            return dbs.Buildings.ToList();
         }
         public bool InsertToa(ref string err, string matoa, short sotang, int succhua, short sophongtoida)
         {
@@ -36,7 +36,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var toa = dbs.Toas.Find(matoa);
+                var toa = dbs.Buildings.Find(matoa);
                 if (toa != null)
                 {
                     toa.BuildingID = matoa;
@@ -55,7 +55,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public bool checkMaToa(string matoa)
         {
-            var toa = dbs.Toas.Where(x => x.BuildingID == matoa).FirstOrDefault();
+            var toa = dbs.Buildings.Where(x => x.MaToa == matoa).FirstOrDefault();
             if (toa == null) return true;
             return false;
         }

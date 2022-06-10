@@ -12,7 +12,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 
         public List<Student> SelectSinhVien()
         {
-            return dbs.SinhViens.ToList();
+            return dbs.Students.ToList();
         }
         public bool InsertSinhVien(ref string err, string maSV, string tenSV, string gioiTinh, string SDT, string maTruong, string maPhong)
         {
@@ -26,7 +26,7 @@ namespace DormitoryManagement.BusinessLogicLayer
                 sv.SDT = SDT;
                 sv.MaTruong = maTruong;
                 sv.MaPhong = maPhong;
-                dbs.SinhViens.Add(sv);
+                dbs.Students.Add(sv);
                 dbs.SaveChanges();
                 flag = true;
             }
@@ -42,7 +42,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var sinhvien = dbs.SinhViens.Find(maSV);
+                var sinhvien = dbs.Students.Find(maSV);
                 if (sinhvien != null)
                 {
                     sinhvien.TenSV = tenSV;
@@ -65,12 +65,12 @@ namespace DormitoryManagement.BusinessLogicLayer
         public bool DeleteSinhVien(ref string err, string maSV)
         {
             bool flag = false;
-            var sinhvien = dbs.SinhViens.Find(maSV);
+            var sinhvien = dbs.Students.Find(maSV);
             try
             {
                 if (sinhvien != null)
                 {
-                    dbs.SinhViens.Remove(sinhvien);
+                    dbs.Students.Remove(sinhvien);
                     dbs.SaveChanges();
                     flag = true;
                 }
@@ -84,21 +84,21 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public List<Student> searchMaSinhVien(string masv)
         {
-            return dbs.SinhViens.Where(x => x.StudentId == masv).ToList();
+            return dbs.Students.Where(x => x.MaSV == masv).ToList();
         }
         public List<Student> searchTenSinhVien(string tenSV)
         {
-            return dbs.SinhViens.Where(x => x.TenSV.Contains(tenSV)).ToList();
+            return dbs.Students.Where(x => x.TenSV.Contains(tenSV)).ToList();
         }
         public int countSinhVien()
         {
-            return dbs.SinhViens.Select(x => x).ToList().Count();
+            return dbs.Students.Select(x => x).ToList().Count();
         }
 
         //Kiểm tra không trùng khóa chính (Mã sinh viên)
         public bool checkMaSinhVien(string masv)
         {
-            var sv = dbs.SinhViens.Where(x => x.StudentId == masv).FirstOrDefault();
+            var sv = dbs.Students.Where(x => x.MaSV == masv).FirstOrDefault();
             if (sv == null) return true;
             return false;
         }
@@ -108,9 +108,9 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
             //Tòa lẻ: Nữ
             //Tòa chẵn: Nam
-            var Toa = dbs.Phongs.Join(dbs.Toas, p => p.BuildingID,
-                t => t.BuildingID,
-                (p, t) => new { matoa = p.BuildingID, maphong = p.RoomID })
+            var Toa = dbs.Rooms.Join(dbs.Buildings, p => p.MaToa,
+                t => t.MaToa,
+                (p, t) => new { matoa = p.MaToa, maphong = p.MaPhong })
                 .Where(p => p.maphong == maPhong)
                 .FirstOrDefault();
             int maToa = int.Parse(Regex.Match(Toa.matoa, @"\d+").Value);
@@ -124,18 +124,18 @@ namespace DormitoryManagement.BusinessLogicLayer
         //Đổi trạng thái khi phòng đủ SV
         public void doiTrangThaiPhong(string masv, string maPhong)
         {
-            Room phong = dbs.Phongs.Where(x => x.RoomID == maPhong).FirstOrDefault();
+            Room phong = dbs.Rooms.Where(x => x.MaPhong == maPhong).FirstOrDefault();
             //Tìm mã loại phòng của phòng đó
-            var Phong = dbs.Phongs.Join(dbs.LoaiPhongs,
-                p => p.RoomTypeID,
-                lp => lp.RoomTypeID,
-                (p, lp) => new { maphong = p.RoomID, maloaiphong = p.RoomTypeID, trangthai = p.State })
+            var Phong = dbs.Rooms.Join(dbs.RoomTypes,
+                p => p.MaLoaiPhong,
+                lp => lp.MaLoaiPhong,
+                (p, lp) => new { maphong = p.MaPhong, maloaiphong = p.MaLoaiPhong, trangthai = p.TrangThai })
                 .Where(p => p.maphong == maPhong)
                 .FirstOrDefault();
 
             //Đếm số lượng sinh viên ở trong phòng có mã phòng = maPhong
-            int tongSVtrongphong = dbs.SinhViens
-                .Join(dbs.Phongs,
+            int tongSVtrongphong = dbs.Students
+                .Join(dbs.Rooms,
                 sv => sv.MaPhong,
                 p => p.RoomID,
                 (sv, p) => new { maphong = p.RoomID })
@@ -160,14 +160,16 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
             Room phong = dbs.Phongs.Where(x => x.RoomID == maPhong).FirstOrDefault();
             if (phong.State == "Hết") return false;
+            Room phong = dbs.Rooms.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            if (phong.TrangThai == "Hết") return false;
             return true;
         }
 
         public Object searchTenToa(string toa)
         {
 
-            var ShowToa = dbs.SinhViens.
-                Join(dbs.Phongs,
+            var ShowToa = dbs.Students.
+                Join(dbs.Rooms,
                 sinhVien => sinhVien.MaPhong,
                 phong => phong.RoomID,
                 (sinhVien, phong) => new { MaSV = sinhVien.StudentId, TenSV = sinhVien.TenSV, GioiTinh = sinhVien.GioiTinh, MaTruong = sinhVien.MaTruong, MaPhong = sinhVien.MaPhong, MaToa = phong.BuildingID }).
@@ -176,6 +178,8 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public Object tienPhongCuaSV()
         {
+            var tienPhongCuaSV = dbs.Students.Join(dbs.Rooms, sinhVien => sinhVien.MaPhong, phong => phong.MaPhong, (sinhVien, phong) => new { SinhVien = sinhVien, Phong = phong })
+                .Join(dbs.RoomTypes, phong => phong.Phong.MaLoaiPhong, loaiPhong => loaiPhong.MaLoaiPhong, (phong, loaiPhong) => new { MaSV = phong.SinhVien.MaSV, TenSV = phong.SinhVien.TenSV, MaPhong = phong.SinhVien.MaPhong, MaLoaiPhong = phong.Phong.MaLoaiPhong, Gia = (loaiPhong.Gia * 10).ToString() }).ToList();
             var tienPhongCuaSV = dbs.SinhViens.Join(dbs.Phongs, sinhVien => sinhVien.MaPhong, phong => phong.RoomID, (sinhVien, phong) => new { SinhVien = sinhVien, Phong = phong })
                 .Join(dbs.LoaiPhongs, phong => phong.Phong.RoomTypeID, loaiPhong => loaiPhong.RoomTypeID, (phong, loaiPhong) => new { MaSV = phong.SinhVien.StudentId, TenSV = phong.SinhVien.TenSV, MaPhong = phong.SinhVien.MaPhong, MaLoaiPhong = phong.Phong.RoomTypeID, Gia = (loaiPhong.Fee * 10).ToString() }).ToList();
             return tienPhongCuaSV;

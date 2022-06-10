@@ -11,7 +11,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         DormitoryContext dbs = new DormitoryContext();
         public List<Room> SelectPhong()
         {
-            return dbs.Phongs.ToList();
+            return dbs.Rooms.ToList();
         }
         public bool InsertPhong(ref string err, string maphong, string maloaiphong, string matoa, string trangthai)
         {
@@ -39,7 +39,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var phong = dbs.Phongs.Find(maphong);
+                var phong = dbs.Rooms.Find(maphong);
                 if (phong!=null){
                     phong.RoomID = maphong;
                     phong.RoomTypeID = maloaiphong;
