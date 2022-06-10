@@ -21,10 +21,10 @@ namespace DormitoryManagement
         public DateTime NgayKTHD { get; set; }
 
         public virtual Student SinhVien { get; set; }
-        public Contract(string MaHD, string MaSV, DateTime NgayKHD, DateTime NgayKTHD)
+        public Contract(string ContractID, string StudentID, DateTime NgayKHD, DateTime NgayKTHD)
         {
-            this.ContractID = MaHD;
-            this.StudentID = MaSV;
+            this.ContractID = ContractID;
+            this.StudentID = StudentID;
             this.NgayKHD = NgayKHD.Date;
             this.NgayKTHD = NgayKTHD.Date;
         }

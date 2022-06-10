@@ -9,7 +9,7 @@ namespace DormitoryManagement
     {
         public EmployeeType()
         {
-            NhanViens = new HashSet<Employee>();
+            Employees = new HashSet<Employee>();
         }
 
         [Key]
@@ -20,7 +20,7 @@ namespace DormitoryManagement
         [StringLength(50)]
         public string JobDescription { get; set; }
 
-        public virtual ICollection<Employee> NhanViens { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
         public EmployeeType(string EmployeeTypeID, string JobDescription)
         {
             this.EmployeeTypeID = EmployeeTypeID;

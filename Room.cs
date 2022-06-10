@@ -29,9 +29,9 @@ namespace DormitoryManagement
 
         public virtual ICollection<ElectricityAndWaterBill> DienNuocSuDungs { get; set; }
 
-        public virtual RoomType LoaiPhong { get; set; }
+        public virtual RoomType RoomType { get; set; }
 
-        public virtual Building Toa { get; set; }
+        public virtual Building Building { get; set; }
 
         public virtual ICollection<Student> SinhViens { get; set; }
         public Room(string RoomID,string BuildingID, string RoomTypeID, string State)
