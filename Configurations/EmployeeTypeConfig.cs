@@ -6,7 +6,7 @@ namespace DormitoryManagement.Configurations
     {
         public EmployeeTypeConfig()
         {
-            Property(e => e.MaLoaiNV)
+            Property(e => e.EmployeeTypeID)
             .IsFixedLength()
             .IsUnicode(false);
         }

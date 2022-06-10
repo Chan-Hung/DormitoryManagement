@@ -6,7 +6,7 @@ namespace DormitoryManagement.Configurations
     {
         public StudentConfig()
         {
-            Property(e => e.MaSV)
+            Property(e => e.StudentId)
             .IsUnicode(false);
 
             Property(e => e.GioiTinh)
