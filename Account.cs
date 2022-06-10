@@ -23,7 +23,7 @@ namespace DormitoryManagement
         [StringLength(2)]
         public string MaLoaiTaiKhoan { get; set; }
 
-        public virtual LoaiTaiKhoan LoaiTaiKhoan { get; set; }
+        public virtual AccountType LoaiTaiKhoan { get; set; }
 
         //public virtual NhanVien NhanVien { get; set; }
         public virtual Employee NhanVien { get; set; }

@@ -42,16 +42,9 @@ namespace DormitoryManagement
 
             modelBuilder.Configurations.Add(new Configurations.SchoolConfig());
 
-            modelBuilder.Configurations.Add(new Configurations.ElectricityAndWaterBillConfig());     
+            modelBuilder.Configurations.Add(new Configurations.ElectricityAndWaterBillConfig());
 
-            modelBuilder.Entity<LoaiTaiKhoan>()
-                .Property(e => e.MaLoaiTaiKhoan)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<LoaiTaiKhoan>()
-                .Property(e => e.TenLoaiTaiKhoan)
-                .IsUnicode(false);
+            modelBuilder.Configurations.Add(new Configurations.AccountTypeConfig());
         }
     }
 }

@@ -68,6 +68,7 @@
     <Compile Include="BusinessLogicLayer\BLL_Toa.cs" />
     <Compile Include="BusinessLogicLayer\BLL_TaiKhoan.cs" />
     <Compile Include="Configurations\AccountConfig.cs" />
+    <Compile Include="Configurations\AccountTypeConfig.cs" />
     <Compile Include="Configurations\ElectricityAndWaterBillConfig.cs" />
     <Compile Include="Configurations\BuildingConfig.cs" />
     <Compile Include="Configurations\RoomConfig.cs" />
@@ -82,7 +83,7 @@
     <Compile Include="Initializer.cs" />
     <Compile Include="EmployeeType.cs" />
     <Compile Include="RoomType.cs" />
-    <Compile Include="LoaiTaiKhoan.cs" />
+    <Compile Include="AccountType.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="PresentationLayer\frmDashboard.cs">
