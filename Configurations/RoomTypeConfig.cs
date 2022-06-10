@@ -6,7 +6,7 @@ namespace DormitoryManagement.Configurations
     {
         public RoomTypeConfig()
         {
-            Property(e => e.MaLoaiPhong)
+            Property(e => e.RoomTypeID)
             .IsFixedLength()
             .IsUnicode(false);
         }

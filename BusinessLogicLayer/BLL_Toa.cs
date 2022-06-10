@@ -17,10 +17,10 @@ namespace DormitoryManagement.BusinessLogicLayer
             try
             {
                 Building toa = new Building();
-                toa.MaToa = matoa;
-                toa.SoTang = sotang;
-                toa.SucChua = succhua;
-                toa.SoPhongToiDa = sophongtoida;
+                toa.BuildingID = matoa;
+                toa.Floor = sotang;
+                toa.Capacity = succhua;
+                toa.NumberOfRooms = sophongtoida;
                 dbs.Toas.Add(toa);
                 dbs.SaveChanges();
                 flag = true;
@@ -39,10 +39,10 @@ namespace DormitoryManagement.BusinessLogicLayer
                 var toa = dbs.Toas.Find(matoa);
                 if (toa != null)
                 {
-                    toa.MaToa = matoa;
-                    toa.SoTang = sotang;
-                    toa.SucChua = succhua;
-                    toa.SoPhongToiDa = sophongtoida;
+                    toa.BuildingID = matoa;
+                    toa.Floor = sotang;
+                    toa.Capacity = succhua;
+                    toa.NumberOfRooms = sophongtoida;
                     dbs.SaveChanges();
                     flag = true;
                 }
@@ -55,7 +55,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public bool checkMaToa(string matoa)
         {
-            var toa = dbs.Toas.Where(x => x.MaToa == matoa).FirstOrDefault();
+            var toa = dbs.Toas.Where(x => x.BuildingID == matoa).FirstOrDefault();
             if (toa == null) return true;
             return false;
         }

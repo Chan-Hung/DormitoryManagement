@@ -15,12 +15,12 @@ namespace DormitoryManagement.BusinessLogicLayer
             try
             {
                 Employee nv = new Employee();
-                nv.MaNV = maNV;
-                nv.MaLoaiNV = maLoaiNV;
-                nv.MaToa = maToa;
+                nv.EmployeeID = maNV;
+                nv.EmployeeTypeID = maLoaiNV;
+                nv.BuildingID = maToa;
                 nv.TenNV = tenNV;
-                nv.SDT = SDT;
-                nv.Luong = Luong;
+                nv.TelephoneNumber = SDT;
+                nv.Salary = Luong;
                 dbs.NhanViens.Add(nv);
                 dbs.SaveChanges();
                 flag = true;
@@ -39,11 +39,11 @@ namespace DormitoryManagement.BusinessLogicLayer
                 var nhanVien = dbs.NhanViens.Find(maNV);
                 if (nhanVien != null)
                 {
-                    nhanVien.MaLoaiNV = maLoaiNV;
-                    nhanVien.MaToa = maToa;
+                    nhanVien.EmployeeTypeID = maLoaiNV;
+                    nhanVien.BuildingID = maToa;
                     nhanVien.TenNV = tenNV;
-                    nhanVien.SDT = SDT;
-                    nhanVien.Luong = Luong;
+                    nhanVien.TelephoneNumber = SDT;
+                    nhanVien.Salary = Luong;
                     dbs.SaveChanges();
                     flag = true;
                 }
@@ -72,16 +72,16 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public List<Employee> searchMaNhanVien(string manv)
         {
-            return dbs.NhanViens.Where(x => x.MaNV == manv).ToList();
+            return dbs.NhanViens.Where(x => x.EmployeeID == manv).ToList();
         }
         public List<Employee> searchMaToa(string matoa)
         {
-            return dbs.NhanViens.Where(x => x.MaToa == matoa).ToList();
+            return dbs.NhanViens.Where(x => x.BuildingID == matoa).ToList();
         }
         //Kiểm tra không trùng khóa chính (Mã nhân viên)
         public bool checkMaNhanVien(string manv)
         {
-            var nv = dbs.NhanViens.Where(x => x.MaNV == manv).FirstOrDefault();
+            var nv = dbs.NhanViens.Where(x => x.EmployeeID == manv).FirstOrDefault();
             if (nv == null) return true;
             return false;
         }

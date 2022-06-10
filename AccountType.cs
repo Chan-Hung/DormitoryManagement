@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
-    [Table("LoaiTaiKhoan")]
+    [Table("AccountType")]
     public partial class AccountType
     {
         public AccountType()
@@ -14,21 +14,21 @@ namespace DormitoryManagement
 
         [Key]
         [StringLength(2)]
-        public string MaLoaiTaiKhoan { get; set; }
+        public string AccountTypeID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string TenLoaiTaiKhoan { get; set; }
+        public string AccountTypeName { get; set; }
 
         [Required]
-        public string ChucNang { get; set; }
+        public string FunctionDescription { get; set; }
 
         public virtual ICollection<Account> TaiKhoans { get; set; }
-        public AccountType(string MaLoaiTaiKhoan, string TenLoaiTaiKhoan, string ChucNang)
+        public AccountType(string AccountTypeID, string AccountTypeName, string FunctionDescription)
         {
-            this.MaLoaiTaiKhoan = MaLoaiTaiKhoan;
-            this.TenLoaiTaiKhoan = TenLoaiTaiKhoan;
-            this.ChucNang = ChucNang;
+            this.AccountTypeID = AccountTypeID;
+            this.AccountTypeName = AccountTypeName;
+            this.FunctionDescription = FunctionDescription;
         }
     }
 }

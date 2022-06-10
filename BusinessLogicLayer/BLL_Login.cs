@@ -10,12 +10,12 @@ namespace DormitoryManagement.BusinessLogicLayer
         {
             bool flag = false;
             var toAuth = (from e in dbs.TaiKhoans
-                          where e.TenDangNhap == username && e.MatKhau == password
+                          where e.Username == username && e.Password == password
                           select e).FirstOrDefault();
             if (toAuth != null)
             {
-                Global.account_ID = toAuth.MaTaiKhoan;
-                Global.account_role = toAuth.MaLoaiTaiKhoan;
+                Global.account_ID = toAuth.AccountID;
+                Global.account_role = toAuth.AccountTypeID;
                 flag = true;
             }
             return flag;

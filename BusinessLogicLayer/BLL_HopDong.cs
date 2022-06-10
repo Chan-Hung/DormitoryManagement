@@ -20,8 +20,8 @@ namespace DormitoryManagement.BusinessLogicLayer
             {
                 Contract hopDong = new Contract();
 
-                hopDong.MaHD = mahd;
-                hopDong.MaSV = masv;
+                hopDong.ContractID = mahd;
+                hopDong.StudentID = masv;
                 hopDong.NgayKHD = ngaykhd;
                 hopDong.NgayKTHD = ngaykthd;
                 dbs.HopDongThuePhongs.Add(hopDong);
@@ -43,8 +43,8 @@ namespace DormitoryManagement.BusinessLogicLayer
                 var hopDong = dbs.HopDongThuePhongs.Find(mahd);
                 if (hopDong != null)
                 {
-                    hopDong.MaHD = mahd;
-                    hopDong.MaSV = masv;
+                    hopDong.ContractID = mahd;
+                    hopDong.StudentID = masv;
                     hopDong.NgayKHD = ngaykhd.Date;
                     hopDong.NgayKTHD = ngaykthd.Date;
                     dbs.SaveChanges();

@@ -7,11 +7,11 @@ namespace DormitoryManagement.Configurations
     {
         public AccountTypeConfig()
         {
-            Property(e => e.MaLoaiTaiKhoan)
+            Property(e => e.AccountTypeID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.TenLoaiTaiKhoan)
+            Property(e => e.AccountTypeName)
             .IsUnicode(false);
         }
     }

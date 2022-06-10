@@ -17,11 +17,11 @@ namespace DormitoryManagement.BusinessLogicLayer
             try
             {
                 var taikhoan = dbs.TaiKhoans.Find(id);
-                if(taikhoan.MatKhau == oldPassword)
+                if(taikhoan.Password == oldPassword)
                 {
                     if(newPassword == confirmation)
                     {
-                        taikhoan.MatKhau = newPassword;
+                        taikhoan.Password = newPassword;
                         flag = true;
                         dbs.SaveChanges();
                     }

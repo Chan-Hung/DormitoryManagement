@@ -18,10 +18,10 @@ namespace DormitoryManagement.BusinessLogicLayer
             try
             {
                 Account tk = new Account();
-                tk.MaNV = manv;
-                tk.TenDangNhap = tendangnhap;
-                tk.MatKhau = matkhau;
-                tk.MaLoaiTaiKhoan = maloaitaikhoan;
+                tk.EmployeeID = manv;
+                tk.Username = tendangnhap;
+                tk.Password = matkhau;
+                tk.AccountTypeID = maloaitaikhoan;
                 dbs.TaiKhoans.Add(tk);
                 dbs.SaveChanges();
                 flag = true;
@@ -38,12 +38,12 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var tk = dbs.TaiKhoans.Where(x=>x.MaNV==manv).FirstOrDefault();
+                var tk = dbs.TaiKhoans.Where(x=>x.EmployeeID==manv).FirstOrDefault();
                 if (tk != null)
                 {
-                    tk.MaNV = manv;
-                    tk.TenDangNhap = tendangnhap;
-                    tk.MaLoaiTaiKhoan = maloaitaikhoan;
+                    tk.EmployeeID = manv;
+                    tk.Username = tendangnhap;
+                    tk.AccountTypeID = maloaitaikhoan;
                     dbs.SaveChanges();
                     flag = true;
                 }
@@ -57,7 +57,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         public bool deleteTaiKhoan(ref string err, string manv)
         {
             bool flag = false;
-            var tk = dbs.TaiKhoans.Where(x => x.MaNV == manv).FirstOrDefault();
+            var tk = dbs.TaiKhoans.Where(x => x.EmployeeID == manv).FirstOrDefault();
             if (tk != null)
             {
                 dbs.TaiKhoans.Remove(tk);

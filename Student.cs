@@ -14,7 +14,7 @@ namespace DormitoryManagement
 
         [Key]
         [StringLength(10)]
-        public string MaSV { get; set; }
+        public string StudentId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -40,7 +40,7 @@ namespace DormitoryManagement
         public virtual School Truong { get; set; }
         public Student(string MaSV, string TenSV, string GioiTinh, string SDT, string MaTruong, string MaPhong)
         {
-            this.MaSV = MaSV;
+            this.StudentId = MaSV;
             this.TenSV = TenSV;
             this.GioiTinh = GioiTinh;
             this.SDT = SDT;

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
-    [Table("Phong")]
+    [Table("Room")]
     public partial class Room
     {
         public Room()
@@ -15,17 +15,17 @@ namespace DormitoryManagement
 
         [Key]
         [StringLength(3)]
-        public string MaPhong { get; set; }
+        public string RoomID { get; set; }
 
         [StringLength(2)]
-        public string MaToa { get; set; }
+        public string BuildingID { get; set; }
 
         [StringLength(3)]
-        public string MaLoaiPhong { get; set; }
+        public string RoomTypeID { get; set; }
 
         [Required]
         [StringLength(10)]
-        public string TrangThai { get; set; }
+        public string State { get; set; }
 
         public virtual ICollection<ElectricityAndWaterBill> DienNuocSuDungs { get; set; }
 
@@ -34,12 +34,12 @@ namespace DormitoryManagement
         public virtual Building Toa { get; set; }
 
         public virtual ICollection<Student> SinhViens { get; set; }
-        public Room(string MaPhong,string MaToa, string MaLoaiPhong, string TrangThai)
+        public Room(string RoomID,string BuildingID, string RoomTypeID, string State)
         {
-            this.MaPhong = MaPhong;
-            this.MaToa = MaToa;
-            this.MaLoaiPhong = MaLoaiPhong;
-            this.TrangThai = TrangThai;
+            this.RoomID = RoomID;
+            this.BuildingID = BuildingID;
+            this.RoomTypeID = RoomTypeID;
+            this.State = State;
         }
     }
 }

@@ -3,41 +3,41 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
-    [Table("TaiKhoan")]
+    [Table("Account")]
     public partial class Account
     {
         [Key]
-        public int MaTaiKhoan { get; set; }
+        public int AccountID { get; set; }
 
         [StringLength(5)]
-        public string MaNV { get; set; }
+        public string EmployeeID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string TenDangNhap { get; set; }
+        public string Username { get; set; }
 
         [Required]
         [StringLength(255)]
-        public string MatKhau { get; set; }
+        public string Password { get; set; }
 
         [StringLength(2)]
-        public string MaLoaiTaiKhoan { get; set; }
+        public string AccountTypeID { get; set; }
 
-        public virtual AccountType LoaiTaiKhoan { get; set; }
+        public virtual AccountType AccountType { get; set; }
 
-        //public virtual NhanVien NhanVien { get; set; }
-        public virtual Employee NhanVien { get; set; }
-        //public TaiKhoan(string MaNV, string TenDangNhap, string MatKhau, string MaLoaiTaiKhoan)
-        public Account(string MaNV, string TenDangNhap, string MatKhau, string MaLoaiTaiKhoan)
+        public virtual Employee Employee { get; set; }
+        public Account(string EmployeeID
+            , string Username, string Password, string AccountTypeID)
         {
-            this.MaNV = MaNV;
-            this.TenDangNhap = TenDangNhap;
-            this.MatKhau = MatKhau;
-            this.MaLoaiTaiKhoan = MaLoaiTaiKhoan;
+            this.EmployeeID = EmployeeID;
+            this.Username = Username;
+            this.Password = Password;
+            this.AccountTypeID = AccountTypeID;
         }
 
         public Account()
         {
+
         }
     }
 }

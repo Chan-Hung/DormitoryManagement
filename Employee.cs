@@ -4,29 +4,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
-    [Table("NhanVien")]
+    [Table("Employee")]
     public partial class Employee
     {
         public Employee() => TaiKhoans = new HashSet<Account>();
 
         [Key]
         [StringLength(5)]
-        public string MaNV { get; set; }
+        public string EmployeeID { get; set; }
 
         [StringLength(2)]
-        public string MaLoaiNV { get; set; }
+        public string EmployeeTypeID { get; set; }
 
         [StringLength(2)]
-        public string MaToa { get; set; }
+        public string BuildingID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string TenNV { get; set; }
+        public string EmployeeName { get; set; }
 
         [StringLength(10)]
-        public string SDT { get; set; }
+        public string TelephoneNumber { get; set; }
 
-        public int Luong { get; set; }
+        public int Salary { get; set; }
 
         public virtual EmployeeType LoaiNhanVien { get; set; }
 
@@ -34,14 +34,14 @@ namespace DormitoryManagement
 
         public virtual ICollection<Account> TaiKhoans { get; set; }
        
-        public Employee(string MaNV, string MaLoaiNV, string MaToa, string TenNV, string SDT, int Luong)
+        public Employee(string EmployeeID, string EmployeeTypeID, string BuildingID, string EmployeeName, string TelephoneNumber, int Salary)
         {
-            this.MaNV = MaNV;
-            this.MaLoaiNV = MaLoaiNV;
-            this.MaToa = MaToa;
-            this.TenNV = TenNV;
-            this.SDT = SDT;
-            this.Luong = Luong;
+            this.EmployeeID = EmployeeID;
+            this.EmployeeTypeID = EmployeeTypeID;
+            this.BuildingID = BuildingID;
+            this.EmployeeName = EmployeeName;
+            this.TelephoneNumber = TelephoneNumber;
+            this.Salary = Salary;
 
         }
     }
