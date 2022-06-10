@@ -9,10 +9,10 @@ namespace DormitoryManagement
     {
         [Key]
         [StringLength(5)]
-        public string MaHD { get; set; }
+        public string ContractID { get; set; }
 
         [StringLength(10)]
-        public string MaSV { get; set; }
+        public string StudentID { get; set; }
 
         [Column(TypeName = "date")]
         public DateTime NgayKHD { get; set; }
@@ -21,10 +21,10 @@ namespace DormitoryManagement
         public DateTime NgayKTHD { get; set; }
 
         public virtual Student SinhVien { get; set; }
-        public Contract(string MaHD, string MaSV, DateTime NgayKHD, DateTime NgayKTHD)
+        public Contract(string ContractID, string StudentID, DateTime NgayKHD, DateTime NgayKTHD)
         {
-            this.MaHD = MaHD;
-            this.MaSV = MaSV;
+            this.ContractID = ContractID;
+            this.StudentID = StudentID;
             this.NgayKHD = NgayKHD.Date;
             this.NgayKTHD = NgayKTHD.Date;
         }

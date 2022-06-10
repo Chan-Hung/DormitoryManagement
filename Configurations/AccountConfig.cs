@@ -6,17 +6,17 @@ namespace DormitoryManagement.Configurations
     {
         public AccountConfig()
         {
-            Property(e => e.MaNV)
+            Property(e => e.EmployeeID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.TenDangNhap)
+            Property(e => e.Username)
                 .IsUnicode(false);
 
-            Property(e => e.MatKhau)
+            Property(e => e.Password)
                 .IsUnicode(false);
 
-            Property(e => e.MaLoaiTaiKhoan)
+            Property(e => e.AccountTypeID)
                 .IsFixedLength()
                 .IsUnicode(false);
         }

@@ -10,7 +10,7 @@ namespace DormitoryManagement.BusinessLogicLayer
 
         public List<Contract> SelectHopDong()
         {
-            return dbs.HopDongThuePhongs.ToList();
+            return dbs.Contracts.ToList();
         }
 
         public bool InsertHopDong(ref string err, string mahd, string masv, DateTime ngaykhd, DateTime ngaykthd)
@@ -20,11 +20,11 @@ namespace DormitoryManagement.BusinessLogicLayer
             {
                 Contract hopDong = new Contract();
 
-                hopDong.MaHD = mahd;
-                hopDong.MaSV = masv;
+                hopDong.ContractID = mahd;
+                hopDong.StudentID = masv;
                 hopDong.NgayKHD = ngaykhd;
                 hopDong.NgayKTHD = ngaykthd;
-                dbs.HopDongThuePhongs.Add(hopDong);
+                dbs.Contracts.Add(hopDong);
                 dbs.SaveChanges();
                 flag = true;
             }
@@ -40,11 +40,11 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var hopDong = dbs.HopDongThuePhongs.Find(mahd);
+                var hopDong = dbs.Contracts.Find(mahd);
                 if (hopDong != null)
                 {
-                    hopDong.MaHD = mahd;
-                    hopDong.MaSV = masv;
+                    hopDong.ContractID = mahd;
+                    hopDong.StudentID = masv;
                     hopDong.NgayKHD = ngaykhd.Date;
                     hopDong.NgayKTHD = ngaykthd.Date;
                     dbs.SaveChanges();

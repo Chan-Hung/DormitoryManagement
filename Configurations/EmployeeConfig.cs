@@ -6,19 +6,19 @@ namespace DormitoryManagement.Configurations
     {
         public EmployeeConfig()
         {
-            Property(e => e.MaNV)
+            Property(e => e.EmployeeID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.MaLoaiNV)
+            Property(e => e.EmployeeTypeID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.MaToa)
+            Property(e => e.BuildingID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.SDT)
+            Property(e => e.TelephoneNumber)
            .IsFixedLength()
            .IsUnicode(false);
         }

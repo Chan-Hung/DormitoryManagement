@@ -6,7 +6,7 @@ namespace DormitoryManagement.Configurations
     {
         public BuildingConfig()
         {
-            Property(e => e.MaToa)
+            Property(e => e.BuildingID)
             .IsFixedLength()
             .IsUnicode(false);
         }

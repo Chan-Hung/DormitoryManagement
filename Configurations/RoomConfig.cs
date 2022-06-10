@@ -6,19 +6,19 @@ namespace DormitoryManagement.Configurations
     {
         public RoomConfig()
         {
-            Property(e => e.MaPhong)
+            Property(e => e.RoomID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.MaToa)
+            Property(e => e.BuildingID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            Property(e => e.MaLoaiPhong)
+            Property(e => e.RoomTypeID)
             .IsFixedLength()
             .IsUnicode(false);
 
-            HasMany(e => e.DienNuocSuDungs)
+            HasMany(e => e.ElectricityAndWaterBills)
             .WithRequired(e => e.Phong)
             .WillCascadeOnDelete(false);
         }

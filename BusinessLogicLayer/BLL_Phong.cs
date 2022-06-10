@@ -11,7 +11,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         DormitoryContext dbs = new DormitoryContext();
         public List<Room> SelectPhong()
         {
-            return dbs.Phongs.ToList();
+            return dbs.Rooms.ToList();
         }
         public bool InsertPhong(ref string err, string maphong, string maloaiphong, string matoa, string trangthai)
         {
@@ -19,10 +19,10 @@ namespace DormitoryManagement.BusinessLogicLayer
             try
             {
                 Room phong = new Room();
-                phong.MaPhong = maphong;
-                phong.MaLoaiPhong = maloaiphong;
-                phong.MaToa = matoa;
-                phong.TrangThai = trangthai;
+                phong.RoomID = maphong;
+                phong.RoomTypeID = maloaiphong;
+                phong.BuildingID = matoa;
+                phong.State = trangthai;
                 dbs.Phongs.Add(phong);
                 dbs.SaveChanges();
                 flag = true;
@@ -39,12 +39,12 @@ namespace DormitoryManagement.BusinessLogicLayer
             bool flag = false;
             try
             {
-                var phong = dbs.Phongs.Find(maphong);
+                var phong = dbs.Rooms.Find(maphong);
                 if (phong!=null){
-                    phong.MaPhong = maphong;
-                    phong.MaLoaiPhong = maloaiphong;
-                    phong.MaToa = matoa;
-                    phong.TrangThai = trangthai;
+                    phong.RoomID = maphong;
+                    phong.RoomTypeID = maloaiphong;
+                    phong.BuildingID = matoa;
+                    phong.State = trangthai;
                     dbs.SaveChanges();
                     flag = true;
                 }
@@ -57,11 +57,11 @@ namespace DormitoryManagement.BusinessLogicLayer
         }
         public List<Room> ShowPhongTrong()
         {
-            return dbs.Phongs.Where(x=>x.TrangThai == "Còn").ToList();
+            return dbs.Phongs.Where(x=>x.State == "Còn").ToList();
         }
         public bool checkMaPhong(string maPhong)
         {
-            Room phong = dbs.Phongs.Where(x => x.MaPhong == maPhong).FirstOrDefault();
+            Room phong = dbs.Phongs.Where(x => x.RoomID == maPhong).FirstOrDefault();
             if (phong != null) return false;
             return true;
         }

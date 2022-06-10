@@ -4,30 +4,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
-    [Table("LoaiPhong")]
+    [Table("RoomType")]
     public partial class RoomType
     {
         public RoomType()
         {
-            Phongs = new HashSet<Room>();
+            Rooms = new HashSet<Room>();
         }
 
         [Key]
         [StringLength(3)]
-        public string MaLoaiPhong { get; set; }
+        public string RoomTypeID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string TenloaiPhong { get; set; }
+        public string RoomTypeName { get; set; }
 
-        public int Gia { get; set; }
+        public int Fee { get; set; }
 
-        public virtual ICollection<Room> Phongs { get; set; }
-        public RoomType(string MaLoaiPhong, string TenLoaiPhong, int Gia)
+        public virtual ICollection<Room> Rooms { get; set; }
+        public RoomType(string RoomTypeID, string RoomTypeName, int Fee)
         {
-            this.MaLoaiPhong = MaLoaiPhong;
-            this.TenloaiPhong = TenLoaiPhong;
-            this.Gia = Gia;
+            this.RoomTypeID = RoomTypeID;
+            this.RoomTypeName = RoomTypeName;
+            this.Fee = Fee;
         }
     }
 }

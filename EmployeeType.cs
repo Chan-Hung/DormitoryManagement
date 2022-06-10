@@ -4,27 +4,27 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DormitoryManagement
 {
-    [Table("LoaiNhanVien")]
+    [Table("EmployeeType")]
     public partial class EmployeeType
     {
         public EmployeeType()
         {
-            NhanViens = new HashSet<Employee>();
+            Employees = new HashSet<Employee>();
         }
 
         [Key]
         [StringLength(2)]
-        public string MaLoaiNV { get; set; }
+        public string EmployeeTypeID { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string CongViec { get; set; }
+        public string JobDescription { get; set; }
 
-        public virtual ICollection<Employee> NhanViens { get; set; }
-        public EmployeeType(string MaLoaiNV, string CongViec)
+        public virtual ICollection<Employee> Employees { get; set; }
+        public EmployeeType(string EmployeeTypeID, string JobDescription)
         {
-            this.MaLoaiNV = MaLoaiNV;
-            this.CongViec = CongViec;
+            this.EmployeeTypeID = EmployeeTypeID;
+            this.JobDescription = JobDescription;
         }
     }
 }
