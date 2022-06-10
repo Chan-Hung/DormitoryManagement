@@ -10,18 +10,18 @@ namespace DormitoryManagement
             Database.SetInitializer(new Initializer());
         }
 
-        public virtual DbSet<ElectricityAndWaterBill> DienNuocSuDungs { get; set; }
-        public virtual DbSet<Contract> HopDongThuePhongs { get; set; }
-        public virtual DbSet<EmployeeType> LoaiNhanViens { get; set; }
-        public virtual DbSet<RoomType> LoaiPhongs { get; set; }
+        public virtual DbSet<ElectricityAndWaterBill> ElectricityAndWaterBills { get; set; }
+        public virtual DbSet<Contract> Contracts { get; set; }
+        public virtual DbSet<EmployeeType> EmployeeTypes { get; set; }
+        public virtual DbSet<RoomType> RoomTypes { get; set; }
         public virtual DbSet<LoaiTaiKhoan> LoaiTaiKhoans { get; set; }
-        public virtual DbSet<Employee> NhanViens { get; set; }
-        public virtual DbSet<Room> Phongs { get; set; }
-        public virtual DbSet<Student> SinhViens { get; set; }
-        public virtual DbSet<Account> TaiKhoans { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
 
-        public virtual DbSet<Building> Toas { get; set; }
-        public virtual DbSet<School> Truongs { get; set; }
+        public virtual DbSet<Building> Buildings { get; set; }
+        public virtual DbSet<School> Schools { get; set; }
       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

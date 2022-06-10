@@ -9,7 +9,7 @@ namespace DormitoryManagement.BusinessLogicLayer
         public bool AuthLogin(string username, string password)
         {
             bool flag = false;
-            var toAuth = (from e in dbs.TaiKhoans
+            var toAuth = (from e in dbs.Accounts
                           where e.TenDangNhap == username && e.MatKhau == password
                           select e).FirstOrDefault();
             if (toAuth != null)
