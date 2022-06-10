@@ -18,8 +18,6 @@ namespace DormitoryManagement
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Student> Students { get; set; }
-        public virtual DbSet<Account> Accounts { get; set; }
-
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<School> Schools { get; set; }
       
