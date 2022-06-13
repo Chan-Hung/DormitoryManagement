@@ -30,7 +30,6 @@ namespace DormitoryManagement
         }
         public Contract()
         {
-
         }
     }
 }

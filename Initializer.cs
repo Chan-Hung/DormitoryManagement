@@ -37,9 +37,9 @@ namespace DormitoryManagement
             context.Toas.AddRange(toas);
 
             //khởi tạo loại tài khoản
-            IList<LoaiTaiKhoan> loaiTaiKhoans = new List<LoaiTaiKhoan>();
-            loaiTaiKhoans.Add(new LoaiTaiKhoan("1", "Admin", "Quản lý chung"));
-            loaiTaiKhoans.Add(new LoaiTaiKhoan("2", "Employee", "Nhân viên quản lý sinh viên và cơ sở vật chất"));
+            IList<AccountType> loaiTaiKhoans = new List<AccountType>();
+            loaiTaiKhoans.Add(new AccountType("1", "Admin", "Quản lý chung"));
+            loaiTaiKhoans.Add(new AccountType("2", "Employee", "Nhân viên quản lý sinh viên và cơ sở vật chất"));
             context.LoaiTaiKhoans.AddRange(loaiTaiKhoans);
 
             //khởi tạo loại phòng

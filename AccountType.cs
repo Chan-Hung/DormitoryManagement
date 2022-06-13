@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DormitoryManagement
 {
     [Table("LoaiTaiKhoan")]
-    public partial class LoaiTaiKhoan
+    public partial class AccountType
     {
-        public LoaiTaiKhoan()
+        public AccountType()
         {
             TaiKhoans = new HashSet<Account>();
         }
@@ -24,7 +24,7 @@ namespace DormitoryManagement
         public string ChucNang { get; set; }
 
         public virtual ICollection<Account> TaiKhoans { get; set; }
-        public LoaiTaiKhoan(string MaLoaiTaiKhoan, string TenLoaiTaiKhoan, string ChucNang)
+        public AccountType(string MaLoaiTaiKhoan, string TenLoaiTaiKhoan, string ChucNang)
         {
             this.MaLoaiTaiKhoan = MaLoaiTaiKhoan;
             this.TenLoaiTaiKhoan = TenLoaiTaiKhoan;
