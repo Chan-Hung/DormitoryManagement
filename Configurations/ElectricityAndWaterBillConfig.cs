@@ -8,12 +8,12 @@ namespace DormitoryManagement.Configurations
         public ElectricityAndWaterBillConfig()
         {
             Property(e => e.MaHoaDon)
-                .IsFixedLength()
-                .IsUnicode(false);
+            .IsFixedLength()
+            .IsUnicode(false);
 
             Property(e => e.MaPhong)
-                .IsFixedLength()
-                .IsUnicode(false);
+            .IsFixedLength()
+            .IsUnicode(false);
         }
     }
 }

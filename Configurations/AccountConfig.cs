@@ -11,14 +11,14 @@ namespace DormitoryManagement.Configurations
             .IsUnicode(false);
 
             Property(e => e.TenDangNhap)
-                .IsUnicode(false);
+            .IsUnicode(false);
 
             Property(e => e.MatKhau)
-                .IsUnicode(false);
+            .IsUnicode(false);
 
             Property(e => e.MaLoaiTaiKhoan)
-                .IsFixedLength()
-                .IsUnicode(false);
+            .IsFixedLength()
+            .IsUnicode(false);
         }
     }
 }

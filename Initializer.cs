@@ -4,12 +4,12 @@ using System.Data.Entity;
 
 namespace DormitoryManagement
 {
-    public class Initializer: DropCreateDatabaseIfModelChanges<DormitoryContext>
+    public class Initializer: DropCreateDatabaseAlways<DormitoryContext>
     {
         protected override void Seed(DormitoryContext context)
         {
             
-            //khoi tao truong
+            //Khởi tạo trường
             IList<School> truongs = new List<School>();
             truongs.Add(new School("BKU", "Đại học Bách Khoa Thành phố Hồ chí Minh"));
             truongs.Add(new School("HCMUS", "Đại học Khoa học tự nhiên"));
@@ -185,7 +185,6 @@ namespace DormitoryManagement
             hopDongThuePhongs.Add(new Contract("0008", "96112364", DateTime.Now, DateTime.Now.AddYears(1)));
             hopDongThuePhongs.Add(new Contract("0009", "20687487", DateTime.Now, DateTime.Now.AddYears(1)));
             context.HopDongThuePhongs.AddRange(hopDongThuePhongs);
-
 
             context.SaveChanges();
             base.Seed(context);
