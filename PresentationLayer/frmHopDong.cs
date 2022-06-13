@@ -26,7 +26,6 @@ namespace DormitoryManagement.PresentationLayer
             btnHuy.Enabled = true;
 
             //Tắt nút Thêm/ Sửa/ Xóa
-            
             btnSua.Enabled = false;
 
             //Vô hiệu hóa trường textbox Mã hợp đồng

@@ -30,7 +30,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             catch (SqlException)
             {
-                err = "Loi rui!!!";
+                err = "Đã xảy ra lỗi";
             }
             return flag;
         }
@@ -53,7 +53,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             catch (SqlException)
             {
-                err = "Loi rui!!!";
+                err = "Đã xảy ra lỗi";
             }
             return flag;
         }

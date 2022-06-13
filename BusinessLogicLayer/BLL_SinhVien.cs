@@ -77,7 +77,7 @@ namespace DormitoryManagement.BusinessLogicLayer
             }
             catch (SqlException)
             {
-                err = "Lỗi";
+                err = "Đã xảy ra lỗi";
             }
 
             return flag;
