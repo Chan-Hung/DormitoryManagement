@@ -97,7 +97,6 @@ namespace DormitoryManagement.PresentationLayer
                 {
                     
                     //Nút sửa được chọn (thao tác Update)
-                   
                     if (!bll.UpdateHopDong(ref err, txtMaHD.Text, txtMaSV.Text, dtpNgayky.Value, dtpNgayketthuc.Value))
                         MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     else
