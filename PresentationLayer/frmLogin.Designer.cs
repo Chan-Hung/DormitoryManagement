@@ -48,7 +48,7 @@ namespace DormitoryManagement.PresentationLayer
             this.btnDangNhap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDangNhap.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnDangNhap.ForeColor = System.Drawing.Color.White;
-            this.btnDangNhap.Location = new System.Drawing.Point(58, 349);
+            this.btnDangNhap.Location = new System.Drawing.Point(59, 349);
             this.btnDangNhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(227, 46);
@@ -76,6 +76,7 @@ namespace DormitoryManagement.PresentationLayer
             this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(227, 22);
             this.txtMatKhau.TabIndex = 11;
+            this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMatKhau_KeyDown);
             // 
             // lblMatKhau
             // 
@@ -110,6 +111,7 @@ namespace DormitoryManagement.PresentationLayer
             // pbLoginLogo
             // 
             this.pbLoginLogo.BackColor = System.Drawing.SystemColors.Window;
+            this.pbLoginLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLoginLogo.Image")));
             this.pbLoginLogo.Location = new System.Drawing.Point(65, 25);
             this.pbLoginLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pbLoginLogo.Name = "pbLoginLogo";

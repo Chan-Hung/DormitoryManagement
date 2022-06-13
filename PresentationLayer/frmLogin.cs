@@ -24,5 +24,11 @@ namespace DormitoryManagement.PresentationLayer
             else
                 MessageBox.Show("Tài khoản hoặc mật khẩu không đúng !!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void txtMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnDangNhap.PerformClick();
+        }
     }
 }
